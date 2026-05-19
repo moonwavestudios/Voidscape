@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b41bwryvpaqv0"]
+
+[ext_resource type="Shader" uid="uid://cytlj6wbt21ki" path="res://shaders/underwater_world.gdshader" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c58lis5vjiws3" path="res://scenes/world_test.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ccxx1fvlstxf7" path="res://scenes/gifts.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://chuwoh0rx0ufc" path="res://scenes/player.tscn" id="3_h2yge"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0xm2m"]
+shader = ExtResource("1_ig7tw")
+shader_parameter/sky_top_color = Color(0.01, 0.08, 0.1, 1)
+shader_parameter/sky_horizon_color = Color(0.02, 0.18, 0.2, 1)
+shader_parameter/fog_density = 0.85
+shader_parameter/time_scale = 0.3
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("ShaderMaterial_0xm2m")
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node" unique_id=1863403543]
+
+[node name="game" type="Node3D" parent="." unique_id=796200974]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="game" unique_id=1510874032]
+environment = SubResource("Environment_0xm2m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="game" unique_id=482911065]
+transform = Transform3D(1, 0, 0, 0, 1.4901161e-07, 1, 0, -1, 1.4901161e-07, 0, 0, 0)
+shadow_enabled = true
+
+[node name="world_test" parent="game" unique_id=858100175 instance=ExtResource("2_0xm2m")]
+
+[node name="gifts" parent="game" unique_id=702350556 instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9533489, -3.38346)
+
+[node name="gifts2" parent="game" unique_id=328966432 instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9533489, -6.9584265)
+
+[node name="player" parent="." unique_id=1056688122 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3498495, 0)
