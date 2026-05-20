@@ -36,4 +36,4 @@ shadow_enabled = true
 [node name="world_test" parent="game" unique_id=858100175 groups=["map"] instance=ExtResource("2_0xm2m")]
 
 [node name="player" parent="." unique_id=1056688122 groups=["player"] instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7217877, -0.23494816)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7217877, -15.594077)
