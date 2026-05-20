@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b41bwryvpaqv0"]
 
 [ext_resource type="Shader" uid="uid://cytlj6wbt21ki" path="res://shaders/underwater_world.gdshader" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://b7vptqfagiw02" path="res://scripts/game.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c58lis5vjiws3" path="res://scenes/world_test.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ccxx1fvlstxf7" path="res://scenes/gifts.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://chuwoh0rx0ufc" path="res://scenes/player.tscn" id="3_h2yge"]
@@ -24,6 +25,7 @@ glow_enabled = true
 [node name="Main" type="Node" unique_id=1863403543]
 
 [node name="game" type="Node3D" parent="." unique_id=796200974]
+script = ExtResource("1_lquwl")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="game" unique_id=1510874032]
 environment = SubResource("Environment_0xm2m")
@@ -41,4 +43,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9533489, -3.38346)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9533489, -6.9584265)
 
 [node name="player" parent="." unique_id=1056688122 instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3498495, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7217877, -15.20688)
