@@ -1,10 +1,13 @@
 extends CharacterBody3D
+
 const MOUSE_SENSITIVITY = 0.003
 var pitch: float = 0.0
 @onready var camera: Camera3D = $Camera3D
+
 var gifts = 0
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+
 const DASH_FORCE = 50.0
 var dead = false
 var has_air_dashed = false
