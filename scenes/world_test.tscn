@@ -2,9 +2,26 @@
 
 [ext_resource type="Shader" uid="uid://daywub3pgh2h8" path="res://shaders/checkerboard_floor.gdshader" id="1_7mhm3"]
 [ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="2_puv4i"]
+[ext_resource type="Shader" uid="uid://byp45ooycf37s" path="res://shaders/underwater_wood.gdshader" id="3_1moov"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8rpv"]
 size = Vector3(1, 0.9974365, 1.0222473)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lv6h"]
+render_priority = 0
+shader = ExtResource("1_7mhm3")
+shader_parameter/tile_color_a = Color(1, 1, 1, 1)
+shader_parameter/tile_color_b = Color(0.02, 0.02, 0.04, 1)
+shader_parameter/tile_size = 1.0
+shader_parameter/emission_strength = 1.8
+shader_parameter/roughness_a = 0.15
+shader_parameter/roughness_b = 0.9
+shader_parameter/wetness = 0.6
+shader_parameter/caustic_strength = 0.25
+shader_parameter/caustic_speed = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_7mhm3"]
+material = SubResource("ShaderMaterial_4lv6h")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_puv4i"]
 render_priority = 0
@@ -19,9 +36,6 @@ shader_parameter/wetness = 0.6
 shader_parameter/caustic_strength = 0.25
 shader_parameter/caustic_speed = 0.4
 
-[sub_resource type="BoxMesh" id="BoxMesh_7mhm3"]
-material = SubResource("ShaderMaterial_puv4i")
-
 [sub_resource type="BoxMesh" id="BoxMesh_1moov"]
 material = SubResource("ShaderMaterial_puv4i")
 
@@ -31,7 +45,7 @@ material = SubResource("ShaderMaterial_puv4i")
 [sub_resource type="BoxMesh" id="BoxMesh_ob026"]
 material = SubResource("ShaderMaterial_puv4i")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mhm3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1moov"]
 render_priority = 0
 shader = ExtResource("2_puv4i")
 shader_parameter/stone_light = Color(0.48570347, 0.48570353, 0.4857034, 1)
@@ -46,7 +60,7 @@ shader_parameter/grout_width = 0.07
 shader_parameter/teal_shift = 0.6
 
 [sub_resource type="BoxMesh" id="BoxMesh_puv4i"]
-material = SubResource("ShaderMaterial_7mhm3")
+material = SubResource("ShaderMaterial_1moov")
 
 [sub_resource type="Shader" id="Shader_puv4i"]
 code = "shader_type spatial;
@@ -165,7 +179,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1moov"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ob026"]
 render_priority = 0
 shader = SubResource("Shader_puv4i")
 shader_parameter/stone_light = Color(0.13682565, 0.13682577, 0.13682571, 1)
@@ -180,7 +194,28 @@ shader_parameter/grout_width = 0.07
 shader_parameter/teal_shift = 0.6
 
 [sub_resource type="BoxMesh" id="BoxMesh_4lv6h"]
-material = SubResource("ShaderMaterial_1moov")
+material = SubResource("ShaderMaterial_ob026")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_puv4i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63fu1"]
+render_priority = 0
+shader = ExtResource("3_1moov")
+shader_parameter/wood_base_color = Color(1, 0.5372549, 0, 1)
+shader_parameter/wood_grain_color = Color(0.02, 0.06, 0.08, 1)
+shader_parameter/teal_tint = Color(0.08, 0.35, 0.38, 1)
+shader_parameter/tile_size = 0.36100001388762
+shader_parameter/plank_width = 0.33200001251012
+shader_parameter/grain_scale = 8.0
+shader_parameter/roughness_base = 0.85
+shader_parameter/wetness = 0.7
+shader_parameter/teal_strength = 0.45
+shader_parameter/caustic_strength = 0.08
+shader_parameter/caustic_speed = 0.35
+shader_parameter/edge_darkness = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_i6uhy"]
+material = SubResource("ShaderMaterial_63fu1")
 
 [node name="world_test" type="Node3D" unique_id=858100175]
 
@@ -261,3 +296,12 @@ shape = SubResource("BoxShape3D_o8rpv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2/CollisionShape3D5" unique_id=277082582]
 mesh = SubResource("BoxMesh_4lv6h")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="." unique_id=1844458922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4860612, 0.53802145, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6" unique_id=992203916]
+shape = SubResource("BoxShape3D_puv4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D6/CollisionShape3D" unique_id=1036766750]
+mesh = SubResource("BoxMesh_i6uhy")

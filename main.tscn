@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://c58lis5vjiws3" path="res://scenes/world_test.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ccxx1fvlstxf7" path="res://scenes/gifts.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://chuwoh0rx0ufc" path="res://scenes/player.tscn" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://b313ofqycpsiw" path="res://scripts/floor_generation.gd" id="5_7mycd"]
+[ext_resource type="Shader" uid="uid://daywub3pgh2h8" path="res://shaders/checkerboard_floor.gdshader" id="6_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cgcp1u3dnvxsc" path="res://scenes/center.tscn" id="6_272bh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xm2m"]
 shader = ExtResource("1_ig7tw")
@@ -21,6 +24,32 @@ background_mode = 2
 sky = SubResource("Sky_ig7tw")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kek77"]
+render_priority = 0
+shader = ExtResource("6_5vw27")
+shader_parameter/tile_color_a = Color(1, 1, 1, 1)
+shader_parameter/tile_color_b = Color(0.02, 0.02, 0.04, 1)
+shader_parameter/tile_size = 1.0
+shader_parameter/emission_strength = 1.8
+shader_parameter/roughness_a = 0.15
+shader_parameter/roughness_b = 0.9
+shader_parameter/wetness = 0.6
+shader_parameter/caustic_strength = 0.25
+shader_parameter/caustic_speed = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
+render_priority = 0
+shader = ExtResource("6_5vw27")
+shader_parameter/tile_color_a = Color(1, 1, 1, 1)
+shader_parameter/tile_color_b = Color(0.02, 0.02, 0.04, 1)
+shader_parameter/tile_size = 1.0
+shader_parameter/emission_strength = 1.8
+shader_parameter/roughness_a = 0.15
+shader_parameter/roughness_b = 0.9
+shader_parameter/wetness = 0.6
+shader_parameter/caustic_strength = 0.25
+shader_parameter/caustic_speed = 0.4
 
 [node name="Main" type="Node" unique_id=1863403543]
 
@@ -42,5 +71,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9533489, -3.38346)
 [node name="gifts2" parent="game" unique_id=328966432 instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9533489, -6.9584265)
 
-[node name="player" parent="." unique_id=1056688122 instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7217877, -15.20688)
+[node name="FloorGeneration" type="Node3D" parent="game" unique_id=1322853967]
+visible = false
+script = ExtResource("5_7mycd")
+floor_material = SubResource("ShaderMaterial_kek77")
+stair_material = SubResource("ShaderMaterial_5vw27")
+
+[node name="center" parent="game/FloorGeneration" unique_id=1241907746 instance=ExtResource("6_272bh")]
+
+[node name="player" parent="." unique_id=1056688122 groups=["player"] instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7217877, -0.23494816)

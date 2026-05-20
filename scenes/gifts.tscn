@@ -16,7 +16,7 @@ stencil_flags = 2
 [sub_resource type="BoxMesh" id="BoxMesh_56tqj"]
 material = SubResource("StandardMaterial3D_56tqj")
 
-[node name="gifts" type="Area3D" unique_id=702350556]
+[node name="gifts" type="Area3D" unique_id=702350556 groups=["gifts"]]
 script = ExtResource("1_k2biq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1518320145]

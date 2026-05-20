@@ -15,6 +15,11 @@ run/main_scene="uid://b41bwryvpaqv0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[global_group]
+
+player=""
+gifts=""
+
 [input]
 
 ui_left={
