@@ -10,5 +10,4 @@ func _process(delta):
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		body.gifts += 1
-		$"../..".gifts_collected += 1
 		queue_free()
