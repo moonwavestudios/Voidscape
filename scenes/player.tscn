@@ -82,5 +82,5 @@ transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.965
 current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=427838494]
-transform = Transform3D(1.3282027, 0, 0, 0, 0.7540412, 0, 0, -2.6788927e-15, 0.3908465, 0, 0.7167037, -0.73603654)
+transform = Transform3D(2.1738248, 0, 0, 0, 4.943821, 0, 0, -1.7563982e-14, 0.691699, 0, 0.7167037, -0.73603654)
 mesh = SubResource("QuadMesh_3vyb7")
