@@ -46,6 +46,7 @@ material = SubResource("ShaderMaterial_puv4i")
 material = SubResource("ShaderMaterial_puv4i")
 
 [node name="world_test" type="Node3D" unique_id=858100175 groups=["map"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.115078)
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=1339650077]
 transform = Transform3D(3.8134303, 0, 0, 0, 0.12740725, 0, 0, 0, 26.574448, 0, 0, 0)

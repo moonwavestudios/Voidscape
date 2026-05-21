@@ -201,7 +201,7 @@ transform = Transform3D(1, 0, 0, 0, 1.4901161e-07, 1, 0, -1, 1.4901161e-07, 0, 0
 shadow_enabled = true
 
 [node name="middle" type="StaticBody3D" parent="game" unique_id=423026953]
-transform = Transform3D(4, 0, 0, 0, 0.552, 0, 0, 0, 4, 0, 0.21970677, -15.260033)
+transform = Transform3D(4, 0, 0, 0, 0.552, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="game/middle" unique_id=1417470729]
 transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999965, 0, 0, 0)
@@ -252,6 +252,6 @@ transform = Transform3D(1, 0, 0, 0, 4.758523, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_1bvp3")
 
 [node name="player" parent="." unique_id=1056688122 groups=["player"] instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7217877, -15.594077)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1006432, 0)
 
 [connection signal="body_entered" from="game/Beacon" to="game" method="_on_beacon_body_entered"]

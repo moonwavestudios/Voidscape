@@ -6,49 +6,34 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7y27r"]
 render_priority = 0
 shader = ExtResource("2_6avyr")
-shader_parameter/wood_base_color = Color(0.04, 0.1, 0.12, 1)
-shader_parameter/wood_grain_color = Color(0.2901961, 0.10980392, 0, 1)
-shader_parameter/teal_tint = Color(0, 0, 0, 1)
+shader_parameter/void_phase = 0.0
 shader_parameter/tile_size = 1.0
 shader_parameter/plank_width = 0.5
 shader_parameter/grain_scale = 8.0
 shader_parameter/roughness_base = 0.85
 shader_parameter/wetness = 0.7
-shader_parameter/teal_strength = 0.0
-shader_parameter/caustic_strength = 0.08
-shader_parameter/caustic_speed = 0.35
 shader_parameter/edge_darkness = 0.6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6avyr"]
 render_priority = 0
 shader = ExtResource("2_6avyr")
-shader_parameter/wood_base_color = Color(0.04, 0.1, 0.12, 1)
-shader_parameter/wood_grain_color = Color(0.2901961, 0.10980392, 0, 1)
-shader_parameter/teal_tint = Color(0, 0, 0, 1)
+shader_parameter/void_phase = 0.0
 shader_parameter/tile_size = 1.0
 shader_parameter/plank_width = 0.5
 shader_parameter/grain_scale = 8.0
 shader_parameter/roughness_base = 0.85
 shader_parameter/wetness = 0.7
-shader_parameter/teal_strength = 0.0
-shader_parameter/caustic_strength = 0.08
-shader_parameter/caustic_speed = 0.35
 shader_parameter/edge_darkness = 0.6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sg6r7"]
 render_priority = 0
 shader = ExtResource("2_6avyr")
-shader_parameter/wood_base_color = Color(0.04, 0.1, 0.12, 1)
-shader_parameter/wood_grain_color = Color(0.2901961, 0.10980392, 0, 1)
-shader_parameter/teal_tint = Color(0, 0, 0, 1)
+shader_parameter/void_phase = 0.0
 shader_parameter/tile_size = 1.0
 shader_parameter/plank_width = 0.5
 shader_parameter/grain_scale = 8.0
 shader_parameter/roughness_base = 0.85
 shader_parameter/wetness = 0.7
-shader_parameter/teal_strength = 0.0
-shader_parameter/caustic_strength = 0.08
-shader_parameter/caustic_speed = 0.35
 shader_parameter/edge_darkness = 0.6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6avyr"]
