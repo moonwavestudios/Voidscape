@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://cxa4w1y186ywx"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_guxnq"]
+font_size = 40
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
 [node name="player_ui" type="Control" unique_id=1669550447]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +12,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GiftsLabel" type="Label" parent="." unique_id=862672479]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 583.0
+offset_right = 1153.0
+offset_bottom = 647.0
+text = "0/200"
+label_settings = SubResource("LabelSettings_guxnq")
+horizontal_alignment = 1
+vertical_alignment = 1

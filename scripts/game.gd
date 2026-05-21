@@ -55,7 +55,7 @@ func _ready() -> void:
 					all_gifts += 1
 
 func get_players():
-	return get_tree().get_nodes_in_group("players")
+	return get_tree().get_nodes_in_group("player")
 
 func _process(_delta: float) -> void:
 	if gifts_collected == all_gifts:
@@ -65,3 +65,4 @@ func _process(_delta: float) -> void:
 	
 	for player in get_players():
 		gifts_collected = player.gifts
+		player.get_node('player_ui/GiftsLabel').text = str(gifts_collected) + "/" + str(all_gifts)

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://chuwoh0rx0ufc"]
 
 [ext_resource type="Script" uid="uid://ivgn7bqepnl0" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://cxa4w1y186ywx" path="res://scenes/player_ui.tscn" id="2_g2els"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 
@@ -84,3 +85,5 @@ current = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=427838494]
 transform = Transform3D(2.1738248, 0, 0, 0, 4.943821, 0, 0, -1.7563982e-14, 0.691699, 0, 0.7167037, -0.73603654)
 mesh = SubResource("QuadMesh_3vyb7")
+
+[node name="player_ui" parent="." unique_id=1669550447 instance=ExtResource("2_g2els")]
