@@ -15,17 +15,18 @@ var exit_open = false
 
 func _ready() -> void:
 	for gifts in get_children():
-		if gifts.is_in_group("gifts"):
-			all_gifts += 1
-			print(all_gifts)
+		if gifts.is_in_group("map"):
+			for map in gifts.get_children():
+				if map.is_in_group("gifts"):
+					all_gifts += 1
 	
-	for floors in get_children():
-		if floors.is_in_group("map"):
-			for floore in floors.get_children():
-				if floore.name.contains("floor"):
-					var gift = giftScene.instantiate()
-					add_child(gift)
-					gift.position = floore.position + Vector3(0, 1, 0)
+	#for floors in get_children():
+		#if floors.is_in_group("map"):
+			#for floore in floors.get_children():
+				#if floore.name.contains("floor"):
+					#var gift = giftScene.instantiate()
+					#add_child(gift)
+					#gift.position = floore.position + Vector3(0, 1, 0)
 
 func _process(_delta: float) -> void:
 	if gifts_collected == all_gifts:
