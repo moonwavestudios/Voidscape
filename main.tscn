@@ -175,6 +175,19 @@ shader_parameter/teal_shift = 0.6
 [sub_resource type="BoxMesh" id="BoxMesh_kek77"]
 material = SubResource("ShaderMaterial_lquwl")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
+size = Vector3(1, 9.202209, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_on_uv2 = true
+uv2_world_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1bvp3"]
+material = SubResource("StandardMaterial3D_1bvp3")
+
 [node name="Main" type="Node" unique_id=1863403543]
 
 [node name="game" type="Node3D" parent="." unique_id=796200974]
@@ -225,5 +238,20 @@ shape = SubResource("BoxShape3D_7mycd")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="game/middle/CollisionShape3D5" unique_id=1161179983]
 mesh = SubResource("BoxMesh_kek77")
 
+[node name="Beacon" type="Area3D" parent="game" unique_id=1243685582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4032562, -15.575113)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="game/Beacon" unique_id=737104202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1111147, 0)
+shape = SubResource("BoxShape3D_1bvp3")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="game/Beacon/CollisionShape3D" unique_id=1065732017]
+transform = Transform3D(1, 0, 0, 0, 4.758523, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_1bvp3")
+
 [node name="player" parent="." unique_id=1056688122 groups=["player"] instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7217877, -15.594077)
+
+[connection signal="body_entered" from="game/Beacon" to="game" method="_on_beacon_body_entered"]

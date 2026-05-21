@@ -62,7 +62,13 @@ func _process(_delta: float) -> void:
 		if not exit_open:
 			print("exit")
 			exit_open = true
+			$Beacon.visible = true
+			$Beacon/CollisionShape3D.disabled = false
 	
 	for player in get_players():
 		gifts_collected = player.gifts
 		player.get_node('player_ui/GiftsLabel').text = str(gifts_collected) + "/" + str(all_gifts)
+
+func _on_beacon_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		print("test")
