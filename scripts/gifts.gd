@@ -1,7 +1,10 @@
 extends Area3D
 
 var time := 0.0
-var start_y := 1.0
+var start_y = 0.0
+
+func _ready() -> void:
+	start_y = position.y
 
 func _process(delta):
 	time += delta

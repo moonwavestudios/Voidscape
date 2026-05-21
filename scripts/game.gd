@@ -19,6 +19,7 @@ var exit_open = false
 
 var floors: Array[PackedScene] = [
 	preload("res://scenes/world_test.tscn"),
+	preload("res://scenes/world_1.tscn"),
 ]
 
 func seeded_pick_random(array: Array):
