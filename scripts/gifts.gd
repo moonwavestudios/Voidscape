@@ -1,5 +1,4 @@
 extends Area3D
-
 var time := 0.0
 var start_y = 0.0
 

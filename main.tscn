@@ -9,7 +9,7 @@
 shader = ExtResource("1_ig7tw")
 shader_parameter/sky_top_color = Color(0.01, 0.08, 0.1, 1)
 shader_parameter/sky_horizon_color = Color(0.02, 0.18, 0.2, 1)
-shader_parameter/fog_density = 0.85
+shader_parameter/fog_density = 0.5850000277875
 shader_parameter/time_scale = 0.3
 
 [sub_resource type="Sky" id="Sky_ig7tw"]

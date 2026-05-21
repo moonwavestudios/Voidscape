@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c58lis5vjiws3"]
 
 [ext_resource type="Shader" uid="uid://daywub3pgh2h8" path="res://shaders/checkerboard_floor.gdshader" id="1_7mhm3"]
-[ext_resource type="Shader" uid="uid://byp45ooycf37s" path="res://shaders/underwater_wood.gdshader" id="3_1moov"]
+[ext_resource type="PackedScene" uid="uid://bgj5n1thiout7" path="res://assets/models/shelf.tscn" id="3_1moov"]
 [ext_resource type="PackedScene" uid="uid://ccxx1fvlstxf7" path="res://scenes/gifts.tscn" id="4_63fu1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8rpv"]
@@ -45,27 +45,6 @@ material = SubResource("ShaderMaterial_puv4i")
 [sub_resource type="BoxMesh" id="BoxMesh_ob026"]
 material = SubResource("ShaderMaterial_puv4i")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_puv4i"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_63fu1"]
-render_priority = 0
-shader = ExtResource("3_1moov")
-shader_parameter/wood_base_color = Color(1, 0.5372549, 0, 1)
-shader_parameter/wood_grain_color = Color(0.02, 0.06, 0.08, 1)
-shader_parameter/teal_tint = Color(0.08, 0.35, 0.38, 1)
-shader_parameter/tile_size = 0.36100001388762
-shader_parameter/plank_width = 0.33200001251012
-shader_parameter/grain_scale = 8.0
-shader_parameter/roughness_base = 0.85
-shader_parameter/wetness = 0.7
-shader_parameter/teal_strength = 0.45
-shader_parameter/caustic_strength = 0.08
-shader_parameter/caustic_speed = 0.35
-shader_parameter/edge_darkness = 0.6
-
-[sub_resource type="BoxMesh" id="BoxMesh_i6uhy"]
-material = SubResource("ShaderMaterial_63fu1")
-
 [node name="world_test" type="Node3D" unique_id=858100175 groups=["map"]]
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=1339650077]
@@ -107,15 +86,6 @@ shape = SubResource("BoxShape3D_o8rpv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor4/CollisionShape3D" unique_id=1683263525]
 mesh = SubResource("BoxMesh_ob026")
-
-[node name="StaticBody3D6" type="StaticBody3D" parent="." unique_id=1844458922]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4860612, 0.53802145, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6" unique_id=992203916]
-shape = SubResource("BoxShape3D_puv4i")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D6/CollisionShape3D" unique_id=1036766750]
-mesh = SubResource("BoxMesh_i6uhy")
 
 [node name="gifts" parent="." unique_id=702350556 instance=ExtResource("4_63fu1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7992177, 0)
@@ -188,3 +158,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.9
 
 [node name="gifts24" parent="." unique_id=1990453461 instance=ExtResource("4_63fu1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10.371223, 0.7992177, -15.072373)
+
+[node name="Node3D" parent="." unique_id=634067638 instance=ExtResource("3_1moov")]
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 1.3827115, 0.56270146, 0)

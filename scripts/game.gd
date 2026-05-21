@@ -36,7 +36,7 @@ func seeded_randf_range(min_val: float, max_val: float) -> float:
 func spawn_random_room() -> Node3D:
 	var picked_scene = seeded_pick_random(floors)
 	if picked_scene == null:
-		push_error("No fwoors available to spawn! ;-;")
+		push_error("No floors available to spawn")
 		return null
 	
 	var room_instance = picked_scene.instantiate()

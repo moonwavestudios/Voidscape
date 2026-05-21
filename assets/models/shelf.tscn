@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bgj5n1thiout7"]
+
+[ext_resource type="ArrayMesh" uid="uid://bohw3wuupe6o1" path="res://assets/models/shelf.obj" id="1_3b64t"]
+[ext_resource type="Shader" uid="uid://byp45ooycf37s" path="res://shaders/underwater_wood.gdshader" id="2_6avyr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7y27r"]
+render_priority = 0
+shader = ExtResource("2_6avyr")
+shader_parameter/wood_base_color = Color(0.04, 0.1, 0.12, 1)
+shader_parameter/wood_grain_color = Color(0.2901961, 0.10980392, 0, 1)
+shader_parameter/teal_tint = Color(0, 0, 0, 1)
+shader_parameter/tile_size = 1.0
+shader_parameter/plank_width = 0.5
+shader_parameter/grain_scale = 8.0
+shader_parameter/roughness_base = 0.85
+shader_parameter/wetness = 0.7
+shader_parameter/teal_strength = 0.0
+shader_parameter/caustic_strength = 0.08
+shader_parameter/caustic_speed = 0.35
+shader_parameter/edge_darkness = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6avyr"]
+render_priority = 0
+shader = ExtResource("2_6avyr")
+shader_parameter/wood_base_color = Color(0.04, 0.1, 0.12, 1)
+shader_parameter/wood_grain_color = Color(0.2901961, 0.10980392, 0, 1)
+shader_parameter/teal_tint = Color(0, 0, 0, 1)
+shader_parameter/tile_size = 1.0
+shader_parameter/plank_width = 0.5
+shader_parameter/grain_scale = 8.0
+shader_parameter/roughness_base = 0.85
+shader_parameter/wetness = 0.7
+shader_parameter/teal_strength = 0.0
+shader_parameter/caustic_strength = 0.08
+shader_parameter/caustic_speed = 0.35
+shader_parameter/edge_darkness = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sg6r7"]
+render_priority = 0
+shader = ExtResource("2_6avyr")
+shader_parameter/wood_base_color = Color(0.04, 0.1, 0.12, 1)
+shader_parameter/wood_grain_color = Color(0.2901961, 0.10980392, 0, 1)
+shader_parameter/teal_tint = Color(0, 0, 0, 1)
+shader_parameter/tile_size = 1.0
+shader_parameter/plank_width = 0.5
+shader_parameter/grain_scale = 8.0
+shader_parameter/roughness_base = 0.85
+shader_parameter/wetness = 0.7
+shader_parameter/teal_strength = 0.0
+shader_parameter/caustic_strength = 0.08
+shader_parameter/caustic_speed = 0.35
+shader_parameter/edge_darkness = 0.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6avyr"]
+size = Vector3(2.0038452, 1.9990234, 2.0029297)
+
+[node name="shelf" type="Node3D" unique_id=634067638]
+
+[node name="Shelf" type="MeshInstance3D" parent="." unique_id=1717839817]
+mesh = ExtResource("1_3b64t")
+surface_material_override/0 = SubResource("ShaderMaterial_7y27r")
+surface_material_override/1 = SubResource("ShaderMaterial_6avyr")
+surface_material_override/2 = SubResource("ShaderMaterial_sg6r7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=672895316]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1706190470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0020446777, 0.0014648438, -0.0043945313)
+shape = SubResource("BoxShape3D_6avyr")
