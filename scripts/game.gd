@@ -17,10 +17,13 @@ var generated_floors = []
 
 var exit_open = false
 
-var floors: Array[PackedScene] = [
-	preload("res://scenes/world_test.tscn"),
-	preload("res://scenes/world_1.tscn"),
-]
+var floors = {
+	1: [
+		preload("res://scenes/world_test.tscn"),
+		preload("res://scenes/world_1.tscn"),
+		preload("res://scenes/world_2.tscn"),
+	]
+}
 
 func seeded_pick_random(array: Array):
 	if array.is_empty():
@@ -34,7 +37,7 @@ func seeded_randf_range(min_val: float, max_val: float) -> float:
 	return rng.randf_range(min_val, max_val)
 
 func spawn_random_room() -> Node3D:
-	var picked_scene = seeded_pick_random(floors)
+	var picked_scene = seeded_pick_random(floors.get(level, 1))
 	if picked_scene == null:
 		push_error("No floors available to spawn")
 		return null
