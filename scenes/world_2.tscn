@@ -1,162 +1,8 @@
 [gd_scene format=3 uid="uid://kf41wb16d424"]
 
-[ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="1_tjjxi"]
+[ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="2_2diqr"]
 [ext_resource type="Shader" uid="uid://daywub3pgh2h8" path="res://shaders/checkerboard_floor.gdshader" id="2_kiokp"]
 [ext_resource type="PackedScene" uid="uid://ccxx1fvlstxf7" path="res://scenes/gifts.tscn" id="3_2diqr"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_kiokp"]
-size = Vector3(1, 0.9974365, 1.0222473)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
-render_priority = 0
-shader = ExtResource("1_tjjxi")
-shader_parameter/stone_light = Color(0.48570347, 0.48570353, 0.4857034, 1)
-shader_parameter/stone_dark = Color(0.31061712, 0.31061712, 0.3106171, 1)
-shader_parameter/grout_color = Color(0, 0, 0, 1)
-shader_parameter/tile_size = 0.57400002400512
-shader_parameter/roughness_base = 0.7
-shader_parameter/wetness = 0.0
-shader_parameter/caustic_strength = 0.0
-shader_parameter/caustic_speed = 0.35
-shader_parameter/grout_width = 0.07
-shader_parameter/teal_shift = 0.6
-
-[sub_resource type="BoxMesh" id="BoxMesh_2diqr"]
-material = SubResource("ShaderMaterial_1bvp3")
-
-[sub_resource type="Shader" id="Shader_axyqp"]
-code = "shader_type spatial;
-
-uniform vec4 stone_light : source_color = vec4(0.35, 0.75, 0.72, 1.0);
-uniform vec4 stone_dark : source_color = vec4(0.04, 0.14, 0.16, 1.0);
-uniform vec4 grout_color : source_color = vec4(0.02, 0.08, 0.10, 1.0);
-uniform float tile_size : hint_range(0.1, 10.0) = 1.0;
-uniform float roughness_base : hint_range(0.0, 1.0) = 0.7;
-uniform float wetness : hint_range(0.0, 1.0) = 0.55;
-uniform float caustic_strength : hint_range(0.0, 1.0) = 0.18;
-uniform float caustic_speed : hint_range(0.0, 2.0) = 0.35;
-uniform float grout_width : hint_range(0.0, 0.5) = 0.07;
-uniform float teal_shift : hint_range(0.0, 1.0) = 0.6;
-
-float hash(vec2 p) {
-	return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
-}
-
-float hash1(float n) {
-	return fract(sin(n) * 43758.5453);
-}
-
-float noise(vec2 p) {
-	vec2 i = floor(p);
-	vec2 f = fract(p);
-	f = f * f * (3.0 - 2.0 * f);
-	float a = hash(i);
-	float b = hash(i + vec2(1.0, 0.0));
-	float c = hash(i + vec2(0.0, 1.0));
-	float d = hash(i + vec2(1.0, 1.0));
-	return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
-}
-
-float fbm(vec2 p) {
-	float v = 0.0;
-	float a = 0.5;
-	for (int i = 0; i < 4; i++) {
-		v += a * noise(p);
-		p *= 2.1;
-		a *= 0.5;
-	}
-	return v;
-}
-
-float caustics(vec2 uv, float t) {
-	float n1 = noise(uv * 2.0 + vec2(t * 0.5, t * 0.3));
-	float n2 = noise(uv * 4.0 - vec2(t * 0.4, t * 0.6));
-	float n3 = noise(uv * 8.0 + vec2(t * 0.2, t * 0.7));
-	return n1 * 0.5 + n2 * 0.3 + n3 * 0.2;
-}
-
-vec2 brick_uv(vec2 world_xz, float bw, float bh, float offset) {
-	float row = floor(world_xz.y / bh);
-	float shift = mod(row, 2.0) * offset;
-	float col = floor((world_xz.x + shift) / bw);
-	vec2 local = vec2(
-		fract((world_xz.x + shift) / bw),
-		fract(world_xz.y / bh)
-	);
-	return local;
-}
-
-varying vec3 world_pos;
-varying vec3 world_normal;
-
-void vertex() {
-	world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
-}
-
-void fragment() {
-	float bw = tile_size * 2.0;
-	float bh = tile_size;
-
-	vec2 xz = world_pos.xz;
-	vec2 xy = world_pos.xy;
-	vec2 zy = world_pos.zy;
-
-	vec3 blend = abs(world_normal);
-	blend = pow(blend, vec3(4.0));
-	blend /= blend.x + blend.y + blend.z + 0.001;
-
-	vec2 local_xz = brick_uv(xz / tile_size, 2.0, 1.0, 0.5);
-	vec2 local_xy = brick_uv(xy / tile_size, 2.0, 1.0, 0.5);
-	vec2 local_zy = brick_uv(zy / tile_size, 2.0, 1.0, 0.5);
-
-	float grout_xz = step(1.0 - grout_width, local_xz.x) + step(1.0 - grout_width, local_xz.y);
-	float grout_xy = step(1.0 - grout_width, local_xy.x) + step(1.0 - grout_width, local_xy.y);
-	float grout_zy = step(1.0 - grout_width, local_zy.x) + step(1.0 - grout_width, local_zy.y);
-	float grout = clamp(
-		grout_xz * blend.y + grout_xy * blend.z + grout_zy * blend.x,
-		0.0, 1.0
-	);
-
-	float stone_xz = fbm(xz / tile_size * 3.5 + 7.3);
-	float stone_xy = fbm(xy / tile_size * 3.5 + 2.1);
-	float stone_zy = fbm(zy / tile_size * 3.5 + 4.7);
-	float stone_detail = stone_xz * blend.y + stone_xy * blend.z + stone_zy * blend.x;
-
-	vec3 base = mix(stone_dark.rgb, stone_light.rgb, stone_detail);
-	base = mix(base, grout_color.rgb, grout);
-
-	float t = TIME * caustic_speed;
-	float caustic_val = caustics(xz / tile_size * 0.5, t);
-	vec3 teal = vec3(0.1, 0.9, 0.85);
-	base += teal * caustic_val * caustic_strength * (1.0 - grout);
-
-	float lum = dot(base, vec3(0.299, 0.587, 0.114));
-	base = mix(base, mix(vec3(lum), teal, 0.5) * (lum + 0.1), teal_shift * 0.4);
-
-	ALBEDO = clamp(base, 0.0, 1.0);
-	ROUGHNESS = mix(roughness_base, roughness_base * 0.3, wetness * (1.0 - grout));
-	METALLIC = 0.0;
-	SPECULAR = mix(0.1, 0.7, wetness * (1.0 - grout));
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lquwl"]
-render_priority = 0
-shader = SubResource("Shader_axyqp")
-shader_parameter/stone_light = Color(0.13682565, 0.13682577, 0.13682571, 1)
-shader_parameter/stone_dark = Color(0.2231029, 0.2231029, 0.22310284, 1)
-shader_parameter/grout_color = Color(0, 0, 0, 1)
-shader_parameter/tile_size = 0.57400002400512
-shader_parameter/roughness_base = 0.7
-shader_parameter/wetness = 0.0
-shader_parameter/caustic_strength = 0.0
-shader_parameter/caustic_speed = 0.35
-shader_parameter/grout_width = 0.07
-shader_parameter/teal_shift = 0.6
-
-[sub_resource type="BoxMesh" id="BoxMesh_3m0gu"]
-material = SubResource("ShaderMaterial_lquwl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2diqr"]
 size = Vector3(1, 0.9974365, 1.0222473)
@@ -177,6 +23,26 @@ shader_parameter/caustic_speed = 0.4
 [sub_resource type="BoxMesh" id="BoxMesh_axyqp"]
 material = SubResource("ShaderMaterial_4lv6h")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3m0gu"]
+size = Vector3(0.14935303, 0.9974365, 1.0222473)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o7h1l"]
+render_priority = 0
+shader = ExtResource("2_2diqr")
+shader_parameter/stone_light = Color(0.4862745, 0.4862745, 0.4862745, 1)
+shader_parameter/stone_dark = Color(0.30980393, 0.30980393, 0.30980393, 1)
+shader_parameter/grout_color = Color(0, 0, 0, 1)
+shader_parameter/tile_size = 1.0
+shader_parameter/roughness_base = 0.7
+shader_parameter/wetness = 0.0
+shader_parameter/caustic_strength = 0.0
+shader_parameter/caustic_speed = 0.35
+shader_parameter/grout_width = 0.07
+shader_parameter/teal_shift = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_rwd0d"]
+material = SubResource("ShaderMaterial_o7h1l")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_axyqp"]
 size = Vector3(1, 0.9974365, 0.53583527)
 
@@ -196,45 +62,13 @@ shader_parameter/caustic_speed = 0.4
 [sub_resource type="BoxMesh" id="BoxMesh_o7h1l"]
 material = SubResource("ShaderMaterial_puv4i")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hgrhv"]
+size = Vector3(0.14935303, 0.9974365, 0.53583527)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o7h1l"]
+size = Vector3(0.14935303, 0.9974365, 0.53580093)
+
 [node name="world_2" type="Node3D" unique_id=826004647]
-
-[node name="middle" type="StaticBody3D" parent="." unique_id=1381471001]
-transform = Transform3D(4, 0, 0, 0, 0.552, 0, 0, 0, 4, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="middle" unique_id=653307734]
-transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999965, 0, 0, 0)
-shape = SubResource("BoxShape3D_kiokp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="middle/CollisionShape3D" unique_id=1561429270]
-mesh = SubResource("BoxMesh_2diqr")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="middle" unique_id=695608982]
-transform = Transform3D(0.37113547, 0, 0, 0, 1.189846, 0, 0, 0, 0.35918862, 0.44261312, 0, 0.4450636)
-shape = SubResource("BoxShape3D_kiokp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="middle/CollisionShape3D2" unique_id=2025991265]
-mesh = SubResource("BoxMesh_3m0gu")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="middle" unique_id=1345790662]
-transform = Transform3D(0.37113547, 0, 0, 0, 1.189846, 0, 0, 0, 0.35918862, -0.43732962, 0, 0.4450636)
-shape = SubResource("BoxShape3D_kiokp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="middle/CollisionShape3D3" unique_id=1435364577]
-mesh = SubResource("BoxMesh_3m0gu")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="middle" unique_id=1616636070]
-transform = Transform3D(0.37113547, 0, 0, 0, 1.189846, 0, 0, 0, 0.35918862, 0.44261312, 0, -0.42140007)
-shape = SubResource("BoxShape3D_kiokp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="middle/CollisionShape3D4" unique_id=1581186194]
-mesh = SubResource("BoxMesh_3m0gu")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="middle" unique_id=1299640752]
-transform = Transform3D(0.37113547, 0, 0, 0, 1.189846, 0, 0, 0, 0.35918862, -0.43732962, 0, -0.42140007)
-shape = SubResource("BoxShape3D_kiokp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="middle/CollisionShape3D5" unique_id=928547888]
-mesh = SubResource("BoxMesh_3m0gu")
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=1901967184]
 transform = Transform3D(3.8134303, 0, 0, 0, 0.12740725, 0, 0, 0, 26.574448, 0, 0, 15.300276)
@@ -246,6 +80,22 @@ shape = SubResource("BoxShape3D_2diqr")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor/CollisionShape3D" unique_id=137810961]
 mesh = SubResource("BoxMesh_axyqp")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="floor" unique_id=1210585332]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.99998367, 0.56204104, 0, 0)
+shape = SubResource("BoxShape3D_3m0gu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor/CollisionShape3D2" unique_id=1878905740]
+transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_rwd0d")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="floor" unique_id=1063849210]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.99998355, -0.5593431, 0, 0)
+shape = SubResource("BoxShape3D_3m0gu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor/CollisionShape3D3" unique_id=502756904]
+transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_rwd0d")
+
 [node name="floor2" type="StaticBody3D" parent="." unique_id=1934842441]
 transform = Transform3D(3.8134303, 0, 0, 0, 0.12740725, 0, 0, 0, 26.574448, 0, 0, -15.192102)
 
@@ -256,6 +106,22 @@ shape = SubResource("BoxShape3D_2diqr")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor2/CollisionShape3D" unique_id=1170937260]
 mesh = SubResource("BoxMesh_axyqp")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="floor2" unique_id=1738804554]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.99998367, 0.56204104, 0, 0)
+shape = SubResource("BoxShape3D_3m0gu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor2/CollisionShape3D2" unique_id=1680651961]
+transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_rwd0d")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="floor2" unique_id=409494672]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.99998355, -0.5593431, 0, 0)
+shape = SubResource("BoxShape3D_3m0gu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor2/CollisionShape3D3" unique_id=1116729077]
+transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_rwd0d")
+
 [node name="floor4" type="StaticBody3D" parent="." unique_id=1817887572]
 transform = Transform3D(-1.6669031e-07, 0, -26.574446, 0, 0.12740724, 0, 3.8134298, 0, -1.161606e-06, -15.359726, 0, 0.056916237)
 
@@ -265,6 +131,22 @@ shape = SubResource("BoxShape3D_axyqp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor4/CollisionShape3D" unique_id=1363461019]
 mesh = SubResource("BoxMesh_o7h1l")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="floor4" unique_id=32562005]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.99998367, 0.56204104, 0, 0)
+shape = SubResource("BoxShape3D_3m0gu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor4/CollisionShape3D2" unique_id=949618275]
+transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_rwd0d")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="floor4" unique_id=1208374076]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.99998355, -0.5593431, 0, 0)
+shape = SubResource("BoxShape3D_3m0gu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor4/CollisionShape3D3" unique_id=1633364887]
+transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_rwd0d")
 
 [node name="floor6" type="StaticBody3D" parent="." unique_id=622537411]
 transform = Transform3D(-1.5112066e-07, -0.053766012, -24.092266, -7.0343525e-08, 0.11550679, -11.214449, 3.8134298, 0, -1.1616061e-06, -40.657, -5.6, 0.057)
@@ -277,6 +159,22 @@ shape = SubResource("BoxShape3D_axyqp")
 transform = Transform3D(0.99999976, -7.990295e-17, 2.842171e-14, 2.3265518e-14, 0.7852827, 5.4777948e-21, 4.440892e-16, -1.2382168e-23, 0.53555, 0, 0, 0)
 mesh = SubResource("BoxMesh_o7h1l")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="floor6" unique_id=2094136234]
+transform = Transform3D(0.9999994, 1.459432e-15, -3.3537617e-12, 0, 0.99999964, 0, -1.3322676e-15, -2.3283064e-10, 0.99998397, 0.5620408, -3.0517578e-05, -0.23178148)
+shape = SubResource("BoxShape3D_hgrhv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor6/CollisionShape3D2" unique_id=455475582]
+transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.536, 0, 0, 0)
+mesh = SubResource("BoxMesh_rwd0d")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="floor6" unique_id=1295490538]
+transform = Transform3D(0.9999994, 3.4783245e-15, -7.81597e-12, 0, 0.99999964, 0, -1.3322676e-15, -2.3283064e-10, 0.99998397, -0.5593439, -6.1035156e-05, -0.23183334)
+shape = SubResource("BoxShape3D_o7h1l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor6/CollisionShape3D3" unique_id=809171525]
+transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.536, 0, 0, 0)
+mesh = SubResource("BoxMesh_rwd0d")
+
 [node name="floor5" type="StaticBody3D" parent="." unique_id=30831074]
 transform = Transform3D(-1.6669031e-07, 0, -26.574446, 0, 0.12740724, 0, 3.8134298, 0, -1.161606e-06, 15.2173, 0, 0.056916237)
 
@@ -286,6 +184,22 @@ shape = SubResource("BoxShape3D_axyqp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor5/CollisionShape3D" unique_id=555438667]
 mesh = SubResource("BoxMesh_o7h1l")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="floor5" unique_id=525056325]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.99998367, 0.56204104, 0, 0)
+shape = SubResource("BoxShape3D_3m0gu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor5/CollisionShape3D2" unique_id=1805048592]
+transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_rwd0d")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="floor5" unique_id=1709071949]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.99998355, -0.5593431, 0, 0)
+shape = SubResource("BoxShape3D_3m0gu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor5/CollisionShape3D3" unique_id=19915322]
+transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_rwd0d")
 
 [node name="gifts" parent="." unique_id=702350556 instance=ExtResource("3_2diqr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7992177, 15.300276)

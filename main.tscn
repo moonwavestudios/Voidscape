@@ -239,7 +239,6 @@ shape = SubResource("BoxShape3D_7mycd")
 mesh = SubResource("BoxMesh_kek77")
 
 [node name="Beacon" type="Area3D" parent="game" unique_id=1243685582]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4032562, -15.575113)
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="game/Beacon" unique_id=737104202]
