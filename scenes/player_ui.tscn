@@ -5,6 +5,10 @@ font_size = 40
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_jkj6h"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
 [node name="player_ui" type="Control" unique_id=1669550447]
 layout_mode = 3
 anchors_preset = 15
@@ -14,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GiftsLabel" type="Label" parent="." unique_id=862672479]
+visible = false
 layout_mode = 0
 offset_left = 3.0
 offset_top = 583.0
@@ -21,5 +26,15 @@ offset_right = 1153.0
 offset_bottom = 647.0
 text = "0/200"
 label_settings = SubResource("LabelSettings_guxnq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=715521497]
+layout_mode = 0
+offset_top = 620.0
+offset_right = 114.0
+offset_bottom = 649.0
+text = "code: hjkx2"
+label_settings = SubResource("LabelSettings_jkj6h")
 horizontal_alignment = 1
 vertical_alignment = 1

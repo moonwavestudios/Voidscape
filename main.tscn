@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://cytlj6wbt21ki" path="res://shaders/underwater_world.gdshader" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b7vptqfagiw02" path="res://scripts/game.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://chuwoh0rx0ufc" path="res://scenes/player.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://1vf5ja7qyf7s" path="res://scenes/idk.tscn" id="4_7mycd"]
 [ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="4_lquwl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xm2m"]
@@ -200,57 +201,62 @@ environment = SubResource("Environment_0xm2m")
 transform = Transform3D(1, 0, 0, 0, 1.4901161e-07, 1, 0, -1, 1.4901161e-07, 0, 0, 0)
 shadow_enabled = true
 
-[node name="middle" type="StaticBody3D" parent="game" unique_id=423026953]
+[node name="Maps" type="Node3D" parent="game" unique_id=91219307]
+visible = false
+
+[node name="middle" type="StaticBody3D" parent="game/Maps" unique_id=423026953]
 transform = Transform3D(4, 0, 0, 0, 0.552, 0, 0, 0, 4, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="game/middle" unique_id=1417470729]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="game/Maps/middle" unique_id=1417470729]
 transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999965, 0, 0, 0)
 shape = SubResource("BoxShape3D_7mycd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="game/middle/CollisionShape3D" unique_id=305804410]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="game/Maps/middle/CollisionShape3D" unique_id=305804410]
 mesh = SubResource("BoxMesh_272bh")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="game/middle" unique_id=712699973]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="game/Maps/middle" unique_id=712699973]
 transform = Transform3D(0.37113547, 0, 0, 0, 1.189846, 0, 0, 0, 0.35918862, 0.44261312, 0, 0.4450636)
 shape = SubResource("BoxShape3D_7mycd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="game/middle/CollisionShape3D2" unique_id=789434106]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="game/Maps/middle/CollisionShape3D2" unique_id=789434106]
 mesh = SubResource("BoxMesh_kek77")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="game/middle" unique_id=214112070]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="game/Maps/middle" unique_id=214112070]
 transform = Transform3D(0.37113547, 0, 0, 0, 1.189846, 0, 0, 0, 0.35918862, -0.43732962, 0, 0.4450636)
 shape = SubResource("BoxShape3D_7mycd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="game/middle/CollisionShape3D3" unique_id=56801527]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="game/Maps/middle/CollisionShape3D3" unique_id=56801527]
 mesh = SubResource("BoxMesh_kek77")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="game/middle" unique_id=1025476912]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="game/Maps/middle" unique_id=1025476912]
 transform = Transform3D(0.37113547, 0, 0, 0, 1.189846, 0, 0, 0, 0.35918862, 0.44261312, 0, -0.42140007)
 shape = SubResource("BoxShape3D_7mycd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="game/middle/CollisionShape3D4" unique_id=1663200679]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="game/Maps/middle/CollisionShape3D4" unique_id=1663200679]
 mesh = SubResource("BoxMesh_kek77")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="game/middle" unique_id=16573574]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="game/Maps/middle" unique_id=16573574]
 transform = Transform3D(0.37113547, 0, 0, 0, 1.189846, 0, 0, 0, 0.35918862, -0.43732962, 0, -0.42140007)
 shape = SubResource("BoxShape3D_7mycd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="game/middle/CollisionShape3D5" unique_id=1161179983]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="game/Maps/middle/CollisionShape3D5" unique_id=1161179983]
 mesh = SubResource("BoxMesh_kek77")
 
-[node name="Beacon" type="Area3D" parent="game" unique_id=1243685582]
+[node name="Beacon" type="Area3D" parent="game/Maps" unique_id=1243685582]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="game/Beacon" unique_id=737104202]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="game/Maps/Beacon" unique_id=737104202]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1111147, 0)
 shape = SubResource("BoxShape3D_1bvp3")
 disabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="game/Beacon/CollisionShape3D" unique_id=1065732017]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="game/Maps/Beacon/CollisionShape3D" unique_id=1065732017]
 transform = Transform3D(1, 0, 0, 0, 4.758523, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_1bvp3")
+
+[node name="lobby" parent="game" unique_id=398233627 instance=ExtResource("4_7mycd")]
 
 [node name="player" parent="." unique_id=1056688122 groups=["player"] instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1006432, 0)
 
-[connection signal="body_entered" from="game/Beacon" to="game" method="_on_beacon_body_entered"]
+[connection signal="body_entered" from="game/Maps/Beacon" to="game" method="_on_beacon_body_entered"]

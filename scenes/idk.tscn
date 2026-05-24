@@ -21,7 +21,26 @@ shader_parameter/caustic_speed = 0.4
 [sub_resource type="BoxMesh" id="BoxMesh_htol6"]
 material = SubResource("ShaderMaterial_f0r8y")
 
-[node name="idk" type="Node3D" unique_id=398233627]
+[sub_resource type="BoxShape3D" id="BoxShape3D_htol6"]
+size = Vector3(49.45716, 0.20947266, 49.789673)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_htol6"]
+render_priority = 0
+shader = ExtResource("1_htol6")
+shader_parameter/tile_color_a = Color(1, 1, 1, 1)
+shader_parameter/tile_color_b = Color(0.02, 0.02, 0.04, 1)
+shader_parameter/tile_size = 1.0
+shader_parameter/emission_strength = 1.8
+shader_parameter/roughness_a = 0.15
+shader_parameter/roughness_b = 0.9
+shader_parameter/wetness = 0.6
+shader_parameter/caustic_strength = 0.25
+shader_parameter/caustic_speed = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_f0r8y"]
+material = SubResource("ShaderMaterial_htol6")
+
+[node name="lobby" type="Node3D" unique_id=398233627]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=706424494]
 
@@ -31,3 +50,11 @@ shape = SubResource("BoxShape3D_wjrnq")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=1691003423]
 transform = Transform3D(6.9585605, 0, 0, 0, 0.20355904, 0, 0, 0, 6.914888, 0, 0, 0)
 mesh = SubResource("BoxMesh_htol6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1339676114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1195488, -0.24106741, -0.0119018555)
+shape = SubResource("BoxShape3D_htol6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D2" unique_id=1008527226]
+transform = Transform3D(49.405777, 0, 0, 0, 0.20355904, 0, 0, 0, 49.787193, 0, 0, 0)
+mesh = SubResource("BoxMesh_f0r8y")

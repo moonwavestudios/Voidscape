@@ -13,6 +13,8 @@ var gift_count = 10
 
 var giftScene = preload("res://scenes/gifts.tscn")
 
+var round_started = false
+
 var generated_floors = []
 
 var exit_open = false
@@ -43,15 +45,15 @@ func spawn_random_room() -> Node3D:
 		return null
 	
 	var room_instance = picked_scene.instantiate()
-	add_child(room_instance)
+	$Maps.add_child(room_instance)
 	generated_floors.append(room_instance)
 	
 	return room_instance
 
-func _ready() -> void:
+func _spawn_map():
 	spawn_random_room()
 	
-	for gifts in get_children():
+	for gifts in $Maps.get_children():
 		if gifts.is_in_group("map"):
 			for map in gifts.get_children():
 				if map.is_in_group("gifts"):
@@ -61,12 +63,12 @@ func get_players():
 	return get_tree().get_nodes_in_group("player")
 
 func _process(_delta: float) -> void:
-	if gifts_collected == all_gifts:
+	if gifts_collected == all_gifts and round_started:
 		if not exit_open:
 			print("exit")
 			exit_open = true
-			$Beacon.visible = true
-			$Beacon/CollisionShape3D.disabled = false
+			$Maps/Beacon.visible = true
+			$Maps/Beacon/CollisionShape3D.disabled = false
 	
 	for player in get_players():
 		gifts_collected = player.gifts
