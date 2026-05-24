@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://1vf5ja7qyf7s"]
 
 [ext_resource type="Shader" uid="uid://daywub3pgh2h8" path="res://shaders/checkerboard_floor.gdshader" id="1_htol6"]
+[ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="2_f0r8y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjrnq"]
 size = Vector3(6.9605103, 0.20947266, 6.979004)
@@ -20,6 +21,29 @@ shader_parameter/caustic_speed = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_htol6"]
 material = SubResource("ShaderMaterial_f0r8y")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f0r8y"]
+size = Vector3(0.46564484, 0.20947266, 6.979004)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qhmgb"]
+render_priority = 0
+shader = ExtResource("2_f0r8y")
+shader_parameter/stone_light = Color(0.4862745, 0.4862745, 0.4862745, 1)
+shader_parameter/stone_dark = Color(0.30980393, 0.30980393, 0.30980393, 1)
+shader_parameter/grout_color = Color(0, 0, 0, 1)
+shader_parameter/tile_size = 1.0
+shader_parameter/roughness_base = 0.7
+shader_parameter/wetness = 0.0
+shader_parameter/caustic_strength = 0.0
+shader_parameter/caustic_speed = 0.35
+shader_parameter/grout_width = 0.07
+shader_parameter/teal_shift = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_qhmgb"]
+material = SubResource("ShaderMaterial_qhmgb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhmgb"]
+size = Vector3(0.46564484, 0.20947266, 6.979004)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_htol6"]
 size = Vector3(49.45716, 0.20947266, 49.789673)
@@ -50,6 +74,22 @@ shape = SubResource("BoxShape3D_wjrnq")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=1691003423]
 transform = Transform3D(6.9585605, 0, 0, 0, 0.20355904, 0, 0, 0, 6.914888, 0, 0, 0)
 mesh = SubResource("BoxMesh_htol6")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1636124697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7032242, 0, 0)
+shape = SubResource("BoxShape3D_f0r8y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D3" unique_id=1280604832]
+transform = Transform3D(0.45728272, 0, 0, 0, 0.20355904, 0, 0, 0, 6.914888, 0, 0, 0)
+mesh = SubResource("BoxMesh_qhmgb")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=363986705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7096171, 0, 0)
+shape = SubResource("BoxShape3D_qhmgb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D4" unique_id=1454165759]
+transform = Transform3D(0.45728272, 0, 0, 0, 0.20355904, 0, 0, 0, 6.914888, 0, 0, 0)
+mesh = SubResource("BoxMesh_qhmgb")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1339676114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1195488, -0.24106741, -0.0119018555)
