@@ -67,7 +67,7 @@ shader_parameter/aberration = 0.004
 material = SubResource("ShaderMaterial_g2els")
 size = Vector2(2.02, 2.69)
 
-[node name="player" type="CharacterBody3D" unique_id=1056688122]
+[node name="player" type="CharacterBody3D" unique_id=1056688122 groups=["interactors", "player"]]
 script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=903532109]
