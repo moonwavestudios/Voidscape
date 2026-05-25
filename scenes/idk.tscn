@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://daywub3pgh2h8" path="res://shaders/checkerboard_floor.gdshader" id="1_htol6"]
 [ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="2_f0r8y"]
 [ext_resource type="PackedScene" uid="uid://bqs3r4f0unodw" path="res://scenes/proximity_prompt.tscn" id="3_qhmgb"]
+[ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="4_5ka3i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjrnq"]
 size = Vector3(6.9605103, 0.20947266, 6.979004)
@@ -339,3 +340,8 @@ shape = SubResource("BoxShape3D_htol6")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D2" unique_id=1008527226]
 transform = Transform3D(49.405777, 0, 0, 0, 0.20355904, 0, 0, 0, 49.787193, 0, 0, 0)
 mesh = SubResource("BoxMesh_f0r8y")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=400856414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02219361, 1.7113001, -6.1633973)
+billboard = 1
+texture = ExtResource("4_5ka3i")

@@ -256,7 +256,7 @@ mesh = SubResource("CylinderMesh_1bvp3")
 
 [node name="lobby" parent="game" unique_id=398233627 instance=ExtResource("4_7mycd")]
 
-[node name="player" parent="." unique_id=1056688122 groups=["player"] instance=ExtResource("3_h2yge")]
+[node name="player" parent="." unique_id=1056688122 instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1006432, 0)
 
 [connection signal="body_entered" from="game/Maps/Beacon" to="game" method="_on_beacon_body_entered"]

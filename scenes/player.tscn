@@ -54,7 +54,7 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g2els"]
-render_priority = 0
+render_priority = -1
 shader = SubResource("Shader_3vyb7")
 shader_parameter/fog_color = Color(0.01, 0.12, 0.14, 1)
 shader_parameter/fog_near = 2.0
