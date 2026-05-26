@@ -24,7 +24,9 @@ var floors = {
 		preload("res://scenes/world_test.tscn"),
 		preload("res://scenes/world_1.tscn"),
 		preload("res://scenes/world_2.tscn"),
+		preload("res://scenes/world_3.tscn"),
 	]
+	
 }
 
 func seeded_pick_random(array: Array):

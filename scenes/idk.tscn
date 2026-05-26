@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://1vf5ja7qyf7s"]
 
 [ext_resource type="Shader" uid="uid://daywub3pgh2h8" path="res://shaders/checkerboard_floor.gdshader" id="1_htol6"]
+[ext_resource type="Script" uid="uid://bp0fwjj26ngo" path="res://scripts/idk.gd" id="1_i65in"]
 [ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="2_f0r8y"]
 [ext_resource type="PackedScene" uid="uid://bqs3r4f0unodw" path="res://scenes/proximity_prompt.tscn" id="3_qhmgb"]
 [ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="4_5ka3i"]
@@ -213,6 +214,7 @@ shader_parameter/caustic_speed = 0.4
 material = SubResource("ShaderMaterial_htol6")
 
 [node name="lobby" type="Node3D" unique_id=398233627]
+script = ExtResource("1_i65in")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=706424494]
 
@@ -271,16 +273,6 @@ mesh = SubResource("BoxMesh_i65in")
 transform = Transform3D(0.69470626, 0, -1.7763568e-15, 0, 0.6878534, 0, 0, 0, 0.6689158, 0, 0.015579879, 0)
 mesh = SubResource("BoxMesh_0lrh6")
 
-[node name="ProximityPrompt" parent="StaticBody3D/CollisionShape3D7" unique_id=25112644 instance=ExtResource("3_qhmgb")]
-prompt_text = null
-action_key = null
-hold_duration = 0.0
-max_activations = 1
-cooldown_time = null
-max_distance = null
-prompt_font_size = null
-enabled = null
-
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="StaticBody3D" unique_id=960623143]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.411, -5.945)
 shape = SubResource("BoxShape3D_i65in")
@@ -297,16 +289,6 @@ mesh = SubResource("BoxMesh_i65in")
 transform = Transform3D(0.69470626, 0, -1.7763568e-15, 0, 0.6878534, 0, 0, 0, 0.6689158, 0, 0.015579879, 0)
 mesh = SubResource("BoxMesh_0lrh6")
 
-[node name="ProximityPrompt" parent="StaticBody3D/CollisionShape3D8" unique_id=881029141 instance=ExtResource("3_qhmgb")]
-prompt_text = null
-action_key = null
-hold_duration = 0.0
-max_activations = 1
-cooldown_time = null
-max_distance = null
-prompt_font_size = null
-enabled = null
-
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D" unique_id=468746754]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.0637145, 0.411, -5.945)
 shape = SubResource("BoxShape3D_i65in")
@@ -322,16 +304,6 @@ mesh = SubResource("BoxMesh_i65in")
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D9" unique_id=806326203]
 transform = Transform3D(0.69470626, 0, -1.7763568e-15, 0, 0.6878534, 0, 0, 0, 0.6689158, 0, 0.015579879, 0)
 mesh = SubResource("BoxMesh_0lrh6")
-
-[node name="ProximityPrompt" parent="StaticBody3D/CollisionShape3D9" unique_id=50403139 instance=ExtResource("3_qhmgb")]
-prompt_text = null
-action_key = null
-hold_duration = 0.0
-max_activations = 1
-cooldown_time = null
-max_distance = null
-prompt_font_size = null
-enabled = null
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1339676114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1195488, -0.24106741, -0.0119018555)
@@ -372,3 +344,20 @@ texture = ExtResource("4_5ka3i")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6961576, 0.47666073)
 billboard = 1
 text = "Start Game"
+
+[node name="ProximityPrompt" parent="." unique_id=25112644 instance=ExtResource("3_qhmgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3728518, 0.41894948, -5.965981)
+hold_duration = 0.0
+max_activations = 1
+enabled = false
+
+[node name="ProximityPrompt2" parent="." unique_id=1460979165 instance=ExtResource("3_qhmgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008270919, 0.41894948, -5.965981)
+hold_duration = 0.0
+max_activations = 1
+
+[node name="ProximityPrompt3" parent="." unique_id=722158082 instance=ExtResource("3_qhmgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0587952, 0.41894948, -5.965981)
+hold_duration = 0.0
+max_activations = 1
+enabled = false
