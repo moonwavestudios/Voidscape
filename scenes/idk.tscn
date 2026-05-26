@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="2_f0r8y"]
 [ext_resource type="PackedScene" uid="uid://bqs3r4f0unodw" path="res://scenes/proximity_prompt.tscn" id="3_qhmgb"]
 [ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="4_5ka3i"]
+[ext_resource type="PackedScene" uid="uid://lv3r2e4t3edc" path="res://scenes/pillar.tscn" id="6_0lrh6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjrnq"]
 size = Vector3(6.9605103, 0.20947266, 6.979004)
@@ -361,3 +362,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0587952, 0.41894948, -5.965
 hold_duration = 0.0
 max_activations = 1
 enabled = false
+
+[node name="pillar" parent="." unique_id=1062057623 instance=ExtResource("6_0lrh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.499018, 0, -18.644958)
+
+[node name="pillar2" parent="." unique_id=882638718 instance=ExtResource("6_0lrh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.289148, 0, -18.644958)
+
+[node name="pillar3" parent="." unique_id=596817887 instance=ExtResource("6_0lrh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.289148, 0, 17.731457)
