@@ -84,9 +84,6 @@ shader_parameter/caustic_speed = 0.4
 [sub_resource type="BoxMesh" id="BoxMesh_f0r8y"]
 material = SubResource("ShaderMaterial_htol6")
 
-[sub_resource type="BoxMesh" id="BoxMesh_68lfi"]
-material = ExtResource("4_fxbju")
-
 [node name="lobby" type="Node3D" unique_id=398233627]
 script = ExtResource("1_i65in")
 
@@ -187,14 +184,6 @@ shape = SubResource("BoxShape3D_htol6")
 transform = Transform3D(49.405777, 0, 0, 0, 0.20355904, 0, 0, 0, 49.787193, 0, 0, 0)
 mesh = SubResource("BoxMesh_f0r8y")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="StaticBody3D" unique_id=1241358727]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1195488, 5.0731387, -0.0119018555)
-shape = SubResource("BoxShape3D_htol6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D10" unique_id=1961176798]
-transform = Transform3D(49.405777, 0, 0, 0, 0.20355904, 0, 0, 0, 49.787193, 0, 0, 0)
-mesh = SubResource("BoxMesh_68lfi")
-
 [node name="slot2" type="Sprite3D" parent="." unique_id=400856414]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006064832, 1.7113001, -5.922523)
 billboard = 1
@@ -261,4 +250,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.906291, 0, 17.731457)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=839904895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5264828, -6.029953)
-omni_range = 5.8823586
+visible = false
+omni_range = 2.940451
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=854850989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2820296, 1.5264828, -6.029953)
+visible = false
+omni_range = 2.940451
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=1646982552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0320935, 1.5264828, -6.029953)
+visible = false
+omni_range = 2.940451

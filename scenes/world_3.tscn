@@ -189,7 +189,7 @@ transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999965, 0, 0
 shape = SubResource("BoxShape3D_q6ps6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor3/CollisionShape3D" unique_id=1682018025]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0879753, 0, 0, -0.0063595176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0063595176)
 mesh = SubResource("BoxMesh_uvvy0")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="floor3" unique_id=171047287]
