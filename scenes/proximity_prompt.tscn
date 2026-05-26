@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://csfleu3tal8s3" path="res://scripts/proximity_prompt.gd" id="1_5l7g3"]
 
 [sub_resource type="FontFile" id="FontFile_irxgb"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
 cache/0/embolden = 0.0
@@ -22,6 +25,7 @@ cache/0/16/0/scale = 1.0
 
 [node name="ProximityPrompt" type="Area3D" unique_id=25112644]
 script = ExtResource("1_5l7g3")
+prompt_text = "Press [F] to interact"
 prompt_font = SubResource("FontFile_irxgb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=293999784]

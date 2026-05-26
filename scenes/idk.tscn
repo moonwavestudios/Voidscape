@@ -11,7 +11,7 @@ size = Vector3(6.9605103, 0.20947266, 6.979004)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f0r8y"]
 render_priority = 0
 shader = ExtResource("1_htol6")
-shader_parameter/tile_color_a = Color(1, 1, 1, 1)
+shader_parameter/tile_color_a = Color(0.76240367, 0.76240367, 0.76240367, 1)
 shader_parameter/tile_color_b = Color(0.02, 0.02, 0.04, 1)
 shader_parameter/tile_size = 1.0
 shader_parameter/emission_strength = 1.8
@@ -199,7 +199,7 @@ size = Vector3(49.45716, 0.20947266, 49.789673)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_htol6"]
 render_priority = 0
 shader = ExtResource("1_htol6")
-shader_parameter/tile_color_a = Color(1, 1, 1, 1)
+shader_parameter/tile_color_a = Color(0.6789437, 0.6789437, 0.6789437, 1)
 shader_parameter/tile_color_b = Color(0.02, 0.02, 0.04, 1)
 shader_parameter/tile_size = 1.0
 shader_parameter/emission_strength = 1.8
@@ -341,7 +341,34 @@ shape = SubResource("BoxShape3D_htol6")
 transform = Transform3D(49.405777, 0, 0, 0, 0.20355904, 0, 0, 0, 49.787193, 0, 0, 0)
 mesh = SubResource("BoxMesh_f0r8y")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=400856414]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02219361, 1.7113001, -6.1633973)
+[node name="slot2" type="Sprite3D" parent="." unique_id=400856414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006064832, 1.7113001, -5.922523)
 billboard = 1
 texture = ExtResource("4_5ka3i")
+
+[node name="Label3D" type="Label3D" parent="slot2" unique_id=1750682584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6961576, 0.47666073)
+billboard = 1
+text = "Start Game"
+
+[node name="slot3" type="Sprite3D" parent="." unique_id=1427759137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9797282, 1.7113001, -5.9381123)
+visible = false
+billboard = 1
+texture = ExtResource("4_5ka3i")
+
+[node name="Label3D" type="Label3D" parent="slot3" unique_id=616394935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6961576, 0.47666073)
+billboard = 1
+text = "Start Game"
+
+[node name="slot1" type="Sprite3D" parent="." unique_id=1375154346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.347161, 1.7113001, -5.988569)
+visible = false
+billboard = 1
+texture = ExtResource("4_5ka3i")
+
+[node name="Label3D" type="Label3D" parent="slot1" unique_id=1210404602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6961576, 0.47666073)
+billboard = 1
+text = "Start Game"
