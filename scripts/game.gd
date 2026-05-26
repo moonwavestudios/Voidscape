@@ -25,8 +25,10 @@ var floors = {
 		preload("res://scenes/world_1.tscn"),
 		preload("res://scenes/world_2.tscn"),
 		preload("res://scenes/world_3.tscn"),
+	],
+	3: [
+		
 	]
-	
 }
 
 func seeded_pick_random(array: Array):
