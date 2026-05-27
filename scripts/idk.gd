@@ -6,9 +6,9 @@ var selection_started = false
 
 func _ready() -> void:
 	_populate_slots()
-	$ProximityPrompt.prompt_triggered.connect(func(_i): _on_slot_chosen(0))
-	$ProximityPrompt2.prompt_triggered.connect(func(_i): _on_slot_chosen(1))
-	$ProximityPrompt3.prompt_triggered.connect(func(_i): _on_slot_chosen(2))
+	$ProximityPrompt.prompt_triggered.connect(func(_i): _on_slot_chosen(1))
+	$ProximityPrompt2.prompt_triggered.connect(func(_i): _on_slot_chosen(2))
+	$ProximityPrompt3.prompt_triggered.connect(func(_i): _on_slot_chosen(3))
 
 func _on_slot_chosen(slot_index: int) -> void:
 	if not selection_started:
