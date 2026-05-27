@@ -5,19 +5,10 @@ extends Node3D
 var selection_started = false
 
 func _ready() -> void:
+	_populate_slots()
 	$ProximityPrompt.prompt_triggered.connect(func(_i): _on_slot_chosen(0))
-	$ProximityPrompt2.prompt_triggered.connect(_on_interacted_2)
+	$ProximityPrompt2.prompt_triggered.connect(func(_i): _on_slot_chosen(1))
 	$ProximityPrompt3.prompt_triggered.connect(func(_i): _on_slot_chosen(2))
-
-func _on_interacted_2(_interactor: Node) -> void:
-	if not selection_started:
-		selection_started = true
-		$ProximityPrompt2.reset_activations()
-		_populate_slots()
-		_activate_other_prox()
-		_activate_all_slots()
-	else:
-		_on_slot_chosen(1)
 
 func _on_slot_chosen(slot_index: int) -> void:
 	if not selection_started:
@@ -41,16 +32,20 @@ func _populate_slots() -> void:
 		categories.append("Buffs")
 		categories.append("Curses")
 
-	var slot_index = 0
+	var all_options = []
 	for category in categories:
 		var options = ActiveModifiers.get_random_options(category, 3)
 		for mod_name in options.keys():
-			var slot = _get_slot(slot_index)
-			if slot:
-				slot.set_meta("category", category)
-				slot.set_meta("mod_name", mod_name)
-				slot.set_meta("mod_effect", options[mod_name])
-			slot_index += 1
+			all_options.append({"category": category, "mod_name": mod_name, "mod_effect": options[mod_name]})
+
+	for i in range(min(3, all_options.size())):
+		var slot = _get_slot(i)
+		if not slot:
+			continue
+		slot.set_meta("category", all_options[i]["category"])
+		slot.set_meta("mod_name", all_options[i]["mod_name"])
+		slot.set_meta("mod_effect", all_options[i]["mod_effect"])
+		slot.get_node("Label3D").text = all_options[i]["mod_name"]
 
 func _get_slot(index: int) -> Node:
 	for child in get_children():
