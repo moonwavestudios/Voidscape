@@ -26,6 +26,19 @@ var all_modifiers = {
 	}
 }
 
+func get_random_options(modifier_type: String, count: int = 3) -> Dictionary:
+	if not all_modifiers.has(modifier_type):
+		return {}
+	var pool = all_modifiers[modifier_type].duplicate()
+	for key in active_modifiers[modifier_type].keys():
+		pool.erase(key)
+	var result = {}
+	var keys = pool.keys()
+	keys.shuffle()
+	for i in range(min(count, keys.size())):
+		result[keys[i]] = pool[keys[i]]
+	return result
+
 func _add_modifier(modifier_type: String, modifier_name: String, modifier_effect: String) -> void:
 	if active_modifiers.has(modifier_type):
 		active_modifiers[modifier_type][modifier_name] = modifier_effect
