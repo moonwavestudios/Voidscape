@@ -23,6 +23,9 @@ var all_modifiers = {
 	"Threats" = {
 		"Horse": "Jumps around the map, creating massive shockwaves when landing. just be careful and don't stand still",
 		"Bell": "Ringing the bell will throw you into the air, but be careful and don't ring it too many times",
+		"Goober": "Goober will try to dash towards you with a loud noise and an indicator. don't get hit",
+		"Teleporter": "He will teleport in front of you with a sound indicator. Just go the other way once he does.",
+		"Someone": "Don't move when he looks at you."
 	}
 }
 
