@@ -15,10 +15,13 @@ var active_modifiers = {
 var all_modifiers = {
 	"Curses" = {
 		"Angry horse": "Shockwaves are bigger, the horse also creates shockwaves when jumping",
+		"Sike": "Teleporter has a chance to teleport behind you",
+		"Green light": "Someone has a chance to close his eyes, if he does, move",
 	},
 	"Buffs" = {
 		"Adrenaline": "Increases your speed by 1.5x",
 		"Rings of speed": "Increase your speed by 2x",
+		"Lower Gravity": "You think that'd be helpful",
 	},
 	"Threats" = {
 		"Horse": "Jumps around the map, creating massive shockwaves when landing. just be careful and don't stand still",

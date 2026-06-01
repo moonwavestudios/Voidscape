@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cxa4w1y186ywx"]
 
+[ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="1_jkj6h"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_guxnq"]
 font_size = 40
 outline_size = 6
@@ -24,3 +26,11 @@ text = "0/200"
 label_settings = SubResource("LabelSettings_guxnq")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Someone" type="TextureRect" parent="." unique_id=1712463762]
+visible = false
+layout_mode = 0
+offset_right = 163.0
+offset_bottom = 161.0
+texture = ExtResource("1_jkj6h")
+expand_mode = 1

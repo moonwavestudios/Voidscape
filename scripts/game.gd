@@ -54,6 +54,10 @@ func spawn_random_room() -> Node3D:
 	
 	return room_instance
 
+func _start_round():
+	round_started = true
+	_spawn_map()
+
 func _spawn_map():
 	spawn_random_room()
 	

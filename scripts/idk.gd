@@ -77,6 +77,7 @@ func on_slot_chosen(category: String, mod_name: String, mod_effect: String) -> v
 	ActiveModifiers._add_modifier(category, mod_name, mod_effect)
 	selection_started = false
 	_deactivate_other_prox()
+	_hide_all_slots()
 	for slot in get_children():
 		if slot.name.contains("slot"):
 			slot.visible = false

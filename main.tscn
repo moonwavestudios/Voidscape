@@ -25,7 +25,7 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_7mycd"]
 size = Vector3(1, 0.9974365, 1.0222473)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lquwl"]
 render_priority = 0
 shader = ExtResource("4_lquwl")
 shader_parameter/stone_light = Color(0.48570347, 0.48570353, 0.4857034, 1)
@@ -40,7 +40,7 @@ shader_parameter/grout_width = 0.07
 shader_parameter/teal_shift = 0.6
 
 [sub_resource type="BoxMesh" id="BoxMesh_272bh"]
-material = SubResource("ShaderMaterial_1bvp3")
+material = SubResource("ShaderMaterial_lquwl")
 
 [sub_resource type="Shader" id="Shader_5vw27"]
 code = "shader_type spatial;
@@ -159,7 +159,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lquwl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mycd"]
 render_priority = 0
 shader = SubResource("Shader_5vw27")
 shader_parameter/stone_light = Color(0.13682565, 0.13682577, 0.13682571, 1)
@@ -174,7 +174,7 @@ shader_parameter/grout_width = 0.07
 shader_parameter/teal_shift = 0.6
 
 [sub_resource type="BoxMesh" id="BoxMesh_kek77"]
-material = SubResource("ShaderMaterial_lquwl")
+material = SubResource("ShaderMaterial_7mycd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
 size = Vector3(1, 9.202209, 1)
@@ -253,6 +253,9 @@ disabled = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="game/Maps/Beacon/CollisionShape3D" unique_id=1065732017]
 transform = Transform3D(1, 0, 0, 0, 4.758523, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_1bvp3")
+
+[node name="PlayerSpawn" type="Marker3D" parent="game/Maps" unique_id=1695638417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40083778, 0)
 
 [node name="lobby" parent="game" unique_id=398233627 instance=ExtResource("4_7mycd")]
 
