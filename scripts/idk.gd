@@ -6,6 +6,7 @@ var selection_started = false
 
 func _ready() -> void:
 	_populate_slots()
+	start_selection()
 	$ProximityPrompt.prompt_triggered.connect(func(_i): _on_slot_chosen(1))
 	$ProximityPrompt2.prompt_triggered.connect(func(_i): _on_slot_chosen(2))
 	$ProximityPrompt3.prompt_triggered.connect(func(_i): _on_slot_chosen(3))
@@ -13,7 +14,7 @@ func _ready() -> void:
 func _on_slot_chosen(slot_index: int) -> void:
 	if not selection_started:
 		return
-	var slot = _get_slot(slot_index)
+	var slot = _get_slot(slot_index - 1)
 	if not slot or not slot.has_meta("mod_name"):
 		return
 	ActiveModifiers._add_modifier(
@@ -57,6 +58,12 @@ func _activate_other_prox() -> void:
 	for prox in get_children():
 		if prox.name.contains("ProximityPrompt"):
 			prox.enabled = true
+
+func start_selection() -> void:
+	selection_started = true
+	_activate_other_prox()
+	_activate_all_slots()
+	_populate_slots()
 
 func _activate_all_slots() -> void:
 	for slot in get_children():
