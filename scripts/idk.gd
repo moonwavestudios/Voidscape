@@ -3,6 +3,7 @@ extends Node3D
 @onready var game = $".."
 
 var selection_started = false
+var pending_selections = 0
 
 func _ready() -> void:
 	_populate_slots()
@@ -22,9 +23,14 @@ func _on_slot_chosen(slot_index: int) -> void:
 		slot.get_meta("mod_name"),
 		slot.get_meta("mod_effect")
 	)
-	selection_started = false
-	_deactivate_other_prox()
-	_hide_all_slots()
+	pending_selections -= 1
+	if pending_selections <= 0:
+		selection_started = false
+		_deactivate_other_prox()
+		_hide_all_slots()
+		start_round()
+	else:
+		_populate_slots()
 
 func _populate_slots() -> void:
 	var level = game.level
@@ -60,6 +66,8 @@ func _activate_other_prox() -> void:
 			prox.enabled = true
 
 func start_selection() -> void:
+	var level = game.level
+	pending_selections = 2 if level % 3 == 0 else 1
 	selection_started = true
 	_activate_other_prox()
 	_activate_all_slots()
@@ -74,6 +82,9 @@ func _deactivate_other_prox() -> void:
 	for prox in get_children():
 		if prox.name.contains("ProximityPrompt"):
 			prox.enabled = false
+			
+func start_round():
+	$"..".start_round()
 
 func _hide_all_slots() -> void:
 	for child in get_children():
@@ -82,9 +93,9 @@ func _hide_all_slots() -> void:
 
 func on_slot_chosen(category: String, mod_name: String, mod_effect: String) -> void:
 	ActiveModifiers._add_modifier(category, mod_name, mod_effect)
-	selection_started = false
-	_deactivate_other_prox()
-	_hide_all_slots()
-	for slot in get_children():
-		if slot.name.contains("slot"):
-			slot.visible = false
+	pending_selections -= 1
+	if pending_selections <= 0:
+		selection_started = false
+		_deactivate_other_prox()
+		_hide_all_slots()
+		start_round()

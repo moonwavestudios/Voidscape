@@ -54,9 +54,31 @@ func spawn_random_room() -> Node3D:
 	
 	return room_instance
 
-func _start_round():
+func start_round():
 	round_started = true
 	_spawn_map()
+	$lobby.visible = false
+	$Maps.visible = true
+	
+	for players in get_players():
+		players.global_position = $Maps/PlayerSpawn.position
+
+func end_round():
+	round_started = false
+	remove_maps()
+	$lobby.visible = true
+	$Maps.visible = false
+
+func remove_maps():
+	for floor_instance in generated_floors:
+		if is_instance_valid(floor_instance):
+			floor_instance.queue_free()
+	generated_floors.clear()
+	all_gifts = 0
+	gifts_collected = 0
+	exit_open = false
+	$Maps/Beacon.visible = false
+	$Maps/Beacon/CollisionShape3D.disabled = true
 
 func _spawn_map():
 	spawn_random_room()
@@ -84,4 +106,4 @@ func _process(_delta: float) -> void:
 
 func _on_beacon_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		print("test")
+		end_round()
