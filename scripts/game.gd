@@ -59,6 +59,7 @@ func start_round():
 	_spawn_map()
 	$lobby.visible = false
 	$Maps.visible = true
+	spawn_monsters()
 	
 	for players in get_players():
 		players.global_position = $Maps/PlayerSpawn.position
@@ -91,6 +92,10 @@ func _spawn_map():
 
 func get_players():
 	return get_tree().get_nodes_in_group("player")
+
+func spawn_monsters():
+	var threats = ActiveModifiers.active_modifiers.get('Threats', {})
+	print(threats)
 
 func _process(_delta: float) -> void:
 	if gifts_collected == all_gifts and round_started:
