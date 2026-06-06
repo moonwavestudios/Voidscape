@@ -57,6 +57,13 @@ func _remove_modifier(modifier_type: String, modifier_name: String) -> void:
 	else:
 		print("Invalid modifier type: " + modifier_type)
 
+func _get_modifier_names(modifier_type: String) -> Array:
+	if active_modifiers.has(modifier_type):
+		return active_modifiers[modifier_type].keys()
+	else:
+		print("Invalid modifier type: " + modifier_type)
+		return []
+
 func _get_modifiers(modifier_type: String) -> Dictionary:
 	if active_modifiers.has(modifier_type):
 		return active_modifiers[modifier_type]

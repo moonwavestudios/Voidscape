@@ -118,7 +118,7 @@ func get_players():
 	return get_tree().get_nodes_in_group("player")
 
 func spawn_monsters():
-	var threats = ActiveModifiers.active_modifiers.get('Threats', {})
+	var threats = ActiveModifiers._get_modifier_names("Threats")
 	print(threats)
 
 func _process(_delta: float) -> void:
