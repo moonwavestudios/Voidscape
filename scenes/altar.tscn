@@ -1,3 +1,19 @@
 [gd_scene format=3 uid="uid://vfgsf6151awq"]
 
+[ext_resource type="PackedScene" uid="uid://bqs3r4f0unodw" path="res://scenes/proximity_prompt.tscn" id="1_hwdfh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1t48s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1t48s"]
+
 [node name="altar" type="Node3D" unique_id=1265756253]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1041145366]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1890843254]
+shape = SubResource("BoxShape3D_1t48s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=733638232]
+mesh = SubResource("BoxMesh_1t48s")
+
+[node name="ProximityPrompt" parent="." unique_id=25112644 instance=ExtResource("1_hwdfh")]

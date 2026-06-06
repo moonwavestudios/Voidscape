@@ -79,6 +79,7 @@ func start_round():
 	
 	for players in get_players():
 		players.global_position = $Maps/PlayerSpawn.position
+		players.get_node("player_ui/GiftsLabel").visible = true
 
 func end_round():
 	round_started = false
@@ -89,6 +90,7 @@ func end_round():
 	
 	for players in get_players():
 		players.global_position = $Maps/lobby/PlayerSpawn.position
+		players.get_node("player_ui/GiftsLabel").visible = false
 
 func remove_maps():
 	for floor_instance in generated_floors:

@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="1_iqmuu"]
 [ext_resource type="Shader" uid="uid://daywub3pgh2h8" path="res://shaders/checkerboard_floor.gdshader" id="2_f6dcs"]
 [ext_resource type="PackedScene" uid="uid://ccxx1fvlstxf7" path="res://scenes/gifts.tscn" id="3_gyqnu"]
+[ext_resource type="PackedScene" uid="uid://vfgsf6151awq" path="res://scenes/altar.tscn" id="4_kbtuq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gyqnu"]
 size = Vector3(1, 0.9974365, 1.0222473)
@@ -682,3 +683,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.998463, 1.6005552, 32.319
 
 [node name="gifts21" parent="." unique_id=1392370130 instance=ExtResource("3_gyqnu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.057796, 1.6005552, 29.52665)
+
+[node name="altar" parent="." unique_id=1265756253 instance=ExtResource("4_kbtuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.413857, 0.54119825, 27.419807)
