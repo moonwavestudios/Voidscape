@@ -108,7 +108,7 @@ size = Vector3(0.14935303, 0.9974365, 0.53583527)
 [sub_resource type="BoxShape3D" id="BoxShape3D_o7h1l"]
 size = Vector3(0.14935303, 0.9974365, 0.53580093)
 
-[node name="world_2" type="Node3D" unique_id=826004647]
+[node name="world_2" type="Node3D" unique_id=826004647 groups=["map"]]
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=1901967184]
 transform = Transform3D(3.8134303, 0, 0, 0, 0.12740725, 0, 0, 0, 26.574448, 0, 0, 15.300276)

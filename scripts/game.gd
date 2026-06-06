@@ -85,6 +85,10 @@ func end_round():
 	remove_maps()
 	$lobby.visible = true
 	$Maps.visible = false
+	$lobby.start_selection()
+	
+	for players in get_players():
+		players.global_position = $Maps/lobby/PlayerSpawn.position
 
 func remove_maps():
 	for floor_instance in generated_floors:

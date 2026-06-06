@@ -111,7 +111,7 @@ shader_parameter/teal_shift = 0.6
 [sub_resource type="BoxMesh" id="BoxMesh_lkfvj"]
 material = SubResource("ShaderMaterial_m3jh3")
 
-[node name="world_3" type="Node3D" unique_id=609242260]
+[node name="world_3" type="Node3D" unique_id=609242260 groups=["map"]]
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=1663218210]
 transform = Transform3D(3.8134303, 0, 0, 0, 0.12740725, 0, 0, 0, 26.574448, 0, 0, 15.300276)
