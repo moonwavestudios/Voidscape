@@ -28,6 +28,7 @@ var floors = {
 	],
 	3: [
 		preload("res://scenes/world_4.tscn"),
+		preload("res://scenes/world_5.tscn"),
 	]
 }
 
@@ -41,6 +42,16 @@ func seeded_randf() -> float:
 
 func seeded_randf_range(min_val: float, max_val: float) -> float:
 	return rng.randf_range(min_val, max_val)
+	
+func _get_altar(map):
+	for child in map.get_children():
+		if child.name.to_lower().contains("altar"):
+			print("altar available")
+			return child
+		var result = _get_altar(child)
+		if result:
+			return result
+	return null
 
 func spawn_random_room() -> Node3D:
 	var picked_scene = seeded_pick_random(floors.get(level, 1))
@@ -56,10 +67,15 @@ func spawn_random_room() -> Node3D:
 
 func start_round():
 	round_started = true
-	_spawn_map()
+	var map = _spawn_map()
 	$lobby.visible = false
 	$Maps.visible = true
 	spawn_monsters()
+	
+	if level > 2:
+		var altar = _get_altar(map)
+		if altar:
+			print("Found altar: ", altar.name)
 	
 	for players in get_players():
 		players.global_position = $Maps/PlayerSpawn.position
@@ -89,6 +105,8 @@ func _spawn_map():
 			for map in gifts.get_children():
 				if map.is_in_group("gifts"):
 					all_gifts += 1
+	
+	return $Maps
 
 func get_players():
 	return get_tree().get_nodes_in_group("player")
