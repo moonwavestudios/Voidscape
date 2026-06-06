@@ -228,8 +228,20 @@ size = Vector3(3.8831177, 0.9974365, 0.39508438)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ilbek"]
 size = Vector3(0.026351929, 0.9974365, 1.3358841)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7tvnp"]
+size = Vector3(0.026351929, 0.9974365, 3.8988514)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lh3vy"]
+material = SubResource("ShaderMaterial_m3jh3")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_83vmh"]
 size = Vector3(0.026351929, 0.9974365, 1.3358841)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jlm01"]
+size = Vector3(0.14935303, 0.9974365, 0.44849396)
+
+[sub_resource type="BoxMesh" id="BoxMesh_83vmh"]
+material = SubResource("ShaderMaterial_m3jh3")
 
 [node name="world_5" type="Node3D" unique_id=268637708 groups=["map"]]
 
@@ -407,6 +419,14 @@ shape = SubResource("BoxShape3D_ilbek")
 transform = Transform3D(0.02617031, 0, 3.5527137e-15, 0, 1, 0, -1.3322676e-15, 0, 1.3339653, 0, 0, 0)
 mesh = SubResource("BoxMesh_xsn3i")
 
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="floor7" unique_id=1934241402]
+transform = Transform3D(-4.370912e-08, 0, -0.9999841, 0, 0.9999996, 0, 0.9999995, 0, -4.370917e-08, 0.0049886703, 0, -0.90897137)
+shape = SubResource("BoxShape3D_7tvnp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor7/CollisionShape3D7" unique_id=1199209908]
+transform = Transform3D(0.026, 0, 2.649909e-13, 0, 1, 0, -1.764796e-15, 0, 3.904, 0, 0, 0)
+mesh = SubResource("BoxMesh_lh3vy")
+
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="floor7" unique_id=1469296140]
 transform = Transform3D(-4.370912e-08, 0, -0.9999841, 0, 0.9999996, 0, 0.9999995, 0, -4.370917e-08, -1.2750444, 0, -0.48522526)
 shape = SubResource("BoxShape3D_83vmh")
@@ -422,3 +442,19 @@ shape = SubResource("BoxShape3D_qxp7i")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor7/CollisionShape3D3" unique_id=1067186564]
 transform = Transform3D(0.12, 0, 0, 0, 1, 0, 0, 0, 0.996, 0, 0, 0)
 mesh = SubResource("BoxMesh_xsn3i")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="floor7" unique_id=1331247668]
+transform = Transform3D(0.9999994, 0, 5.3148597e-12, 0, 0.9999996, 0, -1.3322676e-15, 0, 0.99998367, -2.0179796, 0, -0.69773895)
+shape = SubResource("BoxShape3D_jlm01")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor7/CollisionShape3D8" unique_id=5493800]
+transform = Transform3D(0.15, 0, 0, 0, 1, 0, 0, 0, 0.451, 0, 0, 0)
+mesh = SubResource("BoxMesh_83vmh")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="floor7" unique_id=178713334]
+transform = Transform3D(0.9999994, 0, 5.371703e-12, 0, 0.9999996, 0, -1.3322676e-15, 0, 0.99998367, 2.0313425, 0, -0.69773895)
+shape = SubResource("BoxShape3D_jlm01")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor7/CollisionShape3D9" unique_id=350051875]
+transform = Transform3D(0.15, 0, 0, 0, 1, 0, 0, 0, 0.451, 0, 0, 0)
+mesh = SubResource("BoxMesh_83vmh")
