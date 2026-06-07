@@ -17,6 +17,7 @@ var all_modifiers = {
 		"Angry horse": "Shockwaves are bigger, the horse also creates shockwaves when jumping",
 		"Sike": "Teleporter has a chance to teleport behind you",
 		"Green light": "Someone has a chance to close his eyes, if he does, move",
+		"Random Spawn": "Spawn location is randomized",
 	},
 	"Buffs" = {
 		"Adrenaline": "Increases your speed by 1.5x",
