@@ -1,20 +1,9 @@
 [gd_scene format=3 uid="uid://ccxx1fvlstxf7"]
 
 [ext_resource type="Script" uid="uid://c0y6ml2uqlrbt" path="res://scripts/gifts.gd" id="1_k2biq"]
+[ext_resource type="PackedScene" uid="uid://didmomqqle4c1" path="res://assets/models/giftbox/A Gift Box.fbx" id="2_x4ge6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_56tqj"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56tqj"]
-shading_mode = 0
-albedo_color = Color(0.5686275, 0, 1, 0.5137255)
-billboard_mode = 1
-billboard_keep_scale = true
-grow_amount = -1.376
-proximity_fade_distance = 4096.0
-stencil_flags = 2
-
-[sub_resource type="BoxMesh" id="BoxMesh_56tqj"]
-material = SubResource("StandardMaterial3D_56tqj")
 
 [node name="gifts" type="Area3D" unique_id=702350556 groups=["gifts"]]
 script = ExtResource("1_k2biq")
@@ -22,12 +11,12 @@ script = ExtResource("1_k2biq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1518320145]
 shape = SubResource("BoxShape3D_56tqj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1672668610]
-mesh = SubResource("BoxMesh_56tqj")
-
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1692006056]
 light_color = Color(0.8, 0, 1, 1)
 light_energy = 5.0
 shadow_enabled = true
+
+[node name="A Gift Box" parent="." unique_id=1812596015 instance=ExtResource("2_x4ge6")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -0.468713, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
