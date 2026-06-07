@@ -12,6 +12,7 @@ script = ExtResource("1_k2biq")
 shape = SubResource("BoxShape3D_56tqj")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1692006056]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.79780674, 0)
 light_color = Color(0.8, 0, 1, 1)
 light_energy = 5.0
 shadow_enabled = true
