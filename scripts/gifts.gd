@@ -8,6 +8,7 @@ func _ready() -> void:
 func _process(delta):
 	time += delta
 	position.y = start_y + sin(time * 2.0) * 0.1
+	rotation.y += 0.05
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
