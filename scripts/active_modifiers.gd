@@ -29,7 +29,7 @@ var all_modifiers = {
 	},
 	"Altar" = [
 		"He's here",
-		
+		"Walkspeed x1.5",
 	],
 	"Threats" = {
 		"Horse": "Jumps around the map, creating massive shockwaves when landing. just be careful and don't stand still",
