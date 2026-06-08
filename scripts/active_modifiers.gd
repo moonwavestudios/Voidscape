@@ -9,7 +9,10 @@ var active_modifiers = {
 	},
 	"Threats" = {
 		
-	}
+	},
+	"Altar" = [
+		
+	]
 }
 
 var all_modifiers = {
@@ -24,6 +27,10 @@ var all_modifiers = {
 		"Rings of speed": "Increase your speed by 2x",
 		"Lower Gravity": "You think that'd be helpful",
 	},
+	"Altar" = [
+		"He's here",
+		
+	],
 	"Threats" = {
 		"Horse": "Jumps around the map, creating massive shockwaves when landing. just be careful and don't stand still",
 		"Bell": "Ringing the bell will throw you into the air, but be careful and don't ring it too many times",
@@ -33,10 +40,15 @@ var all_modifiers = {
 	}
 }
 
-func get_random_options(modifier_type: String, count: int = 3) -> Dictionary:
+func get_random_options(modifier_type: String, count: int = 3) -> Array:
 	if not all_modifiers.has(modifier_type):
-		return {}
+		return []
 	var pool = all_modifiers[modifier_type].duplicate()
+	if pool is Array:
+		for item in active_modifiers[modifier_type]:
+			pool.erase(item)
+		pool.shuffle()
+		return pool.slice(0, min(count, pool.size()))
 	for key in active_modifiers[modifier_type].keys():
 		pool.erase(key)
 	var result = {}
@@ -46,20 +58,28 @@ func get_random_options(modifier_type: String, count: int = 3) -> Dictionary:
 		result[keys[i]] = pool[keys[i]]
 	return result
 
-func _add_modifier(modifier_type: String, modifier_name: String, modifier_effect: String) -> void:
+func _add_modifier(modifier_type: String, modifier_name: String, modifier_effect: String = "") -> void:
 	if active_modifiers.has(modifier_type):
-		active_modifiers[modifier_type][modifier_name] = modifier_effect
+		if active_modifiers[modifier_type] is Array:
+			active_modifiers[modifier_type].append(modifier_name)
+		else:
+			active_modifiers[modifier_type][modifier_name] = modifier_effect
 	else:
 		print("Invalid modifier type: " + modifier_type)
 
 func _remove_modifier(modifier_type: String, modifier_name: String) -> void:
 	if active_modifiers.has(modifier_type):
-		active_modifiers[modifier_type].erase(modifier_name)
+		if active_modifiers[modifier_type] is Array:
+			active_modifiers[modifier_type].erase(modifier_name)
+		else:
+			active_modifiers[modifier_type].erase(modifier_name)
 	else:
 		print("Invalid modifier type: " + modifier_type)
 
 func _get_modifier_names(modifier_type: String) -> Array:
 	if active_modifiers.has(modifier_type):
+		if active_modifiers[modifier_type] is Array:
+			return active_modifiers[modifier_type]
 		return active_modifiers[modifier_type].keys()
 	else:
 		print("Invalid modifier type: " + modifier_type)

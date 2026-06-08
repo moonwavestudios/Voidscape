@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://vfgsf6151awq"]
 
+[ext_resource type="Script" uid="uid://bvuux88b63p1m" path="res://scripts/altar.gd" id="1_7ynsc"]
 [ext_resource type="PackedScene" uid="uid://bqs3r4f0unodw" path="res://scenes/proximity_prompt.tscn" id="1_hwdfh"]
 [ext_resource type="ArrayMesh" uid="uid://b7ndqqfrxls4o" path="res://assets/models/altar.obj" id="2_si8oa"]
 [ext_resource type="Material" uid="uid://cv0dks4delbhh" path="res://assets/materials/stone.tres" id="3_dwhmf"]
@@ -20,6 +21,7 @@ billboard_mode = 1
 billboard_keep_scale = true
 
 [node name="altar" type="Node3D" unique_id=1265756253]
+script = ExtResource("1_7ynsc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1041145366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1229875, 0)
