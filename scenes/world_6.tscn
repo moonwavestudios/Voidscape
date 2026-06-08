@@ -45,8 +45,8 @@ shader_parameter/teal_shift = 0.6
 [sub_resource type="BoxMesh" id="BoxMesh_uu0p8"]
 material = SubResource("ShaderMaterial_axyqp")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ry1gx"]
-size = Vector3(1.2425461, 0.9974365, 0.019138336)
+[sub_resource type="BoxShape3D" id="BoxShape3D_coq3f"]
+size = Vector3(1.2425461, 0.9974365, 0.008104324)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hgrhv"]
 render_priority = 0
@@ -64,6 +64,9 @@ shader_parameter/teal_shift = 0.6
 
 [sub_resource type="BoxMesh" id="BoxMesh_hl0ld"]
 material = SubResource("ShaderMaterial_hgrhv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ry1gx"]
+size = Vector3(1.2425461, 0.9974365, 0.007127762)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_60jp7"]
 size = Vector3(1, 0.9974365, 1.0222473)
@@ -197,11 +200,11 @@ transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 mesh = SubResource("BoxMesh_uu0p8")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="floor2" unique_id=1162432005]
-transform = Transform3D(0.99999934, 0, -1.5376145e-11, 0, 0.9999995, 0, 3.2862596e-13, 0, 0.9999835, 0.0028762813, 0, -0.5081507)
-shape = SubResource("BoxShape3D_ry1gx")
+transform = Transform3D(0.9999994, 0, -1.546141e-11, 0, 0.9999996, 0, 3.2873704e-13, 0, 0.9999833, 0.0028763004, 0, -0.5026336)
+shape = SubResource("BoxShape3D_coq3f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor2/CollisionShape3D5" unique_id=1396672714]
-transform = Transform3D(-7.1345285e-10, 0, 1.2474781, 0, 1, 0, -0.016321898, 0, -5.4528993e-08, 0, 0, 0)
+transform = Transform3D(-2.39452e-10, 0, 1.247478, 0, 1, 0, -0.005478027, 0, -5.4528986e-08, 0, 0, 0)
 mesh = SubResource("BoxMesh_hl0ld")
 
 [node name="floor3" type="StaticBody3D" parent="." unique_id=1554930465]
@@ -231,11 +234,11 @@ transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 mesh = SubResource("BoxMesh_uu0p8")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="floor3" unique_id=97537036]
-transform = Transform3D(0.99999934, 0, -1.5376145e-11, 0, 0.9999995, 0, 3.2862596e-13, 0, 0.9999835, 0.0028762813, 0, -0.5081507)
+transform = Transform3D(0.9999994, 0, -1.330136e-11, 0, 0.9999996, 0, 3.2829295e-13, 0, 0.9999835, 0.0028762743, 0, -0.50214547)
 shape = SubResource("BoxShape3D_ry1gx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor3/CollisionShape3D5" unique_id=282975145]
-transform = Transform3D(-7.1345285e-10, 0, 1.2474781, 0, 1, 0, -0.016321898, 0, -5.4528993e-08, 0, 0, 0)
+transform = Transform3D(-1.9143531e-10, 0, 1.2474781, 0, 1, 0, -0.004379522, 0, -5.452899e-08, 0, 0, 0)
 mesh = SubResource("BoxMesh_hl0ld")
 
 [node name="floor8" type="StaticBody3D" parent="." unique_id=1699012675]
