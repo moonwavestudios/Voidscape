@@ -31,6 +31,9 @@ var floors = {
 		preload("res://scenes/world_5.tscn"),
 		preload("res://scenes/world_6.tscn"),
 		preload("res://scenes/world_7.tscn"),
+	],
+	5: [
+		preload("res://scenes/world_8.tscn"),
 	]
 }
 
