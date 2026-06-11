@@ -2,6 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="1_n58qp"]
 
+[sub_resource type="GDScript" id="GDScript_n58qp"]
+script/source = "extends Area3D
+
+func _on_body_entered(body: Node3D) -> void:
+	if body.is_in_group(\"player\"):
+		print(\"touched\")
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_n58qp"]
 
 [node name="bell" type="Node3D" unique_id=1561148532]
@@ -11,6 +19,9 @@ billboard = 1
 texture = ExtResource("1_n58qp")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=361147267]
+script = SubResource("GDScript_n58qp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=263073966]
 shape = SubResource("BoxShape3D_n58qp")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

@@ -40,7 +40,7 @@ var all_modifiers = {
 	}
 }
 
-func get_random_options(modifier_type: String, count: int = 3) -> Array:
+func get_random_options(modifier_type: String, count: int = 3):
 	if not all_modifiers.has(modifier_type):
 		return []
 	var pool = all_modifiers[modifier_type].duplicate()
