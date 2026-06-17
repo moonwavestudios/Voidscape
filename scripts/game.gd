@@ -37,6 +37,10 @@ var floors = {
 	]
 }
 
+var threat_scenes = {
+	"Bell" = preload("res://scenes/threats/bell.tscn"),
+}
+
 func seeded_pick_random(array: Array):
 	if array.is_empty():
 		return null
@@ -125,6 +129,13 @@ func get_players():
 func spawn_monsters():
 	var threats = ActiveModifiers._get_modifier_names("Threats")
 	print(threats)
+	
+	for threat_name in threats:
+		if threat_scenes.has(threat_name):
+			var instance = threat_scenes[threat_name].instantiate()
+			$Maps.add_child(instance)
+		else:
+			print("No scene found for threat: ", threat_name)
 
 func _process(_delta: float) -> void:
 	if gifts_collected == all_gifts and round_started:
