@@ -7,10 +7,18 @@ script/source = "extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group(\"player\"):
-		print(\"touched\")
+		body.velocity.x = body.DASH_FORCE
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n58qp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n58qp"]
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n58qp"]
+material = SubResource("StandardMaterial3D_n58qp")
+orientation = 2
 
 [node name="bell" type="Node3D" unique_id=1561148532]
 
@@ -23,5 +31,9 @@ script = SubResource("GDScript_n58qp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=263073966]
 shape = SubResource("BoxShape3D_n58qp")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1106081752]
+emitting = false
+mesh = SubResource("PlaneMesh_n58qp")
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

@@ -94,7 +94,7 @@ func end_round():
 	$lobby.start_selection()
 	
 	for players in get_players():
-		players.global_position = $Maps/lobby/PlayerSpawn.position
+		players.global_position = $lobby/PlayerSpawn.global_position
 		players.get_node("player_ui/GiftsLabel").visible = false
 
 func remove_maps():
