@@ -100,6 +100,7 @@ func end_round():
 	for players in get_players():
 		players.global_position = $lobby/PlayerSpawn.global_position
 		players.get_node("player_ui/GiftsLabel").visible = false
+		players.gifts = 0
 
 func remove_maps():
 	for floor_instance in generated_floors:
