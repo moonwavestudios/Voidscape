@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://bhq0muku5oap6"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7nch2"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_lsfkr"]
 size = Vector3(1, 0.068603516, 1)
 
-[node name="horse" type="CharacterBody3D" unique_id=222802781]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7nch2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1631418239]
-shape = SubResource("BoxShape3D_7nch2")
+[node name="horse" type="Node3D" unique_id=2125563579]
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1386374254]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1790175312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5316162, 0)
 shape = SubResource("BoxShape3D_lsfkr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1841519880]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1631418239]
+shape = SubResource("BoxShape3D_7nch2")
