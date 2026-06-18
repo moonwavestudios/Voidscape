@@ -3,6 +3,7 @@ extends CharacterBody3D
 const MOUSE_SENSITIVITY = 0.003
 var pitch: float = 0.0
 @onready var camera: Camera3D = $Camera3D
+@onready var joystick: VirtualJoystick = $player_ui/VirtualJoystick
 
 var gifts = 0
 const SPEED = 5.0
@@ -48,6 +49,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
+	if joystick and joystick.is_pressed:
+		return
+	
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		pitch -= event.relative.y * MOUSE_SENSITIVITY
