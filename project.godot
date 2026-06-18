@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 ProximityPromptManager="*uid://3tutyotkm5rx"
 ActiveModifiers="*uid://ky8fmas18nem"
 
+[display]
+
+window/size/mode=4
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 player=""
@@ -79,3 +84,4 @@ interact={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_etc2_astc=true
