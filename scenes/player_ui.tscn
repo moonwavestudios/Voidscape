@@ -45,24 +45,26 @@ script = ExtResource("2_sk4pr")
 
 [node name="VirtualJoystick" type="VirtualJoystick" parent="Mobile" unique_id=47341495]
 layout_mode = 0
-offset_top = 518.0
-offset_right = 165.0
+offset_top = 450.0
+offset_right = 196.0
 offset_bottom = 649.0
+joystick_size = 160.0
+tip_size = 105.0
 
 [node name="Button" type="Button" parent="Mobile" unique_id=1178416691]
 layout_mode = 0
-offset_left = 1044.0
-offset_top = 548.0
+offset_left = 990.0
+offset_top = 492.0
 offset_right = 1135.0
 offset_bottom = 632.0
 text = "Jump"
 
 [node name="Button2" type="Button" parent="Mobile" unique_id=970983997]
 layout_mode = 0
-offset_left = 946.0
-offset_top = 456.0
-offset_right = 1037.0
-offset_bottom = 540.0
+offset_left = 815.0
+offset_top = 318.0
+offset_right = 980.0
+offset_bottom = 471.0
 text = "Dash"
 
 [connection signal="button_down" from="Mobile/Button" to="Mobile" method="_on_button_button_down"]

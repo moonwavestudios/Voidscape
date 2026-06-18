@@ -63,6 +63,7 @@ func _get_slot(index: int) -> Node:
 func _activate_other_prox() -> void:
 	for prox in get_children():
 		if prox.name.contains("ProximityPrompt"):
+			prox.reset_activations()
 			prox.enabled = true
 
 func start_selection() -> void:

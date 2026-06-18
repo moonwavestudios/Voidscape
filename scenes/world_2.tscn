@@ -84,7 +84,7 @@ shader_parameter/teal_shift = 0.6
 material = SubResource("ShaderMaterial_hgrhv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_axyqp"]
-size = Vector3(1, 0.9974365, 0.53583527)
+size = Vector3(1, 0.9974365, 0.77231216)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_puv4i"]
 render_priority = 0
@@ -102,11 +102,17 @@ shader_parameter/caustic_speed = 0.4
 [sub_resource type="BoxMesh" id="BoxMesh_o7h1l"]
 material = SubResource("ShaderMaterial_puv4i")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ysdsq"]
+size = Vector3(1, 0.9974365, 0.5358701)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_hgrhv"]
 size = Vector3(0.14935303, 0.9974365, 0.53583527)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o7h1l"]
 size = Vector3(0.14935303, 0.9974365, 0.53580093)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v5b4n"]
+size = Vector3(1, 0.9974365, 0.8831043)
 
 [node name="world_2" type="Node3D" unique_id=826004647 groups=["map"]]
 
@@ -182,10 +188,11 @@ mesh = SubResource("BoxMesh_dr8ba")
 transform = Transform3D(-1.6669031e-07, 0, -26.574446, 0, 0.12740724, 0, 3.8134298, 0, -1.161606e-06, -15.359726, 0, 0.056916237)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor4" unique_id=614501360]
-transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999965, 0, 0, 0)
+transform = Transform3D(0.9999994, 0, -3.126388e-13, 0, 0.9999996, 0, 4.7517545e-14, 0, 0.99999666, 0, 0, -0.11823797)
 shape = SubResource("BoxShape3D_axyqp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor4/CollisionShape3D" unique_id=1363461019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -4.440892e-16, 0, 0.99999994, 3.632158e-08, 0, 0.11854097)
 mesh = SubResource("BoxMesh_o7h1l")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="floor4" unique_id=32562005]
@@ -208,8 +215,8 @@ mesh = SubResource("BoxMesh_rwd0d")
 transform = Transform3D(-1.5112066e-07, -0.053766012, -24.092266, -7.0343525e-08, 0.11550679, -11.214449, 3.8134298, 0, -1.1616061e-06, -40.657, -5.6, 0.057)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor6" unique_id=1246950741]
-transform = Transform3D(0.9999994, 2.5228158e-15, -7.219114e-12, 0, 0.99999964, 0, -1.3322676e-15, -2.3283064e-10, 0.99999654, 0, -1.5258789e-05, -0.23178399)
-shape = SubResource("BoxShape3D_axyqp")
+transform = Transform3D(0.9999994, 4.5417144e-15, -1.2931878e-11, 0, 0.99999964, 0, -1.3322676e-15, -2.3283064e-10, 0.99999654, 0, -4.5776367e-05, -0.23191571)
+shape = SubResource("BoxShape3D_ysdsq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor6/CollisionShape3D" unique_id=542523261]
 transform = Transform3D(0.99999976, -7.990295e-17, 2.842171e-14, 2.3265518e-14, 0.7852827, 5.4777948e-21, 4.440892e-16, -1.2382168e-23, 0.53555, 0, 0, 0)
@@ -235,10 +242,11 @@ mesh = SubResource("BoxMesh_rwd0d")
 transform = Transform3D(-1.6669031e-07, 0, -26.574446, 0, 0.12740724, 0, 3.8134298, 0, -1.161606e-06, 15.2173, 0, 0.056916237)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor5" unique_id=604488470]
-transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999965, 0, 0, 0)
-shape = SubResource("BoxShape3D_axyqp")
+transform = Transform3D(0.9999994, 0, -3.126388e-13, 0, 0.9999996, 0, 6.750156e-14, 0, 0.99999666, 0, 0, 0.0553959)
+shape = SubResource("BoxShape3D_v5b4n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor5/CollisionShape3D" unique_id=555438667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -8.881784e-16, 0, 0.99999994, -1.8626451e-08, 0, -0.0592407)
 mesh = SubResource("BoxMesh_o7h1l")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="floor5" unique_id=525056325]
