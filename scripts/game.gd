@@ -12,6 +12,8 @@ var all_gifts = 0
 var gift_count = 10
 
 var giftScene = preload("res://scenes/gifts.tscn")
+var tripmineScene = preload("res://scenes/tripmine.tscn")
+var tripmine_chance = 0.3
 
 var round_started = false
 
@@ -42,6 +44,7 @@ var threat_scenes = {
 	"Horse" = preload("res://scenes/threats/horse.tscn"),
 	"Teleporter" = preload("res://scenes/threats/teleporter.tscn"),
 	"Someone" = preload("res://scenes/threats/someone.tscn"),
+	"Goober" = preload("res://scenes/threats/goober.tscn"),
 }
 
 func seeded_pick_random(array: Array):
@@ -130,7 +133,26 @@ func _spawn_map():
 				if map.is_in_group("gifts"):
 					all_gifts += 1
 	
+	if level >= 5:
+		_replace_gifts_with_tripmines()
+	
 	return $Maps
+
+func _swap_gift_for_tripmine(gift: Node3D) -> void:
+	var pos = gift.global_position
+	gift.queue_free()
+	all_gifts -= 1
+	var tripmine = tripmineScene.instantiate()
+	$Maps.add_child(tripmine)
+	tripmine.global_position = pos
+
+func _replace_gifts_with_tripmines() -> void:
+	for map_node in $Maps.get_children():
+		if not map_node.is_in_group("map"):
+			continue
+		for child in map_node.get_children():
+			if child.is_in_group("gifts") and seeded_randf() < tripmine_chance:
+				_swap_gift_for_tripmine(child)
 
 func get_players():
 	return get_tree().get_nodes_in_group("player")
