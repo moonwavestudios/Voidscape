@@ -126,6 +126,7 @@ label_settings = SubResource("LabelSettings_86q0k")
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="." unique_id=2072176008]
+visible = false
 layout_mode = 0
 offset_left = 227.0
 offset_right = 953.0
@@ -140,7 +141,7 @@ offset_bottom = 86.0
 layout_mode = 0
 offset_left = 1037.0
 offset_top = 1.0
-offset_right = 1153.0
+offset_right = 1150.0
 offset_bottom = 24.0
 text = "Level: 0"
 horizontal_alignment = 2
