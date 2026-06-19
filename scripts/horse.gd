@@ -17,6 +17,47 @@ func _cache_floors() -> void:
 	for node in all_nodes:
 		floor_bodies.append(node as StaticBody3D)
 
+func _spawn_shockwave() -> void:
+	var area = Area3D.new()
+	var col = CollisionShape3D.new()
+	var shape = CylinderShape3D.new()
+	shape.radius = 0.5
+	shape.height = 0.5
+	col.shape = shape
+	area.add_child(col)
+
+	var mesh_instance = MeshInstance3D.new()
+	var torus = TorusMesh.new()
+	torus.inner_radius = 0.4
+	torus.outer_radius = 0.5
+	mesh_instance.mesh = torus
+
+	var mat = StandardMaterial3D.new()
+	mat.albedo_color = Color(1.0, 1.0, 1.0, 1.0)
+	mat.emission_enabled = true
+	mat.emission = Color(1.0, 1.0, 1.0, 1.0)
+	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	mesh_instance.material_override = mat
+
+	area.add_child(mesh_instance)
+	get_parent().add_child(area)
+	area.global_position = global_position + Vector3(0, -1.0, 0)
+
+	area.body_entered.connect(func(body: Node3D):
+		if body.is_in_group("player"):
+			body.velocity.y = 18.0
+			var dir = (body.global_position - area.global_position).normalized()
+			body.velocity.x = dir.x * 10.0
+			body.velocity.z = dir.z * 10.0
+	)
+
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(area, "scale", Vector3(15.0, 1.0, 15.0), 0.5)
+	tween.tween_property(mat, "albedo_color", Color(1.0, 1.0, 1.0, 0.0), 0.5)
+	tween.tween_property(mat, "emission", Color(1.0, 1.0, 1.0, 0.0), 0.5)
+	tween.chain().tween_callback(area.queue_free)
+
 func _get_random_floor_position() -> Vector3:
 	if floor_bodies.is_empty():
 		return global_position
@@ -76,6 +117,7 @@ func _do_jump() -> void:
 
 	tween.tween_callback(func():
 		is_jumping = false
+		_spawn_shockwave()
 	)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
