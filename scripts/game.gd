@@ -82,6 +82,8 @@ func start_round():
 	$lobby.visible = false
 	$Maps.visible = true
 	spawn_monsters()
+	$"../Game".play()
+	$"../Intermission".stop()
 	
 	if level > 2:
 		var altar = _get_altar(map)
@@ -99,6 +101,8 @@ func end_round():
 	$lobby.visible = true
 	$Maps.visible = false
 	$lobby.start_selection()
+	$"../Game".stop()
+	$"../Intermission".play()
 	
 	for players in get_players():
 		players.global_position = $lobby/PlayerSpawn.global_position

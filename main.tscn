@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://chuwoh0rx0ufc" path="res://scenes/player.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://1vf5ja7qyf7s" path="res://scenes/idk.tscn" id="4_7mycd"]
 [ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="4_lquwl"]
+[ext_resource type="AudioStream" uid="uid://cppatpforjgtm" path="res://assets/music/Void_Explorer.ogg" id="6_7mycd"]
+[ext_resource type="AudioStream" uid="uid://bl387n3ygr2yi" path="res://assets/music/AudioIntermission2.ogg" id="7_272bh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xm2m"]
 shader = ExtResource("1_ig7tw")
@@ -262,5 +264,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1195.6849)
 
 [node name="player" parent="." unique_id=1056688122 instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0009835735, 2.1006432, -1195.6173)
+
+[node name="Game" type="AudioStreamPlayer" parent="." unique_id=1492414195]
+stream = ExtResource("6_7mycd")
+volume_db = -5.0
+
+[node name="Intermission" type="AudioStreamPlayer" parent="." unique_id=621776205]
+stream = ExtResource("7_272bh")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="body_entered" from="game/Maps/Beacon" to="game" method="_on_beacon_body_entered"]
