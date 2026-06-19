@@ -10,6 +10,7 @@ size = Vector3(1, 0.068603516, 1)
 size = Vector3(1, 1.9614258, 1)
 
 [node name="horse" type="Node3D" unique_id=2125563579]
+transform = Transform3D(2.535, 0, 0, 0, 2.535, 0, 0, 0, 2.535, 0, 0, 0)
 script = ExtResource("1_0cmq4")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1386374254]
