@@ -1,5 +1,5 @@
 extends CharacterBody3D
-const MOUSE_SENSITIVITY = 0.003
+const MOUSE_SENSITIVITY = 0.008
 var pitch: float = 0.0
 @onready var camera: Camera3D = $Camera3D
 @onready var joystick: VirtualJoystick = $player_ui/Mobile/VirtualJoystick
