@@ -136,6 +136,9 @@ func spawn_monsters():
 		if threat_scenes.has(threat_name):
 			var instance = threat_scenes[threat_name].instantiate()
 			$Maps.add_child(instance)
+			var spawn_pos = $Maps/middle.global_position
+			spawn_pos.z += 10
+			instance.global_position = spawn_pos
 		else:
 			print("No scene found for threat: ", threat_name)
 
