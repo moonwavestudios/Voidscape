@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b3klwm3qctw1e"]
+
+[ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="1_6kd72"]
+
+[node name="Goober" type="Node3D" unique_id=1050032850]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=641747228]
+billboard = 1
+texture = ExtResource("1_6kd72")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1023939879]
