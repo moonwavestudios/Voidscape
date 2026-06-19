@@ -186,6 +186,7 @@ func _process(_delta: float) -> void:
 	for player in get_players():
 		gifts_collected = player.gifts
 		player.get_node('player_ui/GiftsLabel').text = str(gifts_collected) + "/" + str(all_gifts)
+		player.get_node("player_ui/LevelLabel").text = "Level:" + str(level)
 
 func _on_beacon_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
