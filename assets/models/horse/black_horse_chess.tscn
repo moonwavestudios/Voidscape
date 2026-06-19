@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dkyc6f1vwi4g"]
+
+[ext_resource type="PackedScene" uid="uid://f2pc8n1slqa" path="res://assets/models/horse/Black Horse Chess.fbx" id="1_w1jk6"]
+[ext_resource type="Material" uid="uid://cv0dks4delbhh" path="res://assets/materials/stone.tres" id="2_p6xgt"]
+
+[node name="Black Horse Chess" unique_id=595137873 instance=ExtResource("1_w1jk6")]
+
+[node name="Caballo002" parent="." index="0" unique_id=1867630899]
+surface_material_override/0 = ExtResource("2_p6xgt")

@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://bhq0muku5oap6"]
 
+[ext_resource type="PackedScene" uid="uid://dkyc6f1vwi4g" path="res://assets/models/horse/black_horse_chess.tscn" id="2_0cmq4"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_lsfkr"]
 size = Vector3(1, 0.068603516, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7nch2"]
+size = Vector3(1, 1.9614258, 1)
 
 [node name="horse" type="Node3D" unique_id=2125563579]
 
@@ -16,4 +19,8 @@ shape = SubResource("BoxShape3D_lsfkr")
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1841519880]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1631418239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4807129, 0)
 shape = SubResource("BoxShape3D_7nch2")
+
+[node name="Black Horse Chess" parent="." unique_id=437884797 instance=ExtResource("2_0cmq4")]
+transform = Transform3D(21.24, 0, 0, 0, 21.24, 0, 0, 0, 21.24, -3.743, -0.502, 5.066)
