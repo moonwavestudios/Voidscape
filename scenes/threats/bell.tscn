@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgkrf7gq1s8tp"]
 
 [ext_resource type="Script" uid="uid://dq2yj25uo8jgs" path="res://scripts/bell.gd" id="1_fiutx"]
-[ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="1_n58qp"]
+[ext_resource type="Texture2D" uid="uid://bg1w4l202bsb8" path="res://assets/images/bell.png" id="2_fiutx"]
 [ext_resource type="AudioStream" uid="uid://coa88a7thqbmf" path="res://assets/sfx/Bell.wav" id="2_mrwnn"]
 
 [sub_resource type="GDScript" id="GDScript_n58qp"]
@@ -33,8 +33,9 @@ orientation = 2
 script = ExtResource("1_fiutx")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1623794698]
+pixel_size = 0.006
 billboard = 1
-texture = ExtResource("1_n58qp")
+texture = ExtResource("2_fiutx")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=361147267]
 script = SubResource("GDScript_n58qp")

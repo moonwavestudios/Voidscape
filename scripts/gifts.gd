@@ -13,4 +13,5 @@ func _process(delta):
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		body.gifts += 1
+		body.get_node("AudioStreamPlayer3D").play()
 		queue_free()

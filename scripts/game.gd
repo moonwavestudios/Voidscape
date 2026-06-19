@@ -94,6 +94,7 @@ func start_round():
 func end_round():
 	round_started = false
 	remove_maps()
+	clear_monsters()
 	$lobby.visible = true
 	$Maps.visible = false
 	$lobby.start_selection()
@@ -130,17 +131,21 @@ func get_players():
 
 func spawn_monsters():
 	var threats = ActiveModifiers._get_modifier_names("Threats")
-	print(threats)
 	
 	for threat_name in threats:
 		if threat_scenes.has(threat_name):
 			var instance = threat_scenes[threat_name].instantiate()
 			$Maps.add_child(instance)
+			instance.add_to_group("threats")
 			var spawn_pos = $Maps/middle.global_position
 			spawn_pos.z += 10
 			instance.global_position = spawn_pos
 		else:
 			print("No scene found for threat: ", threat_name)
+
+func clear_monsters() -> void:
+	for threat in get_tree().get_nodes_in_group('threats'):
+		threat.queue_free()
 
 func _process(_delta: float) -> void:
 	if gifts_collected == all_gifts and round_started:

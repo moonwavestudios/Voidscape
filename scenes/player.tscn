@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ivgn7bqepnl0" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://cxa4w1y186ywx" path="res://scenes/player_ui.tscn" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://c5f4rimr0et7t" path="res://assets/sfx/GiftCollect.ogg" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 
@@ -82,3 +83,6 @@ transform = Transform3D(2.1738248, 0, 0, 0, 4.943821, 0, 0, -1.7563982e-14, 0.69
 mesh = SubResource("QuadMesh_3vyb7")
 
 [node name="player_ui" parent="." unique_id=1669550447 instance=ExtResource("2_g2els")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1211769590]
+stream = ExtResource("3_qhqgy")

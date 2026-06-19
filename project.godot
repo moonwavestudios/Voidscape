@@ -31,6 +31,7 @@ player=""
 gifts=""
 map=""
 interactors=""
+threats=""
 
 [input]
 
