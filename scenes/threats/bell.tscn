@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dgkrf7gq1s8tp"]
 
+[ext_resource type="Script" uid="uid://dq2yj25uo8jgs" path="res://scripts/bell.gd" id="1_fiutx"]
 [ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="1_n58qp"]
 [ext_resource type="AudioStream" uid="uid://coa88a7thqbmf" path="res://assets/sfx/Bell.wav" id="2_mrwnn"]
 
@@ -29,6 +30,7 @@ material = SubResource("StandardMaterial3D_n58qp")
 orientation = 2
 
 [node name="bell" type="Node3D" unique_id=1561148532]
+script = ExtResource("1_fiutx")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1623794698]
 billboard = 1
