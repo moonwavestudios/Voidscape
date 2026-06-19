@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="2_fkkqb"]
 [ext_resource type="Material" uid="uid://cv0dks4delbhh" path="res://assets/materials/stone.tres" id="3_abic5"]
 [ext_resource type="Shader" uid="uid://byp45ooycf37s" path="res://shaders/underwater_wood.gdshader" id="3_fkkqb"]
+[ext_resource type="PackedScene" uid="uid://vfgsf6151awq" path="res://scenes/altar.tscn" id="5_beu2s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ucnnh"]
 size = Vector3(1, 0.9974365, 3.226944)
@@ -940,3 +941,6 @@ mesh = SubResource("PlaneMesh_kfqu3")
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="StaticBody3D6/CollisionShape3D" unique_id=411753569]
 transform = Transform3D(-1.0447322e-08, 0, 1.2833652, 0, 1, 0, -0.23900688, 0, -5.6097676e-08, 0.018733978, -0.023033082, -1.0357676)
 mesh = SubResource("PlaneMesh_kfqu3")
+
+[node name="altar" parent="." unique_id=1265756253 instance=ExtResource("5_beu2s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.92016, -0.27378798, -17.134672)
