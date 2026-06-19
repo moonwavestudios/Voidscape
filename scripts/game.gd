@@ -40,7 +40,8 @@ var floors = {
 var threat_scenes = {
 	"Bell" = preload("res://scenes/threats/bell.tscn"),
 	"Horse" = preload("res://scenes/threats/horse.tscn"),
-	"Teleporter" = preload("res://scenes/threats/teleporter.tscn")
+	"Teleporter" = preload("res://scenes/threats/teleporter.tscn"),
+	"Someone" = preload("res://scenes/threats/someone.tscn"),
 }
 
 func seeded_pick_random(array: Array):
