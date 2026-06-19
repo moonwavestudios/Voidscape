@@ -22,3 +22,4 @@ func _teleport_near_player() -> void:
 	var offset = Vector3(cos(angle) * distance, randf_range(-2.0, 4.0), sin(angle) * distance)
 	
 	global_position = player.global_position + offset
+	$Appear.play()

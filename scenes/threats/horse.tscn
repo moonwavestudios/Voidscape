@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bo7733h4oewja" path="res://scripts/horse.gd" id="1_0cmq4"]
 [ext_resource type="PackedScene" uid="uid://dkyc6f1vwi4g" path="res://assets/models/horse/black_horse_chess.tscn" id="2_0cmq4"]
+[ext_resource type="AudioStream" uid="uid://by2eieeq874x5" path="res://assets/sfx/Springer_-_JumpLand1.ogg" id="3_2mkv1"]
+[ext_resource type="AudioStream" uid="uid://bftrs2ivqlmj4" path="res://assets/sfx/Springer_-_Move.ogg" id="4_u84xk"]
+[ext_resource type="AudioStream" uid="uid://du3qm47u4rjqh" path="res://assets/sfx/Springer_-_Flash.ogg" id="5_hdtlm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lsfkr"]
 size = Vector3(1, 0.068603516, 1)
@@ -27,5 +30,16 @@ shape = SubResource("BoxShape3D_7nch2")
 
 [node name="Black Horse Chess" parent="." unique_id=437884797 instance=ExtResource("2_0cmq4")]
 transform = Transform3D(21.24, 0, 0, 0, 21.24, 0, 0, 0, 21.24, -3.743, -0.502, 5.066)
+
+[node name="Land" type="AudioStreamPlayer3D" parent="." unique_id=462492848]
+stream = ExtResource("3_2mkv1")
+
+[node name="Move" type="AudioStreamPlayer3D" parent="." unique_id=477706924]
+stream = ExtResource("4_u84xk")
+volume_db = -25.421
+
+[node name="Flash" type="AudioStreamPlayer3D" parent="." unique_id=1662798830]
+stream = ExtResource("5_hdtlm")
+volume_db = -2.6
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

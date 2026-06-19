@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dq2yj25uo8jgs" path="res://scripts/bell.gd" id="1_fiutx"]
 [ext_resource type="Texture2D" uid="uid://bg1w4l202bsb8" path="res://assets/images/bell.png" id="2_fiutx"]
 [ext_resource type="AudioStream" uid="uid://coa88a7thqbmf" path="res://assets/sfx/Bell.wav" id="2_mrwnn"]
+[ext_resource type="AudioStream" uid="uid://deqpirrirlyfb" path="res://assets/sfx/Bell_Teleport_End_Sound.wav" id="4_m4w5y"]
 
 [sub_resource type="GDScript" id="GDScript_n58qp"]
 script/source = "extends Area3D
@@ -49,5 +50,8 @@ mesh = SubResource("PlaneMesh_n58qp")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=446878291]
 stream = ExtResource("2_mrwnn")
+
+[node name="Appear" type="AudioStreamPlayer3D" parent="." unique_id=799986850]
+stream = ExtResource("4_m4w5y")
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

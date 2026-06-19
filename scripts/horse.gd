@@ -99,12 +99,15 @@ func _process(delta: float) -> void:
 		_do_jump()
 
 func _do_jump() -> void:
+	$Flash.play()
 	is_jumping = true
 	var target = _get_random_floor_position()
 	var start = global_position
 	var peak_y = max(start.y, target.y) + 12.0
 	var duration = 3.0
 	var steps = 30
+	
+	$Move.play()
 
 	var tween = create_tween()
 	tween.set_parallel(false)
@@ -118,6 +121,8 @@ func _do_jump() -> void:
 	tween.tween_callback(func():
 		is_jumping = false
 		_spawn_shockwave()
+		$Land.play()
+		$Move.stop()
 	)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
