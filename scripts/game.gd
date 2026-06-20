@@ -44,7 +44,7 @@ var threat_scenes = {
 	"Horse" = preload("res://scenes/threats/horse.tscn"),
 	"Teleporter" = preload("res://scenes/threats/teleporter.tscn"),
 	"Someone" = preload("res://scenes/threats/someone.tscn"),
-	"Goober" = preload("res://scenes/threats/goober.tscn"),
+	"Rusher" = preload("res://scenes/threats/goober.tscn"),
 }
 
 func seeded_pick_random(array: Array):

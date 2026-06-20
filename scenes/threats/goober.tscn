@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://b3klwm3qctw1e"]
 
-[ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="1_6kd72"]
+[ext_resource type="Texture2D" uid="uid://c6aoundmvl08f" path="res://assets/images/rush.png" id="1_6kd72"]
+[ext_resource type="Script" uid="uid://v4rqnj5fid43" path="res://scripts/goober.gd" id="1_7b2qh"]
 
 [node name="Goober" type="Node3D" unique_id=1050032850]
+script = ExtResource("1_7b2qh")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=641747228]
+pixel_size = 0.001
 billboard = 1
 texture = ExtResource("1_6kd72")
 
