@@ -68,8 +68,15 @@ func _get_altar(map):
 			return result
 	return null
 
+func _get_floor_pool() -> Array:
+	var best_key = 1
+	for key in floors.keys():
+		if level >= key:
+			best_key = key
+	return floors[best_key]
+
 func spawn_random_room() -> Node3D:
-	var picked_scene = seeded_pick_random(floors.get(level, 1))
+	var picked_scene = seeded_pick_random(_get_floor_pool())
 	if picked_scene == null:
 		push_error("No floors available to spawn")
 		return null
