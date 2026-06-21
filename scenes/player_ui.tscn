@@ -22,6 +22,13 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_sk4pr"]
 font_size = 37
 
+[sub_resource type="GDScript" id="GDScript_2qxw1"]
+script/source = "extends Button
+
+func _on_pressed() -> void:
+	get_tree().quit()
+"
+
 [node name="player_ui" type="Control" unique_id=1669550447]
 layout_mode = 3
 anchors_preset = 15
@@ -207,8 +214,10 @@ offset_right = 702.0
 offset_bottom = 581.0
 theme_override_font_sizes/font_size = 43
 text = "QUIT"
+script = SubResource("GDScript_2qxw1")
 
 [connection signal="button_down" from="Mobile/Button" to="Mobile" method="_on_button_button_down"]
 [connection signal="button_up" from="Mobile/Button" to="Mobile" method="_on_button_button_up"]
 [connection signal="button_down" from="Mobile/Button2" to="Mobile" method="_on_button_2_button_down"]
 [connection signal="button_up" from="Mobile/Button2" to="Mobile" method="_on_button_2_button_up"]
+[connection signal="pressed" from="GameOver/Button2" to="GameOver/Button2" method="_on_pressed"]
