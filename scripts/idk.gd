@@ -64,6 +64,7 @@ func _populate_slots() -> void:
 		slot.set_meta("mod_name", all_options[i]["mod_name"])
 		slot.set_meta("mod_effect", all_options[i]["mod_effect"])
 		slot.get_node("Label3D").text = all_options[i]["mod_name"]
+		slot.texture = ActiveModifiers.get_icon(all_options[i]["category"], all_options[i]["mod_name"])
 
 func _get_slot(index: int) -> Node:
 	for child in get_children():
