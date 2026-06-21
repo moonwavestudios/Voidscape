@@ -16,6 +16,16 @@ animations = [{
 
 [sub_resource type="QuadMesh" id="QuadMesh_srlmw"]
 
+[sub_resource type="GDScript" id="GDScript_o1y51"]
+script/source = "extends Area3D
+
+func _on_body_entered(body: Node3D) -> void:
+	if body.is_in_group(\"player\"):
+		body.dead = true
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_86q0k"]
+
 [node name="Teleporter" type="Node3D" unique_id=1291582194]
 script = ExtResource("1_srlmw")
 
@@ -26,3 +36,11 @@ sprite_frames = SubResource("SpriteFrames_86q0k")
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=888271905]
 emitting = false
 mesh = SubResource("QuadMesh_srlmw")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1254534748]
+script = SubResource("GDScript_o1y51")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=78005981]
+shape = SubResource("BoxShape3D_86q0k")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
