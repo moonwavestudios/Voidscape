@@ -16,6 +16,41 @@ font_size = 31
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="GDScript" id="GDScript_86q0k"]
+script/source = "extends Button
+
+@export var target_node: NodePath
+
+var ui_hid = false
+
+func _on_pressed() -> void:
+	if not ui_hid:
+		_slide()
+	else:
+		slide_out()
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"hide_top\"):
+		if not ui_hid:
+			_slide()
+		else:
+			slide_out()
+
+func _slide() -> void:
+	var tween = create_tween()
+	tween.tween_property(get_node(target_node), \"position\", Vector2(227.0, -87.0), 0.5)
+	tween.set_ease(Tween.EASE_IN)
+	$\".\".text = \"Show (M)\"
+	ui_hid = true
+
+func slide_out() -> void:
+	var tween = create_tween()
+	tween.tween_property(get_node(target_node), \"position\", Vector2(227.0, 0.0), 0.5)
+	tween.set_ease(Tween.EASE_IN)
+	$\".\".text = \"Collapse (M)\"
+	ui_hid = false
+"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sk4pr"]
 bg_color = Color(0, 0, 0, 1)
 
@@ -157,6 +192,8 @@ offset_top = 91.0
 offset_right = 479.0
 offset_bottom = 122.0
 text = "Collapse (M)"
+script = SubResource("GDScript_86q0k")
+target_node = NodePath("..")
 
 [node name="LevelLabel" type="Label" parent="." unique_id=1430607570]
 layout_mode = 0
@@ -228,4 +265,5 @@ script = SubResource("GDScript_2qxw1")
 [connection signal="button_up" from="Mobile/Button" to="Mobile" method="_on_button_button_up"]
 [connection signal="button_down" from="Mobile/Button2" to="Mobile" method="_on_button_2_button_down"]
 [connection signal="button_up" from="Mobile/Button2" to="Mobile" method="_on_button_2_button_up"]
+[connection signal="pressed" from="StuffPanel/Button" to="StuffPanel/Button" method="_on_pressed"]
 [connection signal="pressed" from="GameOver/Button2" to="GameOver/Button2" method="_on_pressed"]
