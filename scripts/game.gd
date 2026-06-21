@@ -102,6 +102,7 @@ func end_round():
 	round_started = false
 	remove_maps()
 	clear_monsters()
+	level += 1
 	$lobby.visible = true
 	$Maps.visible = false
 	$lobby.start_selection()

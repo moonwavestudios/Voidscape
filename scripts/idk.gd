@@ -18,11 +18,19 @@ func _on_slot_chosen(slot_index: int) -> void:
 	var slot = _get_slot(slot_index - 1)
 	if not slot or not slot.has_meta("mod_name"):
 		return
-	ActiveModifiers._add_modifier(
-		slot.get_meta("category"),
-		slot.get_meta("mod_name"),
-		slot.get_meta("mod_effect")
-	)
+	
+	var category = slot.get_meta("category")
+	var mod_name = slot.get_meta("mod_name")
+	var mod_effect = slot.get_meta("mod_effect")
+	
+	ActiveModifiers._add_modifier(category, mod_name, mod_effect)
+	
+	for player in get_players():
+		var stuff = player.get_node("player_ui/StuffPanel/GridContainer")
+		var entity_icon = preload("res://scenes/entity_ui.tscn").instantiate()
+		stuff.add_child(entity_icon)
+		entity_icon.get_node("TextureRect").texture = ActiveModifiers.get_icon(category, mod_name)
+	
 	pending_selections -= 1
 	if pending_selections <= 0:
 		selection_started = false
@@ -31,6 +39,9 @@ func _on_slot_chosen(slot_index: int) -> void:
 		start_round()
 	else:
 		_populate_slots()
+
+func get_players():
+	return get_tree().get_nodes_in_group("player")
 
 func _populate_slots() -> void:
 	var level = game.level
@@ -95,6 +106,7 @@ func _hide_all_slots() -> void:
 func on_slot_chosen(category: String, mod_name: String, mod_effect: String) -> void:
 	ActiveModifiers._add_modifier(category, mod_name, mod_effect)
 	pending_selections -= 1
+	
 	if pending_selections <= 0:
 		selection_started = false
 		_deactivate_other_prox()

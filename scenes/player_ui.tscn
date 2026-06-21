@@ -125,17 +125,17 @@ text = "Settings"
 label_settings = SubResource("LabelSettings_86q0k")
 horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="." unique_id=2072176008]
-visible = false
+[node name="StuffPanel" type="Panel" parent="." unique_id=2072176008]
 layout_mode = 0
 offset_left = 227.0
 offset_right = 953.0
 offset_bottom = 86.0
 
-[node name="GridContainer" type="GridContainer" parent="Panel" unique_id=1110566949]
+[node name="GridContainer" type="GridContainer" parent="StuffPanel" unique_id=1110566949]
 layout_mode = 0
 offset_right = 727.0
 offset_bottom = 86.0
+columns = 10
 
 [node name="LevelLabel" type="Label" parent="." unique_id=1430607570]
 layout_mode = 0

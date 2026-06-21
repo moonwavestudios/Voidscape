@@ -41,6 +41,16 @@ var all_modifiers = {
 	}
 }
 
+var threat_icons = {
+	"Threats" = {
+		"Horse": preload("res://icon.svg"),
+		"Bell": preload("res://assets/images/bell.png"),
+		"Rusher": preload("res://assets/images/rush.png"),
+		"Teleporter": preload("res://icon.svg"),
+		"Someone": preload("res://icon.svg"),
+	}
+}
+
 func get_random_options(modifier_type: String, count: int = 3):
 	if not all_modifiers.has(modifier_type):
 		return []
@@ -58,6 +68,11 @@ func get_random_options(modifier_type: String, count: int = 3):
 	for i in range(min(count, keys.size())):
 		result[keys[i]] = pool[keys[i]]
 	return result
+
+func get_icon(modifier_type: String, modifier_name: String):
+	if threat_icons.has(modifier_type) and threat_icons[modifier_type].has(modifier_name):
+		return threat_icons[modifier_type][modifier_name]
+	return null
 
 func _add_modifier(modifier_type: String, modifier_name: String, modifier_effect: String = "") -> void:
 	if active_modifiers.has(modifier_type):
