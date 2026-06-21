@@ -3,6 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://c6aoundmvl08f" path="res://assets/images/rush.png" id="1_6kd72"]
 [ext_resource type="Script" uid="uid://v4rqnj5fid43" path="res://scripts/goober.gd" id="1_7b2qh"]
 
+[sub_resource type="GDScript" id="GDScript_7b2qh"]
+script/source = "extends Area3D
+
+func _on_body_entered(body: Node3D) -> void:
+	if body.is_in_group(\"player\"):
+		body.dead = true
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_86q0k"]
+
 [node name="Goober" type="Node3D" unique_id=1050032850]
 script = ExtResource("1_7b2qh")
 
@@ -12,3 +22,11 @@ billboard = 1
 texture = ExtResource("1_6kd72")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1023939879]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=328892004]
+script = SubResource("GDScript_7b2qh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1031045072]
+shape = SubResource("BoxShape3D_86q0k")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
