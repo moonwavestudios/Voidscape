@@ -11,6 +11,8 @@ var all_gifts = 0
 
 var gift_count = 10
 
+var gameover = false
+
 var giftScene = preload("res://scenes/gifts.tscn")
 var tripmineScene = preload("res://scenes/tripmine.tscn")
 var tripmine_chance = 0.3
@@ -154,6 +156,38 @@ func _swap_gift_for_tripmine(gift: Node3D) -> void:
 	$Maps.add_child(tripmine)
 	tripmine.global_position = pos
 
+func reset_game():
+	level = 1
+	gifts_collected = 0
+	all_gifts = 0
+	gameover = false
+	exit_open = false
+	round_started = false
+	
+	ActiveModifiers._clear_modifiers("Curses")
+	ActiveModifiers._clear_modifiers("Buffs")
+	ActiveModifiers._clear_modifiers("Threats")
+	ActiveModifiers._clear_modifiers("Altar")
+	
+	remove_maps()
+	clear_monsters()
+	
+	$lobby.visible = true
+	$Maps.visible = false
+	$lobby.start_selection()
+	$"../GameOver".stop()
+	$"../Intermission".play()
+	
+	for player in get_players():
+		player.dead = false
+		player.gifts = 0
+		player.global_position = $lobby/PlayerSpawn.global_position
+		player.get_node("player_ui/GameOver").visible = false
+		player.get_node("player_ui/GiftsLabel").visible = false
+		var grid = player.get_node("player_ui/StuffPanel/GridContainer")
+		for child in grid.get_children():
+			child.queue_free()
+
 func _replace_gifts_with_tripmines() -> void:
 	for map_node in $Maps.get_children():
 		if not map_node.is_in_group("map"):
@@ -195,6 +229,13 @@ func _process(_delta: float) -> void:
 		gifts_collected = player.gifts
 		player.get_node('player_ui/GiftsLabel').text = str(gifts_collected) + "/" + str(all_gifts)
 		player.get_node("player_ui/LevelLabel").text = "Level:" + str(level)
+		player.get_node("player_ui/GameOver/Label3").text = "High score: " + str(level)
+		
+		if player.dead and not gameover:
+			gameover = true
+			$"../GameOver".play()
+			$"../Game".stop()
+			$"../Intermission".stop()
 
 func _on_beacon_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):

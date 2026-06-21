@@ -13,16 +13,28 @@ var camera_touch_index: int = -1
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$player_ui/GameOver/RetryButton.pressed.connect(_on_retry_pressed)
+
+func _on_retry_pressed():
+	$"../game".reset_game()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	else:
 		has_air_dashed = false
+		
+	if dead:
+		$player_ui/GameOver.visible = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
 	if Input.is_action_just_pressed("dash") and not is_on_floor() and not has_air_dashed:
 		var dash_dir := direction if input_dir != Vector2.ZERO else -transform.basis.z
 		velocity.x = dash_dir.x * DASH_FORCE
@@ -30,15 +42,18 @@ func _physics_process(delta: float) -> void:
 		has_air_dashed = true
 		move_and_slide()
 		return
+		
 	if position.y <= -10 and not dead:
 		position = Vector3(0, 15, 0)
 		dead = true
+		
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		
 	move_and_slide()
 
 func _is_touch_in_joystick_zone(pos: Vector2) -> bool:

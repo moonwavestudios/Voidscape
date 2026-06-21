@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="4_lquwl"]
 [ext_resource type="AudioStream" uid="uid://cppatpforjgtm" path="res://assets/music/Void_Explorer.ogg" id="6_7mycd"]
 [ext_resource type="AudioStream" uid="uid://bl387n3ygr2yi" path="res://assets/music/AudioIntermission2.ogg" id="7_272bh"]
+[ext_resource type="AudioStream" uid="uid://mjxkl530uqks" path="res://assets/music/Subspace-Sequence.mp3" id="8_5vw27"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xm2m"]
 shader = ExtResource("1_ig7tw")
@@ -273,5 +274,9 @@ volume_db = -5.0
 stream = ExtResource("7_272bh")
 volume_db = -5.0
 autoplay = true
+
+[node name="GameOver" type="AudioStreamPlayer" parent="." unique_id=1832177919]
+stream = ExtResource("8_5vw27")
+volume_db = -5.0
 
 [connection signal="body_entered" from="game/Maps/Beacon" to="game" method="_on_beacon_body_entered"]
