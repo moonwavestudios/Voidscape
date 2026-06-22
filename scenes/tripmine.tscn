@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://3oyihkm4uual"]
 
+[ext_resource type="ArrayMesh" uid="uid://ctj0cf586xp34" path="res://assets/models/tripmine.obj" id="1_mt21g"]
+
 [sub_resource type="GDScript" id="GDScript_srlmw"]
 script/source = "extends Area3D
 
@@ -11,7 +13,29 @@ func _on_body_entered(body: Node3D) -> void:
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_86q0k"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_86q0k"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt21g"]
+shading_mode = 0
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yifj4"]
+albedo_color = Color(1, 0, 0.47843137, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffdpm"]
+albedo_color = Color(1, 0, 0.47843137, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x6wx"]
+albedo_color = Color(1, 0, 0.47843137, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evk22"]
+albedo_color = Color(1, 0, 0.47843137, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i08h3"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0.56078434, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrfsr"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0.56078434, 1)
 
 [node name="tripmine" type="Node3D" unique_id=1629878282]
 
@@ -21,12 +45,20 @@ script = SubResource("GDScript_srlmw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1770578914]
 shape = SubResource("BoxShape3D_86q0k")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=2137092716]
-mesh = SubResource("BoxMesh_86q0k")
-
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=640317641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8620132, 0)
 light_color = Color(1, 0, 0.5764706, 1)
 light_energy = 5.0
+
+[node name="Tripmine" type="MeshInstance3D" parent="." unique_id=598737396]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = ExtResource("1_mt21g")
+surface_material_override/0 = SubResource("StandardMaterial3D_mt21g")
+surface_material_override/1 = SubResource("StandardMaterial3D_yifj4")
+surface_material_override/2 = SubResource("StandardMaterial3D_ffdpm")
+surface_material_override/3 = SubResource("StandardMaterial3D_8x6wx")
+surface_material_override/4 = SubResource("StandardMaterial3D_evk22")
+surface_material_override/5 = SubResource("StandardMaterial3D_i08h3")
+surface_material_override/6 = SubResource("StandardMaterial3D_xrfsr")
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
