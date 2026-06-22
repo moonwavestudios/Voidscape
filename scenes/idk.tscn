@@ -85,6 +85,12 @@ shader_parameter/caustic_speed = 0.4
 [sub_resource type="BoxMesh" id="BoxMesh_f0r8y"]
 material = SubResource("ShaderMaterial_htol6")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_86q0k"]
+size = Vector3(0.2475586, 8.081543, 24.295044)
+
+[sub_resource type="BoxMesh" id="BoxMesh_86q0k"]
+size = Vector3(0.26208496, 8.124878, 24.342896)
+
 [node name="lobby" type="Node3D" unique_id=398233627]
 script = ExtResource("1_i65in")
 
@@ -184,6 +190,15 @@ shape = SubResource("BoxShape3D_htol6")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D2" unique_id=1008527226]
 transform = Transform3D(49.405777, 0, 0, 0, 0.20355904, 0, 0, 0, 49.787193, 0, 0, 0)
 mesh = SubResource("BoxMesh_f0r8y")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="StaticBody3D" unique_id=1557656762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.089874, 3.884664, -1.352478)
+shape = SubResource("BoxShape3D_86q0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D10" unique_id=1529030395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004699707, 0.023376465, -0.0016479492)
+mesh = SubResource("BoxMesh_86q0k")
+surface_material_override/0 = ExtResource("4_fxbju")
 
 [node name="slot2" type="Sprite3D" parent="." unique_id=400856414]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006064832, 1.7113001, -5.922523)
