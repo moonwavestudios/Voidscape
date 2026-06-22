@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="4_5ka3i"]
 [ext_resource type="Material" uid="uid://cv0dks4delbhh" path="res://assets/materials/stone.tres" id="4_fxbju"]
 [ext_resource type="PackedScene" uid="uid://lv3r2e4t3edc" path="res://scenes/pillar.tscn" id="6_0lrh6"]
+[ext_resource type="PackedScene" uid="uid://d2b3o8glmbcy8" path="res://scenes/jumppad.tscn" id="8_68lfi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjrnq"]
 size = Vector3(6.9605103, 0.20947266, 6.979004)
@@ -266,3 +267,6 @@ omni_range = 2.940451
 
 [node name="PlayerSpawn" type="Marker3D" parent="." unique_id=841792290]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1829813, 0)
+
+[node name="jumppad" parent="." unique_id=1659937889 instance=ExtResource("8_68lfi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.168113, 2.2081733, -32.450035)

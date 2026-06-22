@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://d2b3o8glmbcy8"]
+
+[sub_resource type="GDScript" id="GDScript_komr3"]
+script/source = "extends Area3D
+
+func _on_body_entered(body: Node3D) -> void:
+	if body.is_in_group(\"player\"):
+		body.velocity.y = 10
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_86q0k"]
+size = Vector3(2.5775757, 0.23071289, 2.5637207)
+
+[sub_resource type="BoxMesh" id="BoxMesh_86q0k"]
+size = Vector3(2.5774536, 0.22106934, 2.5726929)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_komr3"]
+transparency = 1
+albedo_color = Color(0, 0.2784314, 1, 0.50980395)
+emission_enabled = true
+emission = Color(0, 0.23921569, 1, 1)
+emission_energy_multiplier = 5.04
+
+[node name="jumppad" type="Node3D" unique_id=1659937889]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=257666450]
+script = SubResource("GDScript_komr3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1228567181]
+shape = SubResource("BoxShape3D_86q0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1963054723]
+mesh = SubResource("BoxMesh_86q0k")
+surface_material_override/0 = SubResource("StandardMaterial3D_komr3")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

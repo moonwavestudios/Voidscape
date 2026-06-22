@@ -118,6 +118,8 @@ func end_round():
 	$"../Game".stop()
 	$"../Intermission".play()
 	
+	ActiveModifiers._clear_modifiers("Altar")
+	
 	for players in get_players():
 		players.global_position = $lobby/PlayerSpawn.global_position
 		players.get_node("player_ui/GiftsLabel").visible = false

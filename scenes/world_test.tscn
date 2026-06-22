@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="2_63fu1"]
 [ext_resource type="PackedScene" uid="uid://bgj5n1thiout7" path="res://assets/models/shelf.tscn" id="3_1moov"]
 [ext_resource type="PackedScene" uid="uid://ccxx1fvlstxf7" path="res://scenes/gifts.tscn" id="4_63fu1"]
+[ext_resource type="PackedScene" uid="uid://d2b3o8glmbcy8" path="res://scenes/jumppad.tscn" id="5_ob026"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8rpv"]
 size = Vector3(1, 0.9974365, 1.0222473)
@@ -319,3 +320,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10.
 
 [node name="Node3D" parent="." unique_id=634067638 instance=ExtResource("3_1moov")]
 transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 1.3827115, 0.56270146, 0)
+
+[node name="jumppad" parent="." unique_id=1659937889 instance=ExtResource("5_ob026")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.168113, 5.8980155, 0)
