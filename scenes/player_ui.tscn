@@ -3,6 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="1_jkj6h"]
 [ext_resource type="Script" uid="uid://bsopsk3pwsexx" path="res://scripts/mobile.gd" id="2_sk4pr"]
 
+[sub_resource type="GDScript" id="GDScript_gygba"]
+script/source = "extends Control
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"Settings_Open\"):
+		$Settings.visible = not $Settings.visible
+"
+
 [sub_resource type="LabelSettings" id="LabelSettings_guxnq"]
 font_size = 40
 outline_size = 6
@@ -78,6 +87,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_gygba")
 
 [node name="GiftsLabel" type="Label" parent="." unique_id=862672479]
 visible = false
