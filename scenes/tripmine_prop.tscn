@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bxs8krobc0jrs"]
+
+[ext_resource type="ArrayMesh" uid="uid://ctj0cf586xp34" path="res://assets/models/tripmine.obj" id="1_e67b3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt21g"]
+shading_mode = 0
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yifj4"]
+albedo_color = Color(1, 0, 0.47843137, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffdpm"]
+albedo_color = Color(1, 0, 0.47843137, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x6wx"]
+albedo_color = Color(1, 0, 0.47843137, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evk22"]
+albedo_color = Color(1, 0, 0.47843137, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i08h3"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0.56078434, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrfsr"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0.56078434, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_86q0k"]
+size = Vector3(1.5718384, 1.5454102, 0.62298584)
+
+[node name="tripmine_prop" type="Node3D" unique_id=1629878282]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=640317641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8620132, 0)
+light_color = Color(1, 0, 0.5764706, 1)
+light_energy = 5.0
+
+[node name="Tripmine" type="MeshInstance3D" parent="." unique_id=598737396]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = ExtResource("1_e67b3")
+surface_material_override/0 = SubResource("StandardMaterial3D_mt21g")
+surface_material_override/1 = SubResource("StandardMaterial3D_yifj4")
+surface_material_override/2 = SubResource("StandardMaterial3D_ffdpm")
+surface_material_override/3 = SubResource("StandardMaterial3D_8x6wx")
+surface_material_override/4 = SubResource("StandardMaterial3D_evk22")
+surface_material_override/5 = SubResource("StandardMaterial3D_i08h3")
+surface_material_override/6 = SubResource("StandardMaterial3D_xrfsr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2048297437]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1543019271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0035705566, -0.026611328, -0.011810303)
+shape = SubResource("BoxShape3D_86q0k")

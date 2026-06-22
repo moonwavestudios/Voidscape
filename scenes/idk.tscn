@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://cv0dks4delbhh" path="res://assets/materials/stone.tres" id="4_fxbju"]
 [ext_resource type="PackedScene" uid="uid://lv3r2e4t3edc" path="res://scenes/pillar.tscn" id="6_0lrh6"]
 [ext_resource type="PackedScene" uid="uid://d2b3o8glmbcy8" path="res://scenes/jumppad.tscn" id="8_68lfi"]
+[ext_resource type="PackedScene" uid="uid://bxs8krobc0jrs" path="res://scenes/tripmine_prop.tscn" id="9_gygba"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjrnq"]
 size = Vector3(6.9605103, 0.20947266, 6.979004)
@@ -285,3 +286,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1829813, 0)
 
 [node name="jumppad" parent="." unique_id=1659937889 instance=ExtResource("8_68lfi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.168113, 2.2081733, -32.450035)
+
+[node name="tripmine_prop" parent="." unique_id=1629878282 instance=ExtResource("9_gygba")]
+transform = Transform3D(-1.1313341e-08, -1, -4.222196e-08, 0.25881907, -4.371139e-08, 0.9659258, -0.9659258, 0, 0.25881907, -20.132805, 0.0705328, 0)
+
+[node name="tripmine_prop2" parent="." unique_id=276621686 instance=ExtResource("9_gygba")]
+transform = Transform3D(-1.1313341e-08, -1, -4.222196e-08, -0.18513559, -3.9397566e-08, 0.9827129, -0.9827129, 1.8934553e-08, -0.18513559, -20.132805, 0.0705328, -1.3461806)
+
+[node name="tripmine_prop3" parent="." unique_id=163124091 instance=ExtResource("9_gygba")]
+transform = Transform3D(-5.152734e-09, -0.9930277, 0.11788079, -4.3406615e-08, 0.11788085, 0.9930276, -0.9999999, 2.379865e-16, -4.3711374e-08, 1.1563262, 0.08962059, -5.997494)
