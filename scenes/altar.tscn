@@ -11,13 +11,11 @@ size = Vector3(1, 4.443329, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ynsc"]
 shading_mode = 0
 albedo_color = Color(0.6509804, 0.011764706, 1, 1)
-billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agrp7"]
 shading_mode = 0
 albedo_color = Color(0.6509804, 0.011764706, 1, 1)
-billboard_mode = 1
 billboard_keep_scale = true
 
 [node name="altar" type="Node3D" unique_id=1265756253]
