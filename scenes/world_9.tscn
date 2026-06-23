@@ -182,7 +182,7 @@ size = Vector3(0.14935303, 0.9974365, 0.44849396)
 [sub_resource type="BoxMesh" id="BoxMesh_0qw7i"]
 material = SubResource("ShaderMaterial_m3jh3")
 
-[node name="world_9" type="Node3D" unique_id=38749075]
+[node name="world_9" type="Node3D" unique_id=38749075 groups=["map"]]
 
 [node name="floor3" type="StaticBody3D" parent="." unique_id=592115318]
 transform = Transform3D(-1.6669031e-07, 0, 26.574446, 0, 0.12740724, 0, -3.8134298, 0, -1.161606e-06, 15.265012, 0, -0.033532143)
