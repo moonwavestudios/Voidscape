@@ -43,6 +43,9 @@ shader_parameter/teal_shift = 0.6
 [sub_resource type="BoxMesh" id="BoxMesh_y3nqa"]
 material = SubResource("ShaderMaterial_o7h1l")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_yenpu"]
+size = Vector3(1, 0.9974365, 1.0222473)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_y3nqa"]
 size = Vector3(1.1198578, 0.9974365, 0.019138336)
 
@@ -144,7 +147,7 @@ transform = Transform3D(-1.6669031e-07, 0, -26.574446, 0, 0.12740724, 0, 3.81342
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor2" unique_id=2033332881]
 transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999965, 0, 0, 0)
-shape = SubResource("BoxShape3D_dd6wx")
+shape = SubResource("BoxShape3D_yenpu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor2/CollisionShape3D" unique_id=384578119]
 mesh = SubResource("BoxMesh_fkjw6")
