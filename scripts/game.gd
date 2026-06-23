@@ -1,6 +1,6 @@
 extends Node3D
 
-var level = 1
+var level = 3
 
 var rng := RandomNumberGenerator.new()
 
