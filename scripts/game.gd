@@ -15,7 +15,7 @@ var gameover = false
 
 var giftScene = preload("res://scenes/gifts.tscn")
 var tripmineScene = preload("res://scenes/tripmine.tscn")
-var tripmine_chance = 0.3
+var tripmine_chance = 0.1
 
 var round_started = false
 
