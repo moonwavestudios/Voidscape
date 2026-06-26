@@ -770,38 +770,39 @@ transform = Transform3D(-1.0447322e-08, 0, 1.2833652, 0, 1, 0, -0.23900688, 0, -
 mesh = SubResource("PlaneMesh_kfqu3")
 
 [node name="floor12" type="StaticBody3D" parent="." unique_id=774135043]
-transform = Transform3D(3.8134298, 0, -1.1368684e-13, 0, 0.12740724, 0, 1.4210855e-14, 0, 26.574446, -0.07326126, 0, 15.285507)
+transform = Transform3D(1, 0, -3.7265282e-15, 0, 1, 0, 3.7265282e-15, 0, 1, -0.07326126, 0, 15.285507)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor12" unique_id=1492089153]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor12" unique_id=1344235766]
 transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999965, 0, 0, 0)
-shape = SubResource("BoxShape3D_12qmi")
+shape = SubResource("BoxShape3D_tdvjd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="floor12/CollisionShape3D" unique_id=1259203281]
-mesh = SubResource("BoxMesh_df4w1")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor12/CollisionShape3D" unique_id=1163763104]
+transform = Transform3D(0.99997747, 0, 9.841017e-13, 0, 1, 0, 9.2370556e-14, 0, 0.99997747, 0, 0.021728516, 0)
+mesh = SubResource("BoxMesh_vtd2o")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="floor12" unique_id=4699179]
-transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.99998367, 0.56204104, 0, 0)
-shape = SubResource("BoxShape3D_ovsnc")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="floor12" unique_id=1428986016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1309817, 0.019485459, 0.15890026)
+shape = SubResource("BoxShape3D_uob5t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="floor12/CollisionShape3D2" unique_id=489630619]
-transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
-mesh = SubResource("BoxMesh_uiad5")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor12/CollisionShape3D2" unique_id=88558157]
+transform = Transform3D(0.12008162, 0, 0, 0, 1, 0, -1.5187851e-13, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_6lft7")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="floor12" unique_id=968877846]
-transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.99998355, -0.5593431, 0, 0)
-shape = SubResource("BoxShape3D_ovsnc")
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="floor12" unique_id=806908795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1313403, 0.023849472, 0.28133965)
+shape = SubResource("BoxShape3D_g10u8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="floor12/CollisionShape3D3" unique_id=1878652257]
-transform = Transform3D(0.1200778, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
-mesh = SubResource("BoxMesh_uiad5")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor12/CollisionShape3D3" unique_id=1150370636]
+transform = Transform3D(0.120081365, 0, 0, 0, 1, 0, -1.3544721e-13, 0, 0.99999994, 0.0045177937, -0.0026245136, -0.07127094)
+mesh = SubResource("BoxMesh_d25ml")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="floor12" unique_id=1607349703]
-transform = Transform3D(0.9999994, 0, -1.5347723e-11, 0, 0.9999996, 0, 3.2773784e-13, 0, 0.9999834, 0.0028769008, 0, 0.50804913)
-shape = SubResource("BoxShape3D_d25ml")
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="floor12" unique_id=1423198200]
+transform = Transform3D(1, 0, -3.2684966e-13, 0, 1, 0, 3.2684966e-13, 0, 1, 0.0059221312, 0.025737762, 13.757732)
+shape = SubResource("BoxShape3D_bmj8s")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="floor12/CollisionShape3D5" unique_id=453299058]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor12/CollisionShape3D5" unique_id=1367509583]
 transform = Transform3D(-7.1345285e-10, 0, 1.2474781, 0, 1, 0, -0.016321898, 0, -5.4528993e-08, 0, 0, 0)
-mesh = SubResource("BoxMesh_jttdi")
+mesh = SubResource("BoxMesh_1wui3")
 
 [node name="floor13" type="StaticBody3D" parent="." unique_id=45139286]
 transform = Transform3D(3.8134298, 0, -1.1368684e-13, 0, 0.12740724, 0, 1.4210855e-14, 0, 26.574446, -0.073703766, 22.33, 56.919487)
