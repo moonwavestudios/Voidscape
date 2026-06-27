@@ -1,18 +1,7 @@
 [gd_scene format=3 uid="uid://bmp0ux25jyti6"]
 
-[ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="1_hyub0"]
 [ext_resource type="Script" uid="uid://bnom77v8gc8xl" path="res://scripts/teleporter.gd" id="1_srlmw"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_86q0k"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_hyub0")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://c7sc03yf2an1w" path="res://assets/models/teleporter/teleporter.fbx" id="3_bqx8f"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_srlmw"]
 
@@ -25,13 +14,10 @@ func _on_body_entered(body: Node3D) -> void:
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_86q0k"]
+size = Vector3(1.9500427, 3.95813, 1)
 
 [node name="Teleporter" type="Node3D" unique_id=1291582194]
 script = ExtResource("1_srlmw")
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=45399566]
-billboard = 1
-sprite_frames = SubResource("SpriteFrames_86q0k")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=888271905]
 emitting = false
@@ -41,6 +27,10 @@ mesh = SubResource("QuadMesh_srlmw")
 script = SubResource("GDScript_o1y51")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=78005981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017440796, 0.84661865, 0)
 shape = SubResource("BoxShape3D_86q0k")
+
+[node name="teleporter" parent="." unique_id=972159266 instance=ExtResource("3_bqx8f")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
