@@ -46,7 +46,7 @@ var threat_icons = {
 		"Horse": preload("res://assets/images/horse.png"),
 		"Bell": preload("res://assets/images/bell.png"),
 		"Rusher": preload("res://assets/images/rusher.png"),
-		"Teleporter": preload("res://icon.svg"),
+		"Teleporter": preload("res://assets/images/teleporter.png"),
 		"Someone": preload("res://assets/images/someone.png"),
 	}
 }
