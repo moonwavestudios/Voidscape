@@ -7,10 +7,17 @@
 [sub_resource type="GDScript" id="GDScript_gygba"]
 script/source = "extends Control
 
+var enabled = false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed(\"Settings_Open\"):
 		$Settings.visible = not $Settings.visible
+		enabled = not enabled
+		if enabled:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_guxnq"]
@@ -24,11 +31,6 @@ script/source = "extends TextureButton
 func _on_pressed() -> void:
 	$\"../Settings\".visible = not $\"../Settings\".visible
 "
-
-[sub_resource type="LabelSettings" id="LabelSettings_86q0k"]
-font_size = 31
-outline_size = 6
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="GDScript" id="GDScript_86q0k"]
 script/source = "extends Button
@@ -64,6 +66,11 @@ func slide_out() -> void:
 	$\".\".text = \"Collapse (M)\"
 	ui_hid = false
 "
+
+[sub_resource type="LabelSettings" id="LabelSettings_86q0k"]
+font_size = 31
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sk4pr"]
 bg_color = Color(0, 0, 0, 1)
@@ -149,6 +156,37 @@ ignore_texture_size = true
 stretch_mode = 0
 script = SubResource("GDScript_sk4pr")
 
+[node name="StuffPanel" type="Panel" parent="." unique_id=2072176008]
+layout_mode = 0
+offset_left = 227.0
+offset_right = 953.0
+offset_bottom = 86.0
+
+[node name="GridContainer" type="GridContainer" parent="StuffPanel" unique_id=1110566949]
+layout_mode = 0
+offset_right = 727.0
+offset_bottom = 86.0
+columns = 10
+
+[node name="Button" type="Button" parent="StuffPanel" unique_id=516023254]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 91.0
+offset_right = 479.0
+offset_bottom = 122.0
+text = "Collapse (M)"
+script = SubResource("GDScript_86q0k")
+target_node = NodePath("..")
+
+[node name="LevelLabel" type="Label" parent="." unique_id=1430607570]
+layout_mode = 0
+offset_left = 1037.0
+offset_top = 1.0
+offset_right = 1150.0
+offset_bottom = 24.0
+text = "Level: 0"
+horizontal_alignment = 2
+
 [node name="Settings" type="Panel" parent="." unique_id=1592198283]
 visible = false
 layout_mode = 0
@@ -188,37 +226,6 @@ offset_bottom = 44.0
 text = "Settings"
 label_settings = SubResource("LabelSettings_86q0k")
 horizontal_alignment = 1
-
-[node name="StuffPanel" type="Panel" parent="." unique_id=2072176008]
-layout_mode = 0
-offset_left = 227.0
-offset_right = 953.0
-offset_bottom = 86.0
-
-[node name="GridContainer" type="GridContainer" parent="StuffPanel" unique_id=1110566949]
-layout_mode = 0
-offset_right = 727.0
-offset_bottom = 86.0
-columns = 10
-
-[node name="Button" type="Button" parent="StuffPanel" unique_id=516023254]
-layout_mode = 0
-offset_left = 198.0
-offset_top = 91.0
-offset_right = 479.0
-offset_bottom = 122.0
-text = "Collapse (M)"
-script = SubResource("GDScript_86q0k")
-target_node = NodePath("..")
-
-[node name="LevelLabel" type="Label" parent="." unique_id=1430607570]
-layout_mode = 0
-offset_left = 1037.0
-offset_top = 1.0
-offset_right = 1150.0
-offset_bottom = 24.0
-text = "Level: 0"
-horizontal_alignment = 2
 
 [node name="GameOver" type="Panel" parent="." unique_id=501613666]
 visible = false
