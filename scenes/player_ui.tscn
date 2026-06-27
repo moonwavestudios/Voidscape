@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cxa4w1y186ywx"]
 
-[ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="1_jkj6h"]
+[ext_resource type="Texture2D" uid="uid://brtuh145u3ib4" path="res://assets/images/someone.png" id="1_sk4pr"]
 [ext_resource type="Script" uid="uid://bsopsk3pwsexx" path="res://scripts/mobile.gd" id="2_sk4pr"]
 
 [sub_resource type="GDScript" id="GDScript_gygba"]
@@ -106,9 +106,9 @@ visible = false
 layout_mode = 0
 offset_left = 2.0
 offset_top = 321.0
-offset_right = 165.0
-offset_bottom = 482.0
-texture = ExtResource("1_jkj6h")
+offset_right = 358.0
+offset_bottom = 650.0
+texture = ExtResource("1_sk4pr")
 expand_mode = 1
 
 [node name="Mobile" type="Control" parent="." unique_id=1526959764]
