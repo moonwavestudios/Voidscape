@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://5g4gol7pl2pf"]
+
+[ext_resource type="PackedScene" uid="uid://xh4qmyxggnnq" path="res://scenes/floors/floorA.tscn" id="2_6s34p"]
+[ext_resource type="PackedScene" uid="uid://b2f6cj7axl1ji" path="res://scenes/floors/floorC.tscn" id="3_mltml"]
+[ext_resource type="PackedScene" uid="uid://b6qrgl1i2ja7f" path="res://scenes/floors/floorB.tscn" id="4_0gkni"]
+[ext_resource type="PackedScene" uid="uid://dbvxm8cy0ewaj" path="res://scenes/floors/floorD.tscn" id="5_irx6a"]
+[ext_resource type="PackedScene" uid="uid://vfgsf6151awq" path="res://scenes/altar.tscn" id="5_mhytm"]
+[ext_resource type="PackedScene" uid="uid://dfbv0uka4wuvb" path="res://scenes/floors/floorE.tscn" id="6_mhytm"]
+
+[node name="world_10" type="Node3D" unique_id=1050854245]
+
+[node name="floor" parent="." unique_id=1870136270 instance=ExtResource("2_6s34p")]
+
+[node name="floor2" parent="." unique_id=1425442632 instance=ExtResource("2_6s34p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="floor3" parent="." unique_id=2061846698 instance=ExtResource("3_mltml")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="floor4" parent="." unique_id=345706246 instance=ExtResource("4_0gkni")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -15.252035, 0, -15.616221)
+
+[node name="floor5" parent="." unique_id=413518037 instance=ExtResource("5_irx6a")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 10.438126, -9.164915)
+
+[node name="altar" parent="." unique_id=1265756253 instance=ExtResource("5_mhytm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.078788, 0, -34.277435)
+
+[node name="floor7" parent="." unique_id=1549206170 instance=ExtResource("6_mhytm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.082072854, 21.925512, -15.155146)
+
+[node name="floor6" parent="." unique_id=957390974 instance=ExtResource("4_0gkni")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.5117855, 21.923903, -71.17744)
