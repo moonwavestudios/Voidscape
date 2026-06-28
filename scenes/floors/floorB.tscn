@@ -23,6 +23,13 @@ shader_parameter/caustic_speed = 0.4
 material = SubResource("ShaderMaterial_tdvjd")
 size = Vector3(3.887329, 0.15283203, 26.773083)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wla2"]
+size = Vector3(15.156752, 0.113464355, 10.835114)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jdstm"]
+material = SubResource("ShaderMaterial_tdvjd")
+size = Vector3(15.053925, 0.15283203, 10.872759)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_7kf4d"]
 size = Vector3(0.48239136, 0.15536499, 26.771133)
 
@@ -102,6 +109,14 @@ shape = SubResource("BoxShape3D_b6npp")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor/CollisionShape3D" unique_id=1440435370]
 transform = Transform3D(0.99996287, 0, 9.840751e-13, 0, 1, 0, 9.236897e-14, 0, 0.99996287, 0, 0, 0.0073658526)
 mesh = SubResource("BoxMesh_aln1u")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="floor" unique_id=1968364152]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999965, -0.0034513474, 0, 18.323832)
+shape = SubResource("BoxShape3D_7wla2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor/CollisionShape3D4" unique_id=1218256795]
+transform = Transform3D(0.99995077, 0, 9.840544e-13, 0, 1, 0, 9.236768e-14, 0, 0.99995077, 0.050315883, 0, 0)
+mesh = SubResource("BoxMesh_jdstm")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="floor" unique_id=559592261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.224824, 0.019485459, -0.45491314)
