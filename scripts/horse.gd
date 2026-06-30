@@ -13,9 +13,9 @@ func _cache_floors() -> void:
 	floor_bodies.clear()
 	for node in get_tree().get_nodes_in_group(""):
 		pass
-	var all_nodes = get_tree().root.find_children("floor*", "StaticBody3D", true, false)
+	var all_nodes = get_tree().root.find_children("floor*", "Node3D", true, false)
 	for node in all_nodes:
-		floor_bodies.append(node as StaticBody3D)
+		floor_bodies.append(node as Node3D)
 
 func _spawn_shockwave() -> void:
 	var area = Area3D.new()
