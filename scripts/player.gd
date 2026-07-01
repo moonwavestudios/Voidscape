@@ -3,24 +3,33 @@ extends CharacterBody3D
 const MOUSE_SENSITIVITY = 0.008
 var pitch: float = 0.0
 
+var joystick_active = false
+
 @onready var camera: Camera3D = $Camera3D
 @onready var joystick: VirtualJoystick = $player_ui/Mobile/VirtualJoystick
 
 var gifts = 0
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+var ignore_next_mouse_motion = false
+const JUMP_VELOCITY = 6#4.5
 const DASH_FORCE = 50.0
 var dead = false
 var has_air_dashed = false
+var menu_open = false
 var camera_touch_index: int = -1
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$player_ui/GameOver/RetryButton.pressed.connect(_on_retry_pressed)
+	joystick.pressed.connect(func(): joystick_active = true)
+	joystick.released.connect(func(_v): joystick_active = false)
 
 func _on_retry_pressed():
+	dead = false
+	camera_touch_index = -1
 	$"../game".reset_game()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	ignore_next_mouse_motion = true
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -49,6 +58,7 @@ func _physics_process(delta: float) -> void:
 	if position.y <= -10 and not dead:
 		position = Vector3(0, 15, 0)
 		dead = true
+		camera_touch_index = -1
 
 	if direction:
 		velocity.x = direction.x * SPEED
@@ -60,28 +70,27 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _is_touch_in_joystick_zone(pos: Vector2) -> bool:
-	if not joystick or not $"player_ui/Mobile".visible:
+	if not joystick:
 		return false
-	var rect = joystick.get_global_rect()
-	rect = rect.grow(40)
-	return rect.has_point(pos)
-	
+	var joystick_center = joystick.get_global_rect().get_center()
+	var distance = pos.distance_to(joystick_center)
+	return distance <= 100
+
 func _input(event: InputEvent) -> void:
+	if menu_open or dead:
+		return
 	if event is InputEventScreenTouch:
-		if event.pressed:
-			if not _is_touch_in_joystick_zone(event.position) and camera_touch_index == -1:
+		if event.pressed and camera_touch_index == -1:
+			if not _is_touch_in_joystick_zone(event.position):
 				camera_touch_index = event.index
-		else:
-			if event.index == camera_touch_index:
-				camera_touch_index = -1
-		
+		elif event.index == camera_touch_index:
+			camera_touch_index = -1
 	elif event is InputEventScreenDrag:
 		if event.index == camera_touch_index:
 			rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 			pitch -= event.relative.y * MOUSE_SENSITIVITY
 			pitch = clamp(pitch, deg_to_rad(-80), deg_to_rad(80))
 			camera.rotation.x = pitch
-	
 	elif event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		pitch -= event.relative.y * MOUSE_SENSITIVITY

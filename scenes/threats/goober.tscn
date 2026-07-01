@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c6aoundmvl08f" path="res://assets/images/rush.png" id="1_6kd72"]
 [ext_resource type="Script" uid="uid://v4rqnj5fid43" path="res://scripts/goober.gd" id="1_7b2qh"]
+[ext_resource type="AudioStream" uid="uid://c7eilkpmmsj56" path="res://assets/sfx/placeholder.mp3" id="3_ikfjj"]
 
 [sub_resource type="GDScript" id="GDScript_7b2qh"]
 script/source = "extends Area3D
@@ -22,6 +23,7 @@ billboard = 1
 texture = ExtResource("1_6kd72")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1023939879]
+stream = ExtResource("3_ikfjj")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=328892004]
 script = SubResource("GDScript_7b2qh")

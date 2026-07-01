@@ -107,6 +107,8 @@ func _do_jump() -> void:
 	var duration = 3.0
 	var steps = 30
 	
+	$Area3D/CollisionShape3D.disabled = true
+	
 	$Move.play()
 
 	var tween = create_tween()
@@ -123,6 +125,7 @@ func _do_jump() -> void:
 		_spawn_shockwave()
 		$Land.play()
 		$Move.stop()
+		$Area3D/CollisionShape3D.disabled = false
 	)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

@@ -97,7 +97,6 @@ func start_round():
 	var map = _spawn_map()
 	$lobby.visible = false
 	$Maps.visible = true
-	spawn_monsters()
 	$"../Game".play()
 	$"../Intermission".stop()
 	
@@ -109,6 +108,8 @@ func start_round():
 	for players in get_players():
 		players.global_position = $Maps/PlayerSpawn.position
 		players.get_node("player_ui/GiftsLabel").visible = true
+	
+	get_tree().create_timer(3.0).timeout.connect(spawn_monsters)
 
 func end_round():
 	round_started = false
@@ -138,6 +139,10 @@ func remove_maps():
 	exit_open = false
 	$Maps/Beacon.visible = false
 	$Maps/Beacon/CollisionShape3D.disabled = true
+
+func _delayed_spawn_monsters():
+	if round_started:
+		spawn_monsters()
 
 func _spawn_map():
 	spawn_random_room()

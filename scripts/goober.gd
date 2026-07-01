@@ -59,11 +59,14 @@ func _process(delta: float) -> void:
 		"dashing":
 			dash_timer += delta
 			global_position += dash_direction * dash_speed * delta
+			if not $AudioStreamPlayer3D.playing:
+				$AudioStreamPlayer3D.play()
 			if dash_timer >= dash_duration:
 				state = "cooldown"
 				cooldown_timer = 0.0
 
 		"cooldown":
+			$AudioStreamPlayer3D.stop()
 			cooldown_timer += delta
 			if cooldown_timer >= cooldown:
 				state = "idle"
