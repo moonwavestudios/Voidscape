@@ -26,7 +26,7 @@ var all_modifiers = {
 	"Buffs" = {
 		"Adrenaline": "Increases your speed by 0.5x",
 		"Rings of speed": "Increase your speed by 0.75x",
-		"Lower Gravity": "You think that'd be helpful",
+		"Lower gravity": "You think that'd be helpful",
 	},
 	"Altar" = [
 		"He's here",

@@ -17,25 +17,22 @@ func _on_slot_chosen(slot_index: int) -> void:
 	var slot = _get_slot(slot_index - 1)
 	if not slot or not slot.has_meta("mod_name"):
 		return
-
 	var category = slot.get_meta("category")
 	var mod_name = slot.get_meta("mod_name")
 	var mod_effect = slot.get_meta("mod_effect")
-
 	ActiveModifiers._add_modifier(category, mod_name, mod_effect)
-
 	for player in get_players():
 		var stuff = player.get_node("player_ui/StuffPanel/GridContainer")
 		var entity_icon = preload("res://scenes/entity_ui.tscn").instantiate()
 		stuff.add_child(entity_icon)
 		entity_icon.get_node("TextureRect").texture = ActiveModifiers.get_icon(category, mod_name)
-		
-		for buffs in ActiveModifiers.active_modifiers.get("Buffs", {}):
-			if buffs.contains("Adrenaline"):
+		if category == "Buffs":
+			if mod_name.contains("Adrenaline"):
 				player.SPEED += 0.5
-			elif buffs.contains("Rings of speed"):
+			elif mod_name.contains("Rings of speed"):
 				player.SPEED += 0.75
-			
+			elif mod_name.contains("Lower gravity"):
+				player.GRAVITY_MULTIPLIER -= 0.2
 	pending_selections -= 1
 	if pending_selections <= 0:
 		selection_started = false
@@ -54,8 +51,7 @@ func _populate_slots() -> void:
 	var categories = []
 	var pick_number = total_selections - pending_selections + 1
 	if level % 3 == 0 and pick_number >= 2:
-		categories.append("Buffs")
-		categories.append("Curses")
+		categories.append("Buffs" if randi() % 2 == 0 else "Curses")
 	else:
 		categories.append("Threats")
 	var all_options = []

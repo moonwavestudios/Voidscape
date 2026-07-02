@@ -5,6 +5,8 @@ var pitch: float = 0.0
 
 var joystick_active = false
 
+var GRAVITY_MULTIPLIER = 1.0
+
 @onready var camera: Camera3D = $Camera3D
 @onready var joystick: VirtualJoystick = $player_ui/Mobile/VirtualJoystick
 
@@ -33,7 +35,7 @@ func _on_retry_pressed():
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta
 	else:
 		has_air_dashed = false
 
