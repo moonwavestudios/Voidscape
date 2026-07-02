@@ -21,6 +21,7 @@ var indicator_material: StandardMaterial3D
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	_setup_indicator()
+	cooldown = randf_range(1.5, 2.5)
 
 func _setup_indicator() -> void:
 	indicator_mesh = ImmediateMesh.new()
@@ -36,6 +37,10 @@ func _setup_indicator() -> void:
 	indicator_instance.material_override = indicator_material
 
 func _process(delta: float) -> void:
+	for curses in ActiveModifiers.active_modifiers.get("Curses", {}):
+		if curses.contains("I hate you"):
+			$AudioStreamPlayer3D.volume_db = -100.0
+	
 	if not player:
 		return
 

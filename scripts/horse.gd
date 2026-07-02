@@ -5,6 +5,8 @@ var jump_interval: float = 5.0
 var is_jumping: bool = false
 var floor_bodies: Array = []
 
+var shockwave_radius = 15.0
+
 func _ready() -> void:
 	await get_tree().process_frame
 	_cache_floors()
@@ -53,7 +55,7 @@ func _spawn_shockwave() -> void:
 
 	var tween = create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(area, "scale", Vector3(15.0, 1.0, 15.0), 0.5)
+	tween.tween_property(area, "scale", Vector3(shockwave_radius, 1.0, shockwave_radius), 0.5)
 	tween.tween_property(mat, "albedo_color", Color(1.0, 1.0, 1.0, 0.0), 0.5)
 	tween.tween_property(mat, "emission", Color(1.0, 1.0, 1.0, 0.0), 0.5)
 	tween.chain().tween_callback(area.queue_free)
@@ -62,7 +64,7 @@ func _get_random_floor_position() -> Vector3:
 	if floor_bodies.is_empty():
 		return global_position
 	var space = get_world_3d().direct_space_state
-	var chosen_floor: StaticBody3D = floor_bodies[randi() % floor_bodies.size()]
+	var chosen_floor: Node3D = floor_bodies[randi() % floor_bodies.size()]
 	for _i in range(30):
 		var aabb = _get_aabb(chosen_floor)
 		var x = randf_range(aabb.position.x, aabb.end.x)
@@ -75,7 +77,7 @@ func _get_random_floor_position() -> Vector3:
 			return result.position + Vector3(0, 1.2, 0)
 	return global_position
 
-func _get_aabb(body: StaticBody3D) -> AABB:
+func _get_aabb(body: Node3D) -> AABB:
 	var combined = AABB()
 	var first = true
 	for child in body.get_children():
@@ -91,6 +93,10 @@ func _get_aabb(body: StaticBody3D) -> AABB:
 	return combined
 
 func _process(delta: float) -> void:
+	for curses in ActiveModifiers.active_modifiers.get("Curses", {}):
+		if curses.contains("Angry horse"):
+			shockwave_radius = 30.0
+	
 	if is_jumping:
 		return
 	jump_timer += delta

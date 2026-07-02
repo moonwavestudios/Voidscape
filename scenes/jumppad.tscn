@@ -5,7 +5,7 @@ script/source = "extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group(\"player\"):
-		body.velocity.y = 10
+		body.velocity.y = 20
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_86q0k"]

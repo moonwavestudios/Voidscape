@@ -214,6 +214,7 @@ func spawn_monsters():
 	
 	for threat_name in threats:
 		if threat_scenes.has(threat_name):
+			# TODO: Add the amount of threats that is there, if there are 2 rushers, add 2 rushers
 			var instance = threat_scenes[threat_name].instantiate()
 			$Maps.add_child(instance)
 			instance.add_to_group("threats")

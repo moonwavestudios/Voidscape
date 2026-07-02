@@ -21,16 +21,16 @@ var all_modifiers = {
 		"Sike": "Teleporter has a chance to teleport behind you",
 		"Green light": "Someone has a chance to close his eyes, if he does, move",
 		"Random Spawn": "Spawn location is randomized",
+		"I hate you": "Rusher no longer gives a sound indicator",
 	},
 	"Buffs" = {
-		"Adrenaline": "Increases your speed by 1.5x",
-		"Rings of speed": "Increase your speed by 2x",
+		"Adrenaline": "Increases your speed by 0.5x",
+		"Rings of speed": "Increase your speed by 0.75x",
 		"Lower Gravity": "You think that'd be helpful",
 	},
 	"Altar" = [
 		"He's here",
 		"Walkspeed x1.5",
-		
 	],
 	"Threats" = {
 		"Horse": "Jumps around the map, creating massive shockwaves when landing. just be careful and don't stand still",
@@ -56,12 +56,8 @@ func get_random_options(modifier_type: String, count: int = 3):
 		return []
 	var pool = all_modifiers[modifier_type].duplicate()
 	if pool is Array:
-		for item in active_modifiers[modifier_type]:
-			pool.erase(item)
 		pool.shuffle()
 		return pool.slice(0, min(count, pool.size()))
-	for key in active_modifiers[modifier_type].keys():
-		pool.erase(key)
 	var result = {}
 	var keys = pool.keys()
 	keys.shuffle()

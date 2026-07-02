@@ -9,7 +9,7 @@ var joystick_active = false
 @onready var joystick: VirtualJoystick = $player_ui/Mobile/VirtualJoystick
 
 var gifts = 0
-const SPEED = 5.0
+var SPEED = 5.0
 var ignore_next_mouse_motion = false
 const JUMP_VELOCITY = 6#4.5
 const DASH_FORCE = 50.0

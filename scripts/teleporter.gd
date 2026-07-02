@@ -15,6 +15,8 @@ func _process(delta: float) -> void:
 	_move_towards_player(delta)
 
 func _teleport_near_player() -> void:
+	#TODO: Make the curse where teleporter spawns in front of the player work
+	
 	var players = get_tree().get_nodes_in_group("player")
 	if players.is_empty():
 		return

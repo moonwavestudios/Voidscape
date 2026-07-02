@@ -29,7 +29,13 @@ func _on_slot_chosen(slot_index: int) -> void:
 		var entity_icon = preload("res://scenes/entity_ui.tscn").instantiate()
 		stuff.add_child(entity_icon)
 		entity_icon.get_node("TextureRect").texture = ActiveModifiers.get_icon(category, mod_name)
-
+		
+		for buffs in ActiveModifiers.active_modifiers.get("Buffs", {}):
+			if buffs.contains("Adrenaline"):
+				player.SPEED += 0.5
+			elif buffs.contains("Rings of speed"):
+				player.SPEED += 0.75
+			
 	pending_selections -= 1
 	if pending_selections <= 0:
 		selection_started = false
