@@ -211,18 +211,22 @@ func get_players():
 
 func spawn_monsters():
 	var threats = ActiveModifiers._get_modifier_names("Threats")
-	
+	var threat_counts := {}
 	for threat_name in threats:
-		if threat_scenes.has(threat_name):
-			# TODO: Add the amount of threats that is there, if there are 2 rushers, add 2 rushers
+		threat_counts[threat_name] = threat_counts.get(threat_name, 0) + 1
+	
+	for threat_name in threat_counts.keys():
+		if not threat_scenes.has(threat_name):
+			print("No scene found for threat: ", threat_name)
+			continue
+		var count = threat_counts[threat_name]
+		for i in range(count):
 			var instance = threat_scenes[threat_name].instantiate()
 			$Maps.add_child(instance)
 			instance.add_to_group("threats")
 			var spawn_pos = $Maps/middle.global_position
-			spawn_pos.z += 10
+			spawn_pos.z += 10 + i * 2
 			instance.global_position = spawn_pos
-		else:
-			print("No scene found for threat: ", threat_name)
 
 func clear_monsters() -> void:
 	for threat in get_tree().get_nodes_in_group('threats'):
