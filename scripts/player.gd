@@ -10,7 +10,7 @@ var GRAVITY_MULTIPLIER = 1.0
 @onready var camera: Camera3D = $Camera3D
 @onready var joystick: VirtualJoystick = $player_ui/Mobile/VirtualJoystick
 
-var golden_gifts = 0.0
+var golden_gifts = 0
 var multiplier = 1.0
 var gifts = 0
 var SPEED = 5.0
@@ -40,6 +40,9 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta
 	else:
 		has_air_dashed = false
+	
+	$player_ui/MultiplierLabel.text = str(multiplier) + "x"
+	$player_ui/GoldenLabel.text = str(golden_gifts)
 
 	if dead:
 		$player_ui/GameOver.visible = true

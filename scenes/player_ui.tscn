@@ -26,6 +26,14 @@ font_size = 40
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_48xfa"]
+font_size = 40
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8isll"]
+font_color = Color(1, 1, 0, 1)
+
 [sub_resource type="GDScript" id="GDScript_sk4pr"]
 script/source = "extends TextureButton
 
@@ -125,6 +133,46 @@ label_settings = SubResource("LabelSettings_guxnq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ExitLabel" type="Label" parent="." unique_id=1476267381]
+visible = false
+layout_mode = 0
+offset_left = 428.0
+offset_top = 237.0
+offset_right = 785.0
+offset_bottom = 301.0
+text = "GET TO THE EXIT"
+label_settings = SubResource("LabelSettings_48xfa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="." unique_id=1430607570]
+layout_mode = 0
+offset_left = 497.0
+offset_top = 3.0
+offset_right = 1145.0
+offset_bottom = 26.0
+text = "Level: 0"
+horizontal_alignment = 2
+
+[node name="GoldenLabel" type="Label" parent="." unique_id=368405553]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 91.0
+offset_right = 948.0
+offset_bottom = 114.0
+text = "0"
+label_settings = SubResource("LabelSettings_8isll")
+horizontal_alignment = 2
+
+[node name="MultiplierLabel" type="Label" parent="." unique_id=1091550]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 112.0
+offset_right = 978.0
+offset_bottom = 135.0
+text = "0x"
+horizontal_alignment = 2
+
 [node name="Someone" type="TextureRect" parent="." unique_id=1712463762]
 visible = false
 layout_mode = 0
@@ -204,15 +252,6 @@ offset_bottom = 122.0
 text = "Collapse (M)"
 script = SubResource("GDScript_86q0k")
 target_node = NodePath("..")
-
-[node name="LevelLabel" type="Label" parent="." unique_id=1430607570]
-layout_mode = 0
-offset_left = 497.0
-offset_top = 3.0
-offset_right = 1145.0
-offset_bottom = 26.0
-text = "Level: 0"
-horizontal_alignment = 2
 
 [node name="Settings" type="Panel" parent="." unique_id=1592198283]
 visible = false

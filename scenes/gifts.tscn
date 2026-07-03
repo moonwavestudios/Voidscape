@@ -6,6 +6,17 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_56tqj"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyt1e"]
+shading_mode = 0
+albedo_color = Color(1, 0, 1, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_28i02"]
+material = SubResource("StandardMaterial3D_dyt1e")
+size = Vector2(1, 1)
+orientation = 2
+
 [node name="gifts" type="Area3D" unique_id=702350556 groups=["gifts"]]
 script = ExtResource("1_k2biq")
 
@@ -31,5 +42,16 @@ transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -0.468713, 0)
 [node name="Gold_Gift" parent="." unique_id=171018221 instance=ExtResource("3_dyt1e")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -0.469, 0)
 visible = false
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1850361634]
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("PlaneMesh_28i02")
+emission_shape = 1
+emission_sphere_radius = 2.3
+direction = Vector3(0, 0, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
