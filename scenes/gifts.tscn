@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0y6ml2uqlrbt" path="res://scripts/gifts.gd" id="1_k2biq"]
 [ext_resource type="PackedScene" uid="uid://didmomqqle4c1" path="res://assets/models/giftbox/A Gift Box.fbx" id="2_x4ge6"]
+[ext_resource type="PackedScene" uid="uid://c45hilo6bl0hj" path="res://assets/models/giftbox2/A Gift Box.fbx" id="3_dyt1e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_56tqj"]
 
@@ -17,7 +18,18 @@ light_color = Color(0.8, 0, 1, 1)
 light_energy = 5.0
 shadow_enabled = true
 
+[node name="gold_light" type="OmniLight3D" parent="." unique_id=1413764893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.79780674, 0)
+visible = false
+light_color = Color(1, 1, 0, 1)
+light_energy = 5.0
+shadow_enabled = true
+
 [node name="A Gift Box" parent="." unique_id=1812596015 instance=ExtResource("2_x4ge6")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -0.468713, 0)
+
+[node name="Gold_Gift" parent="." unique_id=171018221 instance=ExtResource("3_dyt1e")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -0.469, 0)
+visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

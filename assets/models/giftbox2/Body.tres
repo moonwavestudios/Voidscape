@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dg8q3p1e5elrw"]
+
+[resource]
+resource_name = "Body"
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.8156863, 0, 1)
+billboard_keep_scale = true

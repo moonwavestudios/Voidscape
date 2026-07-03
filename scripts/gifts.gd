@@ -2,6 +2,8 @@ extends Area3D
 var time := 0.0
 var start_y = 0.0
 
+var golden = false
+
 func _ready() -> void:
 	start_y = position.y
 
