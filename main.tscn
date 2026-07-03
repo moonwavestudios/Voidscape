@@ -268,15 +268,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0009835735, 2.1006432, -119
 
 [node name="Game" type="AudioStreamPlayer" parent="." unique_id=1492414195]
 stream = ExtResource("6_7mycd")
-volume_db = -5.0
+volume_db = -80.0
 
 [node name="Intermission" type="AudioStreamPlayer" parent="." unique_id=621776205]
 stream = ExtResource("7_272bh")
-volume_db = -5.0
+volume_db = -80.0
 autoplay = true
 
 [node name="GameOver" type="AudioStreamPlayer" parent="." unique_id=1832177919]
 stream = ExtResource("8_5vw27")
-volume_db = -5.0
+volume_db = -80.0
 
 [connection signal="body_entered" from="game/Maps/Beacon" to="game" method="_on_beacon_body_entered"]

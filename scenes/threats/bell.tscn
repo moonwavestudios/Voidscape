@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dgkrf7gq1s8tp"]
 
 [ext_resource type="Script" uid="uid://dq2yj25uo8jgs" path="res://scripts/bell.gd" id="1_fiutx"]
-[ext_resource type="Texture2D" uid="uid://bg1w4l202bsb8" path="res://assets/images/bell.png" id="2_fiutx"]
 [ext_resource type="AudioStream" uid="uid://dhactuts4uqej" path="res://assets/sfx/bell_hit.mp3" id="3_m4w5y"]
 [ext_resource type="AudioStream" uid="uid://deqpirrirlyfb" path="res://assets/sfx/Bell_Teleport_End_Sound.wav" id="4_m4w5y"]
+[ext_resource type="PackedScene" uid="uid://bq2ehcg8olx1d" path="res://assets/models/bell/source/Bell_prop.fbx" id="5_5svsw"]
 
 [sub_resource type="GDScript" id="GDScript_n58qp"]
 script/source = "extends Area3D
@@ -33,11 +33,6 @@ orientation = 2
 [node name="bell" type="Node3D" unique_id=1561148532]
 script = ExtResource("1_fiutx")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1623794698]
-pixel_size = 0.006
-billboard = 1
-texture = ExtResource("2_fiutx")
-
 [node name="Area3D" type="Area3D" parent="." unique_id=361147267]
 script = SubResource("GDScript_n58qp")
 
@@ -53,5 +48,8 @@ stream = ExtResource("3_m4w5y")
 
 [node name="Appear" type="AudioStreamPlayer3D" parent="." unique_id=799986850]
 stream = ExtResource("4_m4w5y")
+
+[node name="Bell_prop" parent="." unique_id=540630958 instance=ExtResource("5_5svsw")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.053562388, -0.55230796, -0.016156018)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dlajchl8gf8j"]
+
+[ext_resource type="Texture2D" uid="uid://vifinp5lg7x0" path="res://assets/models/bell/textures/Bell_prop_None_AlbedoTransparency4k.png" id="1_ci0wu"]
+[ext_resource type="Texture2D" uid="uid://8s5mj0l15tu0" path="res://assets/models/bell/textures/internal_ground_ao_texture.jpeg" id="2_vaupu"]
+[ext_resource type="Texture2D" uid="uid://bmddju78k1yyy" path="res://assets/models/bell/textures/Bell_prop_None_MetallicSmoothness4k.png" id="3_qtsx4"]
+[ext_resource type="Texture2D" uid="uid://dahukyyh76lmw" path="res://assets/models/bell/textures/Bell_prop_None_Normal_LowAm.png" id="4_vaupu"]
+
+[resource]
+resource_name = "None"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+albedo_texture = ExtResource("1_ci0wu")
+metallic = 1.0
+metallic_texture = ExtResource("3_qtsx4")
+emission = Color(0.90588236, 0.90588236, 0, 1)
+normal_enabled = true
+normal_texture = ExtResource("4_vaupu")
+ao_enabled = true
+ao_texture = ExtResource("2_vaupu")
+billboard_mode = 1
+billboard_keep_scale = true
