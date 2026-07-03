@@ -51,6 +51,7 @@ var threat_icons = {
 	},
 	"Buffs" = {
 		"Adrenaline": preload("res://assets/images/adrenaline.png"),
+		"Rings of speed": preload("res://assets/images/speed rings.png"),
 	},
 }
 

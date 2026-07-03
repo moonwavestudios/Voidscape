@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://dlob6sdmvjrrq"]
 
-[ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="1_mj06u"]
-
 [node name="entity_ui" type="Control" unique_id=1179517073]
 custom_minimum_size = Vector2(38.49, 40.23)
 layout_mode = 3
@@ -11,5 +9,4 @@ anchors_preset = 0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_mj06u")
 expand_mode = 1
