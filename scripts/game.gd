@@ -92,6 +92,18 @@ func spawn_random_room() -> Node3D:
 	
 	return room_instance
 
+func activate_golden_gifts():
+	for gifts in $Maps.get_children():
+		if gifts.is_in_group("map"):
+			for map in gifts.get_children():
+				if map.is_in_group("gifts"):
+					map.get_node("A Gift Box").visible = false
+					map.get_node("Gold_Gift").visible = true
+					map.get_node("OmniLight3D").visible = false
+					map.get_node("gold_light").visible = true
+					map.visible = true
+					map.get_node("CollisionShape3D").disabled = false
+
 func start_round():
 	round_started = true
 	var map = _spawn_map()
@@ -239,6 +251,7 @@ func _process(_delta: float) -> void:
 			exit_open = true
 			$Maps/Beacon.visible = true
 			$Maps/Beacon/CollisionShape3D.disabled = false
+			activate_golden_gifts()
 	
 	for player in get_players():
 		gifts_collected = player.gifts
