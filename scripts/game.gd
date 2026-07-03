@@ -102,6 +102,7 @@ func activate_golden_gifts():
 					map.get_node("OmniLight3D").visible = false
 					map.get_node("gold_light").visible = true
 					map.visible = true
+					map.golden = true
 					map.get_node("CollisionShape3D").disabled = false
 
 func start_round():

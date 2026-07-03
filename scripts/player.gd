@@ -10,6 +10,8 @@ var GRAVITY_MULTIPLIER = 1.0
 @onready var camera: Camera3D = $Camera3D
 @onready var joystick: VirtualJoystick = $player_ui/Mobile/VirtualJoystick
 
+var golden_gifts = 0.0
+var multiplier = 1.0
 var gifts = 0
 var SPEED = 5.0
 var ignore_next_mouse_motion = false

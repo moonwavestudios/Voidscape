@@ -3,9 +3,12 @@ var time := 0.0
 var start_y = 0.0
 
 var golden = false
+var gold = 15
 
 func _ready() -> void:
 	start_y = position.y
+	if ActiveModifiers.active_modifiers["Curses"].has("Offset gifts"):
+		position.x += randi_range(1,4)
 
 func _process(delta):
 	time += delta
@@ -14,8 +17,14 @@ func _process(delta):
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		body.gifts += 1
-		body.get_node("AudioStreamPlayer3D").play()
-		#queue_free()
-		visible = false
-		$CollisionShape3D.disabled = true
+		if not golden:
+			body.gifts += 1
+			body.get_node("AudioStreamPlayer3D").play()
+			#queue_free()
+			visible = false
+			$CollisionShape3D.disabled = true
+		else:
+			body.golden_gifts += gold * body.multiplier
+			body.get_node("AudioStreamPlayer3D").play()
+			visible = false
+			$CollisionShape3D.disabled = true

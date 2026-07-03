@@ -22,6 +22,7 @@ var all_modifiers = {
 		"Green light": "Someone has a chance to close his eyes, if he does, move",
 		"Random Spawn": "Spawn location is randomized",
 		"I hate you": "Rusher no longer gives a sound indicator",
+		"Offset gifts": "Gifts are offset by a random amount",
 	},
 	"Buffs" = {
 		"Adrenaline": "Increases your speed by 0.5x",
