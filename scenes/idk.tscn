@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://bp0fwjj26ngo" path="res://scripts/idk.gd" id="1_i65in"]
 [ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="2_f0r8y"]
 [ext_resource type="PackedScene" uid="uid://bqs3r4f0unodw" path="res://scenes/proximity_prompt.tscn" id="3_qhmgb"]
-[ext_resource type="Texture2D" uid="uid://ebj54n3a0slk" path="res://icon.svg" id="4_5ka3i"]
 [ext_resource type="Material" uid="uid://cv0dks4delbhh" path="res://assets/materials/stone.tres" id="4_fxbju"]
 [ext_resource type="PackedScene" uid="uid://lv3r2e4t3edc" path="res://scenes/pillar.tscn" id="6_0lrh6"]
 [ext_resource type="PackedScene" uid="uid://d2b3o8glmbcy8" path="res://scenes/jumppad.tscn" id="8_68lfi"]
@@ -205,7 +204,6 @@ surface_material_override/0 = ExtResource("4_fxbju")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006064832, 1.7113001, -5.922523)
 pixel_size = 0.007
 billboard = 1
-texture = ExtResource("4_5ka3i")
 
 [node name="Label3D" type="Label3D" parent="slot2" unique_id=1750682584]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6961576, 0.47666073)
@@ -216,7 +214,6 @@ text = "Start Game"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9797282, 1.7113001, -5.9381123)
 pixel_size = 0.007
 billboard = 1
-texture = ExtResource("4_5ka3i")
 
 [node name="Label3D" type="Label3D" parent="slot3" unique_id=616394935]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6961576, 0.47666073)
@@ -227,7 +224,6 @@ text = "Start Game"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.347161, 1.7113001, -5.988569)
 pixel_size = 0.007
 billboard = 1
-texture = ExtResource("4_5ka3i")
 
 [node name="Label3D" type="Label3D" parent="slot1" unique_id=1210404602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6961576, 0.47666073)

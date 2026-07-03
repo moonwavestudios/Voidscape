@@ -48,7 +48,10 @@ var threat_icons = {
 		"Rusher": preload("res://assets/images/rusher.png"),
 		"Teleporter": preload("res://assets/images/teleporter.png"),
 		"Someone": preload("res://assets/images/someone.png"),
-	}
+	},
+	"Buffs" = {
+		"Adrenaline": preload("res://assets/images/adrenaline.png"),
+	},
 }
 
 func get_random_options(modifier_type: String, count: int = 3):
