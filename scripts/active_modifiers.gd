@@ -29,7 +29,6 @@ var all_modifiers = {
 		"Lower gravity": "You think that'd be helpful",
 	},
 	"Altar" = [
-		"He's here",
 		"Walkspeed x1.5",
 	],
 	"Threats" = {
