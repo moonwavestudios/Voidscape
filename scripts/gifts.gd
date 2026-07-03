@@ -8,7 +8,8 @@ var gold = 15
 func _ready() -> void:
 	start_y = position.y
 	if ActiveModifiers.active_modifiers["Curses"].has("Offset gifts"):
-		position.x += randi_range(1,4)
+		position.x += randi_range(0,1)
+		position.z += randi_range(0,1)
 
 func _process(delta):
 	time += delta
