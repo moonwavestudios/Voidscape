@@ -3,12 +3,15 @@
 [ext_resource type="Script" uid="uid://c0y6ml2uqlrbt" path="res://scripts/gifts.gd" id="1_k2biq"]
 [ext_resource type="PackedScene" uid="uid://didmomqqle4c1" path="res://assets/models/giftbox/A Gift Box.fbx" id="2_x4ge6"]
 [ext_resource type="PackedScene" uid="uid://c45hilo6bl0hj" path="res://assets/models/giftbox2/A Gift Box.fbx" id="3_dyt1e"]
+[ext_resource type="Texture2D" uid="uid://bfl8q0pkpnvdc" path="res://assets/images/star.png" id="4_p6mx4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_56tqj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyt1e"]
+transparency = 1
 shading_mode = 0
 albedo_color = Color(1, 0, 1, 1)
+albedo_texture = ExtResource("4_p6mx4")
 billboard_mode = 1
 billboard_keep_scale = true
 
