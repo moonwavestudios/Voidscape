@@ -22,12 +22,10 @@ func _on_body_entered(body: Node3D) -> void:
 			body.gifts += 1
 			body.get_node("AudioStreamPlayer3D").play()
 			$CPUParticles3D.emitting = true
-			#queue_free()
 			$"A Gift Box".visible = false
 			$OmniLight3D.visible = false
 			$CollisionShape3D.disabled = true
 		else:
 			body.golden_gifts += gold * body.multiplier
 			body.get_node("AudioStreamPlayer3D").play()
-			visible = false
-			$CollisionShape3D.disabled = true
+			queue_free()

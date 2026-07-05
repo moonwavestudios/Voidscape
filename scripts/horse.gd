@@ -11,14 +11,6 @@ func _ready() -> void:
 	await get_tree().process_frame
 	_cache_floors()
 
-func _cache_floors() -> void:
-	floor_bodies.clear()
-	for node in get_tree().get_nodes_in_group(""):
-		pass
-	var all_nodes = get_tree().root.find_children("floor*", "Node3D", true, false)
-	for node in all_nodes:
-		floor_bodies.append(node as Node3D)
-
 func _spawn_shockwave() -> void:
 	var area = Area3D.new()
 	var col = CollisionShape3D.new()
@@ -60,12 +52,21 @@ func _spawn_shockwave() -> void:
 	tween.tween_property(mat, "emission", Color(1.0, 1.0, 1.0, 0.0), 0.5)
 	tween.chain().tween_callback(area.queue_free)
 
+func _cache_floors() -> void:
+	floor_bodies.clear()
+	var all_nodes = get_tree().root.find_children("floor*", "Node3D", true, false)
+	for node in all_nodes:
+		floor_bodies.append(node as Node3D)
+
 func _get_random_floor_position() -> Vector3:
+	floor_bodies = floor_bodies.filter(func(f): return is_instance_valid(f))
 	if floor_bodies.is_empty():
 		return global_position
 	var space = get_world_3d().direct_space_state
 	var chosen_floor: Node3D = floor_bodies[randi() % floor_bodies.size()]
 	for _i in range(30):
+		if not is_instance_valid(chosen_floor):
+			return global_position
 		var aabb = _get_aabb(chosen_floor)
 		var x = randf_range(aabb.position.x, aabb.end.x)
 		var z = randf_range(aabb.position.z, aabb.end.z)

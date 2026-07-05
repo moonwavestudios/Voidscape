@@ -53,5 +53,6 @@ mesh = SubResource("PlaneMesh_28i02")
 emission_shape = 1
 emission_sphere_radius = 2.3
 direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 1, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

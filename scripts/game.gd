@@ -4,6 +4,12 @@ var level = 1
 
 var rng := RandomNumberGenerator.new()
 
+var destroyParticleScene = preload("res://scenes/destroy_particle.tscn")
+var destroyMaterial = preload("res://materials/destroyed_floor.tres")
+
+var floor_destruction_delay = 5.0
+var floor_destruction_stagger = 1.5
+
 var player_count = 1
 
 var gifts_collected = 0
@@ -62,7 +68,49 @@ func seeded_randf() -> float:
 
 func seeded_randf_range(min_val: float, max_val: float) -> float:
 	return rng.randf_range(min_val, max_val)
+
+func _find_mesh_instances(node: Node) -> Array:
+	var result = []
+	if node is MeshInstance3D:
+		result.append(node)
+	for child in node.get_children():
+		result.append_array(_find_mesh_instances(child))
+	return result
+
+func _get_floor_pieces(world_instance: Node3D) -> Array:
+	var pieces = []
+	for child in world_instance.get_children():
+		if child.name.to_lower().begins_with("floor"):
+			pieces.append(child)
+	return pieces
+
+func _destroy_pieces_sequentially(pieces: Array) -> void:
+	if pieces.is_empty():
+		return
+	var piece = pieces.pop_front()
+	if not is_instance_valid(piece):
+		_destroy_pieces_sequentially(pieces)
+		return
 	
+	var particles = destroyParticleScene.instantiate()
+	piece.add_child(particles)
+	
+	for mesh_instance in _find_mesh_instances(piece):
+		mesh_instance.material_override = destroyMaterial
+	
+	get_tree().create_timer(floor_destruction_delay).timeout.connect(func():
+		if is_instance_valid(piece):
+			piece.queue_free()
+		_destroy_pieces_sequentially(pieces)
+	)
+
+func _start_floor_destruction() -> void:
+	var pieces = []
+	for world_instance in generated_floors:
+		pieces.append_array(_get_floor_pieces(world_instance))
+	pieces.shuffle()
+	_destroy_pieces_sequentially(pieces)
+
 func _get_altar(map):
 	for child in map.get_children():
 		if child.name.to_lower().contains("altar"):
@@ -253,6 +301,7 @@ func _process(_delta: float) -> void:
 			$Maps/Beacon.visible = true
 			$Maps/Beacon/CollisionShape3D.disabled = false
 			activate_golden_gifts()
+			_start_floor_destruction()
 	
 	for player in get_players():
 		gifts_collected = player.gifts
