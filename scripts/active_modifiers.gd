@@ -22,12 +22,12 @@ var all_modifiers = {
 		"Green light": "Someone has a chance to close his eyes, if he does, move",
 		"Random Spawn": "Spawn location is randomized",
 		"I hate you": "Rusher no longer gives a sound indicator",
+		"Lower gravity": "You think that'd be helpful",
 		"Offset gifts": "Gifts are offset by a random amount",
 	},
 	"Buffs" = {
 		"Adrenaline": "Increases your speed by 0.5x",
 		"Rings of speed": "Increase your speed by 0.75x",
-		"Lower gravity": "You think that'd be helpful",
 	},
 	"Altar" = [
 		"Walkspeed x1.5",
@@ -52,12 +52,20 @@ var threat_icons = {
 	"Buffs" = {
 		"Adrenaline": preload("res://assets/images/adrenaline.png"),
 		"Rings of speed": preload("res://assets/images/speed rings.png"),
-		"Lower gravity": preload("res://assets/images/lower grav.png"),
 	},
 	"Curses" = {
+		"Lower gravity": preload("res://assets/images/lower grav.png"),
 		"Sike": preload("res://assets/images/teleporter.png"),
 	},
 }
+
+var buff_costs = {
+	"Adrenaline": 50,
+	"Rings of speed": 55,
+}
+
+func get_buff_cost(modifier_name: String) -> int:
+	return buff_costs.get(modifier_name, 0)
 
 func get_random_options(modifier_type: String, count: int = 3):
 	if not all_modifiers.has(modifier_type):
