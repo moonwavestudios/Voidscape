@@ -76,7 +76,7 @@ func slide_out() -> void:
 	ui_hid = false
 "
 
-[sub_resource type="LabelSettings" id="LabelSettings_86q0k"]
+[sub_resource type="LabelSettings" id="LabelSettings_bkx2g"]
 font_size = 31
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
@@ -97,6 +97,23 @@ func _ready() -> void:
 func _on_value_changed(new_value: float) -> void:
 	camera.fov = new_value
 "
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ctsh"]
+font_size = 31
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_48xfa"]
+script/source = "extends CheckBox
+
+func _on_toggled(toggled_on: bool) -> void:
+	$\"../../../../../..\".get_node(\"MeshInstance3D\").visible = toggled_on
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_86q0k"]
+font_size = 31
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sk4pr"]
 bg_color = Color(0, 0, 0, 1)
@@ -274,7 +291,7 @@ alignment = 1
 [node name="FOV" type="Label" parent="Settings/ScrollContainer/VBoxContainer" unique_id=661198477]
 layout_mode = 2
 text = "FOV:"
-label_settings = SubResource("LabelSettings_86q0k")
+label_settings = SubResource("LabelSettings_bkx2g")
 horizontal_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="Settings/ScrollContainer/VBoxContainer/FOV" unique_id=680403023]
@@ -285,6 +302,20 @@ offset_right = 626.0
 offset_bottom = 33.0
 allow_greater = true
 script = SubResource("GDScript_5vw27")
+
+[node name="Filter" type="Label" parent="Settings/ScrollContainer/VBoxContainer" unique_id=1972617803]
+layout_mode = 2
+text = "Filter:"
+label_settings = SubResource("LabelSettings_7ctsh")
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="Settings/ScrollContainer/VBoxContainer/Filter" unique_id=372125659]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 14.0
+offset_right = 114.0
+offset_bottom = 38.0
+script = SubResource("GDScript_48xfa")
 
 [node name="Label" type="Label" parent="Settings" unique_id=1019620409]
 layout_mode = 0
@@ -357,4 +388,5 @@ script = SubResource("GDScript_2qxw1")
 [connection signal="button_up" from="Mobile/Button2" to="Mobile" method="_on_button_2_button_up"]
 [connection signal="pressed" from="SettingsButton" to="SettingsButton" method="_on_pressed"]
 [connection signal="pressed" from="StuffPanel/Button" to="StuffPanel/Button" method="_on_pressed"]
+[connection signal="toggled" from="Settings/ScrollContainer/VBoxContainer/Filter/CheckBox" to="Settings/ScrollContainer/VBoxContainer/Filter/CheckBox" method="_on_toggled"]
 [connection signal="pressed" from="GameOver/Button2" to="GameOver/Button2" method="_on_pressed"]
