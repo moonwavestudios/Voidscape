@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bqs3r4f0unodw" path="res://scenes/proximity_prompt.tscn" id="3_qhmgb"]
 [ext_resource type="Material" uid="uid://cv0dks4delbhh" path="res://assets/materials/stone.tres" id="4_fxbju"]
 [ext_resource type="PackedScene" uid="uid://lv3r2e4t3edc" path="res://scenes/pillar.tscn" id="6_0lrh6"]
+[ext_resource type="Texture2D" uid="uid://cwco0cdh62omj" path="res://assets/images/refresh.png" id="6_gygba"]
 [ext_resource type="PackedScene" uid="uid://d2b3o8glmbcy8" path="res://scenes/jumppad.tscn" id="8_68lfi"]
 [ext_resource type="PackedScene" uid="uid://bxs8krobc0jrs" path="res://scenes/tripmine_prop.tscn" id="9_gygba"]
 
@@ -183,6 +184,22 @@ mesh = SubResource("BoxMesh_i65in")
 transform = Transform3D(0.69470626, 0, -1.7763568e-15, 0, 0.6878534, 0, 0, 0, 0.6689158, 0, 0.015579879, 0)
 mesh = SubResource("BoxMesh_0lrh6")
 
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="StaticBody3D" unique_id=699861123]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.980009, 0.411, -0.08889842)
+shape = SubResource("BoxShape3D_i65in")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D11" unique_id=308618750]
+transform = Transform3D(1.206994, 0, -3.5527137e-15, 0, 0.204, 0, 0, 0, 1.1903276, 0, -0.410043, 0)
+mesh = SubResource("BoxMesh_i65in")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D11" unique_id=72226416]
+transform = Transform3D(1.206994, 0, -3.5527137e-15, 0, 0.204, 0, 0, 0, 1.1903276, 0, 0.41110963, 0)
+mesh = SubResource("BoxMesh_i65in")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D11" unique_id=103143860]
+transform = Transform3D(0.69470626, 0, -1.7763568e-15, 0, 0.6878534, 0, 0, 0, 0.6689158, 0, 0.015579879, 0)
+mesh = SubResource("BoxMesh_0lrh6")
+
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1339676114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1195488, -0.24106741, -0.0119018555)
 shape = SubResource("BoxShape3D_htol6")
@@ -243,6 +260,23 @@ max_activations = 1
 
 [node name="ProximityPrompt3" parent="." unique_id=722158082 instance=ExtResource("3_qhmgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0587952, 0.41894948, -5.965981)
+hold_duration = 0.0
+max_activations = 1
+enabled = false
+
+[node name="slot4" type="Sprite3D" parent="." unique_id=1268208464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9598956, 1.7113001, 0.0014063716)
+pixel_size = 0.007
+billboard = 1
+texture = ExtResource("6_gygba")
+
+[node name="Label3D" type="Label3D" parent="slot4" unique_id=1422104053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32000303, -0.6961576, -0.041015923)
+billboard = 1
+text = "Refresh"
+
+[node name="ProximityPrompt4" parent="." unique_id=1259465650 instance=ExtResource("3_qhmgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.021027, 0.41894948, -0.55503696)
 hold_duration = 0.0
 max_activations = 1
 enabled = false

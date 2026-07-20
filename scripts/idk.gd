@@ -12,6 +12,11 @@ func _ready() -> void:
 	$ProximityPrompt2.prompt_triggered.connect(func(body): _on_slot_chosen(2, body))
 	$ProximityPrompt3.prompt_triggered.connect(func(body): _on_slot_chosen(3, body))
 	
+	$ProximityPrompt4.prompt_triggered.connect(func(body): refresh_slot())
+
+func refresh_slot():
+	pass
+
 func _on_slot_chosen(slot_index: int, player: Node = null) -> void:
 	if not selection_started:
 		return
