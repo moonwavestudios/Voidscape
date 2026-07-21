@@ -14,8 +14,10 @@ func _ready() -> void:
 	
 	$ProximityPrompt4.prompt_triggered.connect(func(body): refresh_slot())
 
-func refresh_slot():
-	pass
+func refresh_slot() -> void:
+	if not selection_started:
+		return
+	_populate_slots()
 
 func _on_slot_chosen(slot_index: int, player: Node = null) -> void:
 	if not selection_started:
