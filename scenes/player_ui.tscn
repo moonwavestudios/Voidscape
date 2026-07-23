@@ -31,15 +31,25 @@ font_size = 40
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_8isll"]
-font_color = Color(1, 1, 0, 1)
-
 [sub_resource type="GDScript" id="GDScript_sk4pr"]
 script/source = "extends TextureButton
 
 func _on_pressed() -> void:
 	$\"../Settings\".visible = not $\"../Settings\".visible
 "
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yoxd"]
+bg_color = Color(0.4862745, 0.19607843, 0.4862745, 0.5882353)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.30533683, 6.295502e-05, 0.30533454, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="GDScript" id="GDScript_86q0k"]
 script/source = "extends Button
@@ -75,6 +85,9 @@ func slide_out() -> void:
 	$\".\".text = \"Collapse (M)\"
 	ui_hid = false
 "
+
+[sub_resource type="LabelSettings" id="LabelSettings_8isll"]
+font_color = Color(1, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_bkx2g"]
 font_size = 31
@@ -171,25 +184,6 @@ offset_bottom = 26.0
 text = "Level: 0"
 horizontal_alignment = 2
 
-[node name="GoldenLabel" type="Label" parent="." unique_id=368405553]
-layout_mode = 0
-offset_left = 890.0
-offset_top = 91.0
-offset_right = 948.0
-offset_bottom = 114.0
-text = "0"
-label_settings = SubResource("LabelSettings_8isll")
-horizontal_alignment = 2
-
-[node name="MultiplierLabel" type="Label" parent="." unique_id=1091550]
-layout_mode = 0
-offset_left = 920.0
-offset_top = 112.0
-offset_right = 978.0
-offset_bottom = 135.0
-text = "0x"
-horizontal_alignment = 2
-
 [node name="Someone" type="TextureRect" parent="." unique_id=1712463762]
 visible = false
 layout_mode = 0
@@ -250,8 +244,8 @@ script = SubResource("GDScript_sk4pr")
 
 [node name="StuffPanel" type="Panel" parent="." unique_id=2072176008]
 layout_mode = 0
-offset_left = 252.0
-offset_right = 977.0
+offset_left = 227.0
+offset_right = 952.0
 offset_bottom = 91.0
 
 [node name="GridContainer" type="GridContainer" parent="StuffPanel" unique_id=1110566949]
@@ -266,9 +260,29 @@ offset_left = 198.0
 offset_top = 91.0
 offset_right = 479.0
 offset_bottom = 122.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_2yoxd")
 text = "Collapse (M)"
 script = SubResource("GDScript_86q0k")
 target_node = NodePath("..")
+
+[node name="GoldenLabel" type="Label" parent="StuffPanel" unique_id=368405553]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 92.0
+offset_right = 698.0
+offset_bottom = 115.0
+text = "0"
+label_settings = SubResource("LabelSettings_8isll")
+horizontal_alignment = 2
+
+[node name="MultiplierLabel" type="Label" parent="StuffPanel" unique_id=1091550]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 113.0
+offset_right = 728.0
+offset_bottom = 136.0
+text = "0x"
+horizontal_alignment = 2
 
 [node name="Settings" type="Panel" parent="." unique_id=1592198283]
 visible = false

@@ -41,8 +41,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		has_air_dashed = false
 	
-	$player_ui/MultiplierLabel.text = str(multiplier) + "x"
-	$player_ui/GoldenLabel.text = str(golden_gifts)
+	$player_ui/StuffPanel/MultiplierLabel.text = str(multiplier) + "x"
+	$player_ui/StuffPanel/GoldenLabel.text = str(golden_gifts)
 
 	if dead:
 		$player_ui/GameOver.visible = true
