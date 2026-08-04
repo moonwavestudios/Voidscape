@@ -38,10 +38,22 @@ func _on_pressed() -> void:
 	$\"../Settings\".visible = not $\"../Settings\".visible
 "
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yoxd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48xfa"]
 bg_color = Color(0.4862745, 0.19607843, 0.4862745, 0.5882353)
 border_width_left = 4
 border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.30588236, 0, 0.30588236, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yoxd"]
+bg_color = Color(0.4862745, 0.19607843, 0.4862745, 0.5882353)
+border_width_left = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.30533683, 6.295502e-05, 0.30533454, 1)
@@ -247,6 +259,7 @@ layout_mode = 0
 offset_left = 227.0
 offset_right = 952.0
 offset_bottom = 91.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_48xfa")
 
 [node name="GridContainer" type="GridContainer" parent="StuffPanel" unique_id=1110566949]
 layout_mode = 0

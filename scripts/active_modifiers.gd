@@ -19,7 +19,6 @@ var all_modifiers = {
 	"Curses" = {
 		"Angry horse": "Shockwaves are bigger, the horse also creates shockwaves when jumping",
 		"Sike": "Teleporter has a chance to teleport behind you",
-		"Green light": "Someone has a chance to close his eyes, if he does, move",
 		"Random Spawn": "Spawn location is randomized",
 		"I hate you": "Rusher no longer gives a sound indicator",
 		"Lower gravity": "You think that'd be helpful",

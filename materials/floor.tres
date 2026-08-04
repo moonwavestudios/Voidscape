@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://deqxsgyp1iw0"]
+
+[ext_resource type="Shader" uid="uid://daywub3pgh2h8" path="res://shaders/checkerboard_floor.gdshader" id="1_vedg2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vedg2")
+shader_parameter/tile_color_a = Color(1, 1, 1, 1)
+shader_parameter/tile_color_b = Color(0, 0, 0, 1)
+shader_parameter/tile_size = 1.0
+shader_parameter/emission_strength = 1.8
+shader_parameter/roughness_a = 0.15
+shader_parameter/roughness_b = 0.9
+shader_parameter/wetness = 0.6
+shader_parameter/caustic_strength = 0.25
+shader_parameter/caustic_speed = 0.4

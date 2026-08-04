@@ -12,7 +12,7 @@ func _ready() -> void:
 	$ProximityPrompt2.prompt_triggered.connect(func(body): _on_slot_chosen(2, body))
 	$ProximityPrompt3.prompt_triggered.connect(func(body): _on_slot_chosen(3, body))
 	
-	$ProximityPrompt4.prompt_triggered.connect(func(body): refresh_slot())
+	$ProximityPrompt4.prompt_triggered.connect(func(): refresh_slot())
 
 func refresh_slot() -> void:
 	if not selection_started:

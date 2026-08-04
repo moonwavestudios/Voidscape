@@ -47,7 +47,8 @@ var floors = {
 		preload("res://scenes/world_9.tscn"),
 		preload("res://scenes/world_10.tscn"),
 		preload("res://scenes/world_11.tscn"),
-	]
+		preload("res://scenes/world_12.tscn"),
+	],
 }
 
 var threat_scenes = {
