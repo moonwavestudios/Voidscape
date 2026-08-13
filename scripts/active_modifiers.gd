@@ -28,7 +28,10 @@ var all_modifiers = {
 	"Buffs" = {
 		"Adrenaline": "Increases your speed by 0.5x",
 		"Rings of speed": "Increase your speed by 0.75x",
-		"Shield": "Protects you from getting hit once",
+		"Shield": {
+				"description": "Protects you from getting hit once",
+				"min_level": 15
+		},
 		"Gift magnet": "Brings the gifts close to you closer to you",
 	},
 	"Altar" = [
@@ -40,7 +43,10 @@ var all_modifiers = {
 		"Horse": "Jumps around the map, creating massive shockwaves when landing. just be careful and don't stand still",
 		"Bell": "Ringing the bell will throw you into the air, but be careful and don't ring it too many times",
 		"Rusher": "Goober will try to dash towards you with a loud noise and an indicator. don't get hit",
-		"Teleporter": "He will teleport in front of you with a sound indicator. Just go the other way once he does.",
+		"Teleporter": {
+			"description": "He will teleport in front of you with a sound indicator. Just go the other way once he does.",
+			"min_level": 1
+		},
 		"Someone": {
 			"description": "Don't move when he looks at you.",
 			"min_level": 1

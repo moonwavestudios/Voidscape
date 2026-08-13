@@ -1,3 +1,16 @@
 [gd_scene format=3 uid="uid://bj6gudn0ijso2"]
 
+[ext_resource type="ArrayMesh" uid="uid://c8bjq4n4mis16" path="res://assets/models/altar_of_sin/altar_of_sin.obj" id="1_1fvys"]
+[ext_resource type="Material" uid="uid://cv0dks4delbhh" path="res://assets/materials/stone.tres" id="2_n1e6b"]
+[ext_resource type="Material" uid="uid://dno37dxy1bveo" path="res://materials/destroyed_floor.tres" id="3_red77"]
+
 [node name="altar_of_sin" type="Node3D" unique_id=1870544569]
+
+[node name="AltarOfSin" type="MeshInstance3D" parent="." unique_id=622367348]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.017261028, 0, -0.012420893)
+mesh = ExtResource("1_1fvys")
+surface_material_override/0 = ExtResource("2_n1e6b")
+surface_material_override/1 = ExtResource("3_red77")
+surface_material_override/2 = ExtResource("3_red77")
+surface_material_override/3 = ExtResource("3_red77")
+surface_material_override/4 = ExtResource("2_n1e6b")
