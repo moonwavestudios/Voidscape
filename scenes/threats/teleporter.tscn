@@ -10,7 +10,10 @@ script/source = "extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group(\"player\"):
-		body.dead = true
+		if not body.has_shield:
+			body.dead = true
+		else:
+			body.has_shield = false
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_86q0k"]

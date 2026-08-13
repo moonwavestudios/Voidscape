@@ -13,7 +13,10 @@ var hit = 0
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group(\"player\"):
 		if hit == 3:
-			print(\"DEATH\")
+			if body.has_shield:
+				body.has_shield = false
+			else:
+				body.dead = true
 			
 		hit += 1
 		body.velocity.y = 10

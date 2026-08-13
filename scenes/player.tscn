@@ -80,6 +80,7 @@ current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=427838494]
 transform = Transform3D(2.1738248, 0, 0, 0, 4.943821, 0, 0, -1.7563982e-14, 0.691699, 0, 0.7167037, -0.73603654)
+visible = false
 mesh = SubResource("QuadMesh_3vyb7")
 
 [node name="player_ui" parent="." unique_id=1669550447 instance=ExtResource("2_g2els")]

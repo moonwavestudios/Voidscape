@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://g2lmubd2pl3k"]
+
+[ext_resource type="Texture2D" uid="uid://cikh4h4mlgtjp" path="res://assets/images/gear.png" id="1_3f2ny"]
+
+[node name="nuke" type="Node3D" unique_id=2077326318]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1458075318]
+transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, 5, 0, -5, -2.1855695e-07, 0, 0, 0)
+texture = ExtResource("1_3f2ny")

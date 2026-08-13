@@ -37,7 +37,10 @@ func _process(delta: float) -> void:
 				someone_timer = 0.0
 				someone.visible = false
 				someone.position = shake_original_pos
-				player.die()
+				if player.has_shield:
+					player.has_shield = false
+				else:
+					player.dead = true
 		else:
 			someone.position = shake_original_pos
 			if player_was_moving:

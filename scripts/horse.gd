@@ -137,4 +137,7 @@ func _do_jump() -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		body.dead = true
+		if not body.has_shield:
+			body.dead = true
+		else:
+			body.has_shield = false

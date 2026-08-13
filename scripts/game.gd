@@ -303,6 +303,9 @@ func _process(_delta: float) -> void:
 			$Maps/Beacon/CollisionShape3D.disabled = false
 			activate_golden_gifts()
 			_start_floor_destruction()
+			
+	if level >= 15:
+		$DirectionalLight3D.light_color = Color(0.904, 0.001, 0.904, 1.0)
 	
 	for player in get_players():
 		gifts_collected = player.gifts

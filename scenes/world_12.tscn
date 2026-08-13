@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dbvxm8cy0ewaj" path="res://scenes/floors/floorD.tscn" id="3_55j1x"]
 [ext_resource type="Material" uid="uid://deqxsgyp1iw0" path="res://materials/floor.tres" id="4_6w60g"]
+[ext_resource type="PackedScene" uid="uid://vfgsf6151awq" path="res://scenes/altar.tscn" id="4_55j1x"]
+[ext_resource type="PackedScene" uid="uid://ccxx1fvlstxf7" path="res://scenes/gifts.tscn" id="5_4ro5a"]
 [ext_resource type="Material" uid="uid://cv0dks4delbhh" path="res://assets/materials/stone.tres" id="5_55j1x"]
 
 [node name="world_12" type="Node3D" unique_id=2002589175]
@@ -31,12 +33,55 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.301147, 0.023742676, -0.0
 size = Vector3(27.205078, 0.15270996, 3.8496552)
 material = ExtResource("4_6w60g")
 
+[node name="floor8" type="Node3D" parent="." unique_id=1397587947]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 17.137297, -19.936626)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="floor8" unique_id=333398820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.617374, 0.023742676, 2.0580559)
+size = Vector3(86.41174, 0.15270996, 0.49272156)
+material = ExtResource("5_55j1x")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="floor8" unique_id=1459766468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.92703, 0.023742676, 21.683924)
+size = Vector3(0.5147705, 0.15270996, 48.405037)
+material = ExtResource("5_55j1x")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="floor8" unique_id=2076453052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.55612, 0.023742676, 24.091063)
+size = Vector3(0.5147705, 0.15270996, 43.59076)
+material = ExtResource("5_55j1x")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="floor8" unique_id=311389268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.197147, 0.023742676, -2.269651)
+size = Vector3(90.99707, 0.15270996, 0.49272156)
+material = ExtResource("5_55j1x")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="floor8" unique_id=247518189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.7594, 0.023742676, 45.633915)
+size = Vector3(3.8725586, 0.15270996, 0.49272156)
+material = ExtResource("5_55j1x")
+
+[node name="Floor" type="CSGBox3D" parent="floor8" unique_id=1076217800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.18555, 0.023742676, -0.099113464)
+size = Vector3(90.97388, 0.15270996, 3.8496552)
+material = ExtResource("4_6w60g")
+
+[node name="Floor2" type="CSGBox3D" parent="floor8" unique_id=2018081548]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.741196, 0.023742676, 23.599703)
+size = Vector3(43.576263, 0.15270996, 3.8496552)
+material = ExtResource("4_6w60g")
+
 [node name="floor7" type="Node3D" parent="." unique_id=1864196056]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="floor7" unique_id=2084340614]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.799072, 0.023742676, 2.0580559)
 size = Vector3(58.775146, 0.15270996, 0.49272156)
+material = ExtResource("5_55j1x")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="floor7" unique_id=595168703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.261303, 0.023742676, -57.611855)
+size = Vector3(4.8815613, 0.15270996, 0.49272156)
 material = ExtResource("5_55j1x")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="floor7" unique_id=1266911846]
@@ -111,3 +156,9 @@ material = ExtResource("4_6w60g")
 transform = Transform3D(-4.371138e-08, 0, -1, 0, 1, 0, 1, 0, -4.371138e-08, -43.115707, 0.023742676, -46.62014)
 size = Vector3(89.32764, 0.15270996, 3.7914429)
 material = ExtResource("4_6w60g")
+
+[node name="altar" parent="." unique_id=1265756253 instance=ExtResource("4_55j1x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.175293, 0.123603106, 59.1349)
+
+[node name="gifts" parent="." unique_id=702350556 instance=ExtResource("5_4ro5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.853237, 3.9091964)

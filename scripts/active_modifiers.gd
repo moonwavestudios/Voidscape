@@ -23,20 +23,26 @@ var all_modifiers = {
 		"I hate you": "Rusher no longer gives a sound indicator",
 		"Lower gravity": "You think that'd be helpful",
 		"Offset gifts": "Gifts are offset by a random amount",
+		"More altars": "More altars spawn",
 	},
 	"Buffs" = {
 		"Adrenaline": "Increases your speed by 0.5x",
 		"Rings of speed": "Increase your speed by 0.75x",
+		"Shield": "Protects you from getting hit once",
+		"Gift magnet": "Brings the gifts close to you closer to you",
 	},
 	"Altar" = [
 		"Walkspeed x1.5",
+		"Gift yield +0.75x",
+		"Shield for all",
 	],
 	"Threats" = {
 		"Horse": "Jumps around the map, creating massive shockwaves when landing. just be careful and don't stand still",
 		"Bell": "Ringing the bell will throw you into the air, but be careful and don't ring it too many times",
 		"Rusher": "Goober will try to dash towards you with a loud noise and an indicator. don't get hit",
 		"Teleporter": "He will teleport in front of you with a sound indicator. Just go the other way once he does.",
-		"Someone": "Don't move when he looks at you."
+		"Someone": "Don't move when he looks at you.",
+		"Nuke": "Follows the player before exploding"
 	}
 }
 
@@ -51,16 +57,21 @@ var threat_icons = {
 	"Buffs" = {
 		"Adrenaline": preload("res://assets/images/adrenaline.png"),
 		"Rings of speed": preload("res://assets/images/speed rings.png"),
+		"Shield": preload("res://icon.png"),
+		"Gift magnet": preload("res://icon.png"),
 	},
 	"Curses" = {
 		"Lower gravity": preload("res://assets/images/lower grav.png"),
 		"Sike": preload("res://assets/images/teleporter.png"),
+		"Random Spawn": preload("res://assets/images/spawn.png"),
 	},
 }
 
 var buff_costs = {
 	"Adrenaline": 50,
 	"Rings of speed": 55,
+	"Gift magnet": 150,
+	"Shield": 1000,
 }
 
 func get_buff_cost(modifier_name: String) -> int:

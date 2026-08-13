@@ -5,8 +5,8 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_vedg2")
-shader_parameter/tile_color_a = Color(1, 1, 1, 1)
-shader_parameter/tile_color_b = Color(0, 0, 0, 1)
+shader_parameter/tile_color_a = Color(0.76862043, 0.76862043, 0.7977378, 1)
+shader_parameter/tile_color_b = Color(0.12835406, 0.06100855, 0.17184411, 1)
 shader_parameter/tile_size = 1.0
 shader_parameter/emission_strength = 1.8
 shader_parameter/roughness_a = 0.15

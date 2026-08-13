@@ -39,7 +39,7 @@ func _on_pressed() -> void:
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48xfa"]
-bg_color = Color(0.4862745, 0.19607843, 0.4862745, 0.5882353)
+bg_color = Color(0.4862745, 0.19607843, 0.4862745, 0.078431375)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -52,7 +52,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yoxd"]
-bg_color = Color(0.4862745, 0.19607843, 0.4862745, 0.5882353)
+bg_color = Color(0.4862745, 0.19607843, 0.4862745, 0.09019608)
 border_width_left = 4
 border_width_right = 4
 border_width_bottom = 4
@@ -85,14 +85,14 @@ func _process(delta: float) -> void:
 
 func _slide() -> void:
 	var tween = create_tween()
-	tween.tween_property(get_node(target_node), \"position\", Vector2(227.0, -87.0), 0.5)
+	tween.tween_property(get_node(target_node), \"position\", Vector2(656.0, -87.0), 0.5)
 	tween.set_ease(Tween.EASE_IN)
-	$\".\".text = \"Show (M)\"
+	$\".\".text = \"Expand (M)\"
 	ui_hid = true
 
 func slide_out() -> void:
 	var tween = create_tween()
-	tween.tween_property(get_node(target_node), \"position\", Vector2(227.0, 0.0), 0.5)
+	tween.tween_property(get_node(target_node), \"position\", Vector2(656.0, 0.0), 0.5)
 	tween.set_ease(Tween.EASE_IN)
 	$\".\".text = \"Collapse (M)\"
 	ui_hid = false
@@ -166,10 +166,10 @@ script = SubResource("GDScript_gygba")
 [node name="GiftsLabel" type="Label" parent="." unique_id=862672479]
 visible = false
 layout_mode = 0
-offset_left = 3.0
-offset_top = 583.0
-offset_right = 1153.0
-offset_bottom = 647.0
+offset_left = -5.0
+offset_top = 1012.0
+offset_right = 1985.0
+offset_bottom = 1076.0
 text = "0/200"
 label_settings = SubResource("LabelSettings_guxnq")
 horizontal_alignment = 1
@@ -189,12 +189,11 @@ vertical_alignment = 1
 
 [node name="LevelLabel" type="Label" parent="." unique_id=1430607570]
 layout_mode = 0
-offset_left = 497.0
-offset_top = 3.0
-offset_right = 1145.0
-offset_bottom = 26.0
+offset_left = 1382.0
+offset_right = 1476.0
+offset_bottom = 23.0
 text = "Level: 0"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="Someone" type="TextureRect" parent="." unique_id=1712463762]
 visible = false
@@ -256,8 +255,8 @@ script = SubResource("GDScript_sk4pr")
 
 [node name="StuffPanel" type="Panel" parent="." unique_id=2072176008]
 layout_mode = 0
-offset_left = 227.0
-offset_right = 952.0
+offset_left = 656.0
+offset_right = 1381.0
 offset_bottom = 91.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_48xfa")
 
@@ -300,10 +299,10 @@ horizontal_alignment = 2
 [node name="Settings" type="Panel" parent="." unique_id=1592198283]
 visible = false
 layout_mode = 0
-offset_left = 203.0
-offset_top = 41.0
-offset_right = 1023.0
-offset_bottom = 598.0
+offset_left = 585.0
+offset_top = 251.0
+offset_right = 1405.0
+offset_bottom = 808.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Settings" unique_id=698931372]
 layout_mode = 0
@@ -355,13 +354,13 @@ horizontal_alignment = 1
 [node name="GameOver" type="Panel" parent="." unique_id=501613666]
 visible = false
 layout_mode = 0
-offset_right = 1155.0
-offset_bottom = 648.0
+offset_right = 1993.0
+offset_bottom = 1107.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sk4pr")
 
 [node name="Label" type="Label" parent="GameOver" unique_id=1839301325]
 layout_mode = 0
-offset_right = 1154.0
+offset_right = 1984.0
 offset_bottom = 56.0
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_sk4pr")
@@ -383,7 +382,7 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 1.0
 offset_top = 122.0
-offset_right = 1155.0
+offset_right = 1982.0
 offset_bottom = 173.0
 text = "High score: 0"
 label_settings = SubResource("LabelSettings_sk4pr")
@@ -392,19 +391,19 @@ vertical_alignment = 1
 
 [node name="RetryButton" type="Button" parent="GameOver" unique_id=1979945297]
 layout_mode = 0
-offset_left = 470.0
-offset_top = 427.0
-offset_right = 702.0
-offset_bottom = 482.0
+offset_left = 871.0
+offset_top = 461.0
+offset_right = 1103.0
+offset_bottom = 528.0
 theme_override_font_sizes/font_size = 43
 text = "RETRY"
 
 [node name="Button2" type="Button" parent="GameOver" unique_id=1873412746]
 layout_mode = 0
-offset_left = 470.0
-offset_top = 514.0
-offset_right = 702.0
-offset_bottom = 581.0
+offset_left = 871.0
+offset_top = 548.0
+offset_right = 1103.0
+offset_bottom = 615.0
 theme_override_font_sizes/font_size = 43
 text = "QUIT"
 script = SubResource("GDScript_2qxw1")

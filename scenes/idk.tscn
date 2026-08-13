@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://1vf5ja7qyf7s"]
 
-[ext_resource type="Shader" uid="uid://daywub3pgh2h8" path="res://shaders/checkerboard_floor.gdshader" id="1_htol6"]
 [ext_resource type="Script" uid="uid://bp0fwjj26ngo" path="res://scripts/idk.gd" id="1_i65in"]
 [ext_resource type="Shader" uid="uid://bi6vgst2td81v" path="res://shaders/underwater_stone.gdshader" id="2_f0r8y"]
+[ext_resource type="Material" uid="uid://deqxsgyp1iw0" path="res://materials/floor.tres" id="2_mpdlr"]
 [ext_resource type="PackedScene" uid="uid://bqs3r4f0unodw" path="res://scenes/proximity_prompt.tscn" id="3_qhmgb"]
 [ext_resource type="Material" uid="uid://cv0dks4delbhh" path="res://assets/materials/stone.tres" id="4_fxbju"]
 [ext_resource type="PackedScene" uid="uid://lv3r2e4t3edc" path="res://scenes/pillar.tscn" id="6_0lrh6"]
@@ -13,21 +13,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjrnq"]
 size = Vector3(6.9605103, 0.20947266, 6.979004)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0r8y"]
-render_priority = 0
-shader = ExtResource("1_htol6")
-shader_parameter/tile_color_a = Color(0.76240367, 0.76240367, 0.76240367, 1)
-shader_parameter/tile_color_b = Color(0.02, 0.02, 0.04, 1)
-shader_parameter/tile_size = 1.0
-shader_parameter/emission_strength = 1.8
-shader_parameter/roughness_a = 0.15
-shader_parameter/roughness_b = 0.9
-shader_parameter/wetness = 0.6
-shader_parameter/caustic_strength = 0.25
-shader_parameter/caustic_speed = 0.4
-
 [sub_resource type="BoxMesh" id="BoxMesh_htol6"]
-material = SubResource("ShaderMaterial_f0r8y")
+material = ExtResource("2_mpdlr")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f0r8y"]
 size = Vector3(0.46564484, 0.20947266, 6.979004)
@@ -70,21 +57,8 @@ material = ExtResource("4_fxbju")
 [sub_resource type="BoxShape3D" id="BoxShape3D_htol6"]
 size = Vector3(49.45716, 0.20947266, 49.789673)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_htol6"]
-render_priority = 0
-shader = ExtResource("1_htol6")
-shader_parameter/tile_color_a = Color(0.6789437, 0.6789437, 0.6789437, 1)
-shader_parameter/tile_color_b = Color(0.02, 0.02, 0.04, 1)
-shader_parameter/tile_size = 1.0
-shader_parameter/emission_strength = 1.8
-shader_parameter/roughness_a = 0.15
-shader_parameter/roughness_b = 0.9
-shader_parameter/wetness = 0.6
-shader_parameter/caustic_strength = 0.25
-shader_parameter/caustic_speed = 0.4
-
 [sub_resource type="BoxMesh" id="BoxMesh_f0r8y"]
-material = SubResource("ShaderMaterial_htol6")
+material = ExtResource("2_mpdlr")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_86q0k"]
 size = Vector3(0.2475586, 8.081543, 24.295044)
@@ -325,3 +299,6 @@ transform = Transform3D(-1.1313341e-08, -1, -4.222196e-08, -0.18513559, -3.93975
 
 [node name="tripmine_prop3" parent="." unique_id=163124091 instance=ExtResource("9_gygba")]
 transform = Transform3D(-5.152734e-09, -0.9930277, 0.11788079, -4.3406615e-08, 0.11788085, 0.9930276, -0.9999999, 2.379865e-16, -4.3711374e-08, 1.1563262, 0.08962059, -5.997494)
+
+[node name="tripmine_prop4" parent="." unique_id=438482419 instance=ExtResource("9_gygba")]
+transform = Transform3D(-1.7841074e-07, -4.965139, 0.5894041, -2.1703302e-07, 0.5894041, 4.965139, -5, 1.5158278e-07, -2.3655102e-07, 1.1563262, 26.500677, 0.48817348)
