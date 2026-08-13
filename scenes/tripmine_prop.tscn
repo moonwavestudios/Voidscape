@@ -31,11 +31,6 @@ size = Vector3(1.5718384, 1.5454102, 0.62298584)
 
 [node name="tripmine_prop" type="Node3D" unique_id=1629878282]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=640317641]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8620132, 0)
-light_color = Color(1, 0, 0.5764706, 1)
-light_energy = 5.0
-
 [node name="Tripmine" type="MeshInstance3D" parent="." unique_id=598737396]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 mesh = ExtResource("1_e67b3")

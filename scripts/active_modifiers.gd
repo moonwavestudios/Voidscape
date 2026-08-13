@@ -41,8 +41,14 @@ var all_modifiers = {
 		"Bell": "Ringing the bell will throw you into the air, but be careful and don't ring it too many times",
 		"Rusher": "Goober will try to dash towards you with a loud noise and an indicator. don't get hit",
 		"Teleporter": "He will teleport in front of you with a sound indicator. Just go the other way once he does.",
-		"Someone": "Don't move when he looks at you.",
-		"Nuke": "Follows the player before exploding"
+		"Someone": {
+			"description": "Don't move when he looks at you.",
+			"min_level": 1
+		}, 
+		"Nuke": {
+			"description": "Follows the player before exploding",
+			"min_level": 1
+		}
 	}
 }
 
@@ -77,18 +83,32 @@ var buff_costs = {
 func get_buff_cost(modifier_name: String) -> int:
 	return buff_costs.get(modifier_name, 0)
 
-func get_random_options(modifier_type: String, count: int = 3):
+func get_random_options(modifier_type: String, current_level: int, count: int = 3):
 	if not all_modifiers.has(modifier_type):
 		return []
+	
 	var pool = all_modifiers[modifier_type].duplicate()
+	
 	if pool is Array:
 		pool.shuffle()
 		return pool.slice(0, min(count, pool.size()))
-	var result = {}
-	var keys = pool.keys()
+	
+	var available = {}
+	
+	for modifier_name in pool.keys():
+		var modifier_data = pool[modifier_name]
+		var min_level = modifier_data.get("min_level", 1)
+		
+		if current_level >= min_level:
+			available[modifier_name] = modifier_data.get("description", "")
+	
+	var keys = available.keys()
 	keys.shuffle()
+	
+	var result = {}
 	for i in range(min(count, keys.size())):
-		result[keys[i]] = pool[keys[i]]
+		result[keys[i]] = available[keys[i]]
+	
 	return result
 
 func get_icon(modifier_type: String, modifier_name: String):

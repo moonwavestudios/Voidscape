@@ -87,7 +87,7 @@ func _populate_slots() -> void:
 	
 	for category in categories:
 		var count = 2 if is_buff_round else 3
-		var options = ActiveModifiers.get_random_options(category, count)
+		var options = ActiveModifiers.get_random_options(category, level, count)
 		for mod_name in options.keys():
 			all_options.append({"category": category, "mod_name": mod_name, "mod_effect": options[mod_name]})
 	all_options.shuffle()

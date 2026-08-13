@@ -7,6 +7,8 @@ var rng := RandomNumberGenerator.new()
 var destroyParticleScene = preload("res://scenes/destroy_particle.tscn")
 var destroyMaterial = preload("res://materials/destroyed_floor.tres")
 
+var difficulty = "standard"
+
 var floor_destruction_delay = 5.0
 var floor_destruction_stagger = 1.5
 
@@ -170,6 +172,11 @@ func start_round():
 	for players in get_players():
 		players.global_position = $Maps/PlayerSpawn.position
 		players.get_node("player_ui/GiftsLabel").visible = true
+		
+		for buffs in ActiveModifiers.active_modifiers.get("Buffs", {}):
+			if buffs.contains("Shield"):
+				players.has_shield = true
+				players.get_node("shield_a").visible = true
 	
 	get_tree().create_timer(3.0).timeout.connect(spawn_monsters)
 

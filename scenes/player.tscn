@@ -60,13 +60,21 @@ shader = SubResource("Shader_3vyb7")
 shader_parameter/fog_color = Color(0.01, 0.12, 0.14, 1)
 shader_parameter/fog_near = 2.0
 shader_parameter/fog_far = 60.0
-shader_parameter/fog_density = 0.92
+shader_parameter/fog_density = 0.726000034485
 shader_parameter/teal_shift = 0.7
 shader_parameter/aberration = 0.004
 
 [sub_resource type="QuadMesh" id="QuadMesh_3vyb7"]
 material = SubResource("ShaderMaterial_g2els")
 size = Vector2(2.02, 2.69)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhqgy"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 0.156)
+
+[sub_resource type="SphereMesh" id="SphereMesh_phis1"]
+material = SubResource("StandardMaterial3D_qhqgy")
 
 [node name="player" type="CharacterBody3D" unique_id=1056688122 groups=["interactors", "player"]]
 script = ExtResource("1_3vyb7")
@@ -80,10 +88,14 @@ current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=427838494]
 transform = Transform3D(2.1738248, 0, 0, 0, 4.943821, 0, 0, -1.7563982e-14, 0.691699, 0, 0.7167037, -0.73603654)
-visible = false
 mesh = SubResource("QuadMesh_3vyb7")
 
 [node name="player_ui" parent="." unique_id=1669550447 instance=ExtResource("2_g2els")]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1211769590]
 stream = ExtResource("3_qhqgy")
+
+[node name="shield_a" type="MeshInstance3D" parent="." unique_id=267753169]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_phis1")

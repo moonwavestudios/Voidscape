@@ -66,6 +66,34 @@ size = Vector3(0.2475586, 8.081543, 24.295044)
 [sub_resource type="BoxMesh" id="BoxMesh_86q0k"]
 size = Vector3(0.26208496, 8.124878, 24.342896)
 
+[sub_resource type="GDScript" id="GDScript_o1y51"]
+script/source = "extends Node3D
+
+@export var rotation_speed: float = 2.0
+@export var change_interval: float = 1.0
+
+var random_axis := Vector3.UP
+var timer := 0.0
+
+func _ready():
+	randomize_axis()
+
+func _process(delta):
+	rotate(random_axis, rotation_speed * delta)
+
+	timer -= delta
+	if timer <= 0.0:
+		timer = change_interval
+		randomize_axis()
+
+func randomize_axis():
+	random_axis = Vector3(
+		randf_range(-1.0, 1.0),
+		randf_range(-1.0, 1.0),
+		randf_range(-1.0, 1.0)
+	).normalized()
+"
+
 [node name="lobby" type="Node3D" unique_id=398233627]
 script = ExtResource("1_i65in")
 
@@ -294,11 +322,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.168113, 2.2081733, -32.4500
 [node name="tripmine_prop" parent="." unique_id=1629878282 instance=ExtResource("9_gygba")]
 transform = Transform3D(-1.1313341e-08, -1, -4.222196e-08, 0.25881907, -4.371139e-08, 0.9659258, -0.9659258, 0, 0.25881907, -20.132805, 0.0705328, 0)
 
+[node name="OmniLight3D2" type="OmniLight3D" parent="tripmine_prop" unique_id=949695153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8620132, 0)
+light_color = Color(1, 0, 0.5764706, 1)
+light_energy = 5.0
+
 [node name="tripmine_prop2" parent="." unique_id=276621686 instance=ExtResource("9_gygba")]
 transform = Transform3D(-1.1313341e-08, -1, -4.222196e-08, -0.18513559, -3.9397566e-08, 0.9827129, -0.9827129, 1.8934553e-08, -0.18513559, -20.132805, 0.0705328, -1.3461806)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="tripmine_prop2" unique_id=152084349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8620132, 0)
+light_color = Color(1, 0, 0.5764706, 1)
+light_energy = 5.0
 
 [node name="tripmine_prop3" parent="." unique_id=163124091 instance=ExtResource("9_gygba")]
 transform = Transform3D(-5.152734e-09, -0.9930277, 0.11788079, -4.3406615e-08, 0.11788085, 0.9930276, -0.9999999, 2.379865e-16, -4.3711374e-08, 1.1563262, 0.08962059, -5.997494)
 
+[node name="OmniLight3D2" type="OmniLight3D" parent="tripmine_prop3" unique_id=732413159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8620132, 0)
+light_color = Color(1, 0, 0.5764706, 1)
+light_energy = 5.0
+
 [node name="tripmine_prop4" parent="." unique_id=438482419 instance=ExtResource("9_gygba")]
 transform = Transform3D(-1.7841074e-07, -4.965139, 0.5894041, -2.1703302e-07, 0.5894041, 4.965139, -5, 1.5158278e-07, -2.3655102e-07, 1.1563262, 26.500677, 0.48817348)
+script = SubResource("GDScript_o1y51")
