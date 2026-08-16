@@ -208,142 +208,6 @@ uv2_world_triplanar = true
 [sub_resource type="CylinderMesh" id="CylinderMesh_1bvp3"]
 material = SubResource("StandardMaterial3D_1bvp3")
 
-[sub_resource type="GDScript" id="GDScript_efxa6"]
-script/source = "extends Node3D
-
-@export var main_leg_count: int = 4
-@export var leg_angle_jitter_deg: float = 10.0
-@export var min_segment_length: float = 10.0
-@export var max_segment_length: float = 20.0
-@export var plank_width: float = 3.5
-@export var plank_thickness: float = 0.6
-@export var checker_tile_size: float = 0.75
-@export var joint_overlap: float = 1.0
-@export var z_fight_offset: float = 0.01
-
-@export var branch_chance: float = 0.5
-@export var max_branches_per_leg: int = 2
-@export var branch_min_length: float = 5.0
-@export var branch_max_length: float = 12.0
-@export var branch_angle_min_deg: float = 30.0
-@export var branch_angle_max_deg: float = 90.0
-@export var max_branch_depth: int = 1
-
-@export var use_random_seed: bool = true
-@export var fixed_seed: int = 0
-
-var rng := RandomNumberGenerator.new()
-var checker_material: StandardMaterial3D
-var plank_spawn_index: int = 0
-
-func _ready() -> void:
-	if use_random_seed:
-		rng.randomize()
-	else:
-		rng.seed = fixed_seed
-	_build_checker_material()
-	generate_layout()
-
-func _build_checker_material() -> void:
-	var img := Image.create(2, 2, false, Image.FORMAT_RGB8)
-	img.set_pixel(0, 0, Color.WHITE)
-	img.set_pixel(1, 1, Color.WHITE)
-	img.set_pixel(1, 0, Color.BLACK)
-	img.set_pixel(0, 1, Color.BLACK)
-	var tex := ImageTexture.create_from_image(img)
-
-	checker_material = StandardMaterial3D.new()
-	checker_material.albedo_texture = tex
-	checker_material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
-
-func generate_layout() -> void:
-	if not is_inside_tree():
-		return
-
-	for child in get_children():
-		remove_child(child)
-		child.free()
-
-	plank_spawn_index = 0
-
-	var angle_step := TAU / float(main_leg_count)
-
-	for i in range(main_leg_count):
-		var jitter := deg_to_rad(rng.randf_range(-leg_angle_jitter_deg, leg_angle_jitter_deg))
-		var base_angle := angle_step * i + jitter
-		var direction := Vector3(cos(base_angle), 0.0, sin(base_angle))
-		_build_leg(Vector3.ZERO, direction, 0)
-
-func _spawn_plank(start_pos: Vector3, direction: Vector3, length: float, extend_start: bool = true) -> Vector3:
-	var overlap := joint_overlap if extend_start else 0.0
-	var visual_start := start_pos - direction * overlap
-	var visual_length := length + overlap
-
-	var plank := MeshInstance3D.new()
-	var mesh := BoxMesh.new()
-	mesh.size = Vector3(visual_length, plank_thickness, plank_width)
-
-	var mat := checker_material.duplicate()
-	mat.uv1_scale = Vector3(visual_length / checker_tile_size, plank_width / checker_tile_size, 1.0)
-	mesh.material = mat
-	plank.mesh = mesh
-
-	var mid_point := visual_start + direction * (visual_length / 2.0)
-	mid_point.y += plank_spawn_index * z_fight_offset
-	plank_spawn_index += 1
-
-	var basis := Basis()
-	basis = basis.looking_at(direction, Vector3.UP)
-	basis = basis.rotated(basis.y, PI / 2.0)
-
-	plank.transform = Transform3D(basis, mid_point)
-	add_child(plank)
-
-	return start_pos + direction * length
-
-func _build_leg(start_pos: Vector3, direction: Vector3, depth: int) -> void:
-	var current_pos := start_pos
-	var current_dir := direction
-	var segment_count := 1 if depth > 0 else rng.randi_range(1, 2)
-
-	for s in range(segment_count):
-		var length := rng.randf_range(min_segment_length, max_segment_length)
-		var end_pos := _spawn_plank(current_pos, current_dir, length, s > 0)
-
-		if depth < max_branch_depth:
-			_maybe_spawn_branches(current_pos, end_pos, current_dir, depth)
-
-		current_pos = end_pos
-
-func _maybe_spawn_branches(seg_start: Vector3, seg_end: Vector3, seg_dir: Vector3, depth: int) -> void:
-	var branch_count := 0
-	for attempt in range(max_branches_per_leg):
-		if rng.randf() > branch_chance:
-			continue
-		if branch_count >= max_branches_per_leg:
-			break
-
-		var t := rng.randf_range(0.3, 0.9)
-		var branch_origin := seg_start.lerp(seg_end, t)
-
-		var side := 1.0 if rng.randf() < 0.5 else -1.0
-		var angle_deg := rng.randf_range(branch_angle_min_deg, branch_angle_max_deg) * side
-		var branch_dir := seg_dir.rotated(Vector3.UP, deg_to_rad(angle_deg))
-
-		var branch_length := rng.randf_range(branch_min_length, branch_max_length)
-		var branch_end := _spawn_plank(branch_origin, branch_dir, branch_length)
-
-		if depth + 1 < max_branch_depth:
-			_maybe_spawn_branches(branch_origin, branch_end, branch_dir, depth + 1)
-
-		branch_count += 1
-
-func regenerate() -> void:
-	if not is_instance_valid(self):
-		return
-	generate_layout()
-"
-
 [node name="Main" type="Node" unique_id=1863403543]
 
 [node name="game" type="Node3D" parent="." unique_id=796200974]
@@ -358,7 +222,6 @@ light_color = Color(0.5764706, 0.6156863, 0.68235296, 1)
 shadow_enabled = true
 
 [node name="Maps" type="Node3D" parent="game" unique_id=91219307]
-visible = false
 
 [node name="middle" type="StaticBody3D" parent="game/Maps" unique_id=423026953]
 transform = Transform3D(4, 0, 0, 0, 0.552, 0, 0, 0, 4, 0, 0, 0)
@@ -403,6 +266,18 @@ transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, 0.25, 0, -0.25, -1.092784
 texture = ExtResource("4_kek77")
 script = SubResource("GDScript_kek77")
 
+[node name="LeftSpawn" type="Marker3D" parent="game/Maps/middle" unique_id=1314694978]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.50047886, 0, 0)
+
+[node name="RightSpawn" type="Marker3D" parent="game/Maps/middle" unique_id=167397094]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0.50058836, 0, 0)
+
+[node name="ForwardSpawn" type="Marker3D" parent="game/Maps/middle" unique_id=1481044546]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.0064830184, 0, -0.5015294)
+
+[node name="BackSpawn" type="Marker3D" parent="game/Maps/middle" unique_id=1835175333]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.0064830184, 0, 0.5002521)
+
 [node name="Beacon" type="Area3D" parent="game/Maps" unique_id=1243685582]
 visible = false
 
@@ -420,10 +295,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40083778, 0)
 
 [node name="lobby" parent="game" unique_id=398233627 instance=ExtResource("4_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1195.6849)
-
-[node name="Node3D" type="Node3D" parent="game" unique_id=483708271]
-visible = false
-script = SubResource("GDScript_efxa6")
 
 [node name="player" parent="." unique_id=1056688122 instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0009835735, 2.1006432, -1195.6173)

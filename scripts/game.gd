@@ -7,6 +7,20 @@ var rng := RandomNumberGenerator.new()
 var destroyParticleScene = preload("res://scenes/destroy_particle.tscn")
 var destroyMaterial = preload("res://materials/destroyed_floor.tres")
 
+# -------------- For the rewrite --------------
+var floor_scenes = {
+	"straight_floor" = preload("res://scenes/floors/floorA.tscn"),
+}
+
+const SPAWN_DIRECTIONS := {
+	"LeftSpawn" = Vector3.LEFT,
+	"RightSpawn" = Vector3.RIGHT,
+	"ForwardSpawn" = Vector3.FORWARD,
+	"BackSpawn" = Vector3.BACK,
+}
+
+# ---------------------------------------------
+
 var difficulty = "standard"
 
 var floor_destruction_delay = 5.0
@@ -131,14 +145,46 @@ func _get_floor_pool() -> Array:
 			best_key = key
 	return floors[best_key]
 
+func _place_floor_piece(scene: PackedScene, target_position: Vector3, target_basis: Basis, parent: Node3D) -> Node3D:
+	var piece = scene.instantiate()
+	parent.add_child(piece)
+	var start_marker: Marker3D = piece.get_node("Start_Pos")
+	var local_offset = start_marker.position
+	var rotated_offset = target_basis * local_offset
+	var t = piece.global_transform
+	t.basis = target_basis
+	t.origin = target_position - rotated_offset
+	piece.global_transform = t
+	return piece
+
+func _generate_corridor(spawn_marker: Marker3D, length: int) -> void:
+	var local_dir = SPAWN_DIRECTIONS.get(spawn_marker.name, Vector3.FORWARD)
+	var world_dir = ($Maps/middle.global_transform.basis * local_dir).normalized()
+	var corridor_basis = Basis.looking_at(world_dir, Vector3.UP)
+	var current_position = spawn_marker.global_position
+	for i in range(length):
+		var piece = _place_floor_piece(floor_scenes["straight_floor"], current_position, corridor_basis, $Maps)
+		generated_floors.append(piece)
+		var end_marker: Marker3D = piece.get_node("End_Pos")
+		current_position = end_marker.global_position
+
+func _generate_corridors_from_middle() -> void:
+	for spawns in $Maps/middle.get_children():
+		if spawns is Marker3D:
+			var length = rng.randi_range(3, 6)
+			_generate_corridor(spawns, length)
+
 func spawn_random_room() -> Node3D:
 	var picked_scene = seeded_pick_random(_get_floor_pool())
 	if picked_scene == null:
 		push_error("No floors available to spawn")
 		return null
+		
+	_generate_corridors_from_middle()
 	
 	var room_instance = picked_scene.instantiate()
 	$Maps.add_child(room_instance)
+	room_instance.global_position.y += 5
 	generated_floors.append(room_instance)
 	
 	return room_instance

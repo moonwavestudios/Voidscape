@@ -26,13 +26,23 @@ var all_modifiers = {
 		"More altars": "More altars spawn",
 	},
 	"Buffs" = {
-		"Adrenaline": "Increases your speed by 0.5x",
-		"Rings of speed": "Increase your speed by 0.75x",
+		"Adrenaline": {
+			"description": "Increases your speed by 0.5x",
+			"min_level": 1
+		},
+		"Rings of speed": 
+			{
+				"description": "Increase your speed by 0.75x",
+				"min_level": 1
+			},
 		"Shield": {
 				"description": "Protects you from getting hit once",
 				"min_level": 15
 		},
-		"Gift magnet": "Brings the gifts close to you closer to you",
+		"Gift magnet": {
+			"description": "Brings the gifts close to you closer to you",
+			"min_level": 15
+		}
 	},
 	"Altar" = [
 		"Walkspeed x1.5",
@@ -40,9 +50,18 @@ var all_modifiers = {
 		"Shield for all",
 	],
 	"Threats" = {
-		"Horse": "Jumps around the map, creating massive shockwaves when landing. just be careful and don't stand still",
-		"Bell": "Ringing the bell will throw you into the air, but be careful and don't ring it too many times",
-		"Rusher": "Goober will try to dash towards you with a loud noise and an indicator. don't get hit",
+		"Horse": {
+			"description": "Jumps around the map, creating massive shockwaves when landing. just be careful and don't stand still",
+			"min_level": 1
+		},
+		"Bell": {
+			"description": "Ringing the bell will throw you into the air, but be careful and don't ring it too many times",
+			"min_level": 1
+		},
+		"Rusher": {
+			"description": "Goober will try to dash towards you with a loud noise and an indicator. don't get hit",
+			"min_level": 1
+		},
 		"Teleporter": {
 			"description": "He will teleport in front of you with a sound indicator. Just go the other way once he does.",
 			"min_level": 1
