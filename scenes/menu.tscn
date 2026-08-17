@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://yu7fkpkbf0xp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4h3mk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_86q0k"]
+font_size = 71
+font_color = Color(0.5897365, 0.00025441914, 0.5897323, 1)
+outline_size = 24
+outline_color = Color(0.7557094, 0.31751916, 1, 1)
+
+[node name="menu" type="Control" unique_id=2116111348]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="Panel" parent="." unique_id=1504966318]
+layout_mode = 0
+offset_right = 1981.0
+offset_bottom = 1077.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4h3mk")
+
+[node name="Label" type="Label" parent="MainMenu" unique_id=109387151]
+layout_mode = 0
+offset_right = 402.0
+offset_bottom = 97.0
+text = "Voidscape"
+label_settings = SubResource("LabelSettings_86q0k")
+horizontal_alignment = 1

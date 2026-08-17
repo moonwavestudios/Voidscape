@@ -75,7 +75,7 @@ size = Vector3(19.744278, 0.13806152, 3.0461426)
 [node name="floor" type="Node3D" unique_id=413518037]
 
 [node name="floor10" type="StaticBody3D" parent="." unique_id=311483049]
-transform = Transform3D(-9.732298e-08, 0.82861775, -0.5598148, -3.6220033e-08, 0.5598148, 0.82861775, 1, 1.0092006e-07, -2.4470282e-08, 0, 0, 0)
+transform = Transform3D(1, 6.470003e-08, -1.7763568e-15, -3.6220033e-08, 0.5598148, 0.82861775, 5.3611597e-08, -0.82861775, 0.5598148, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor10" unique_id=2142782089]
 transform = Transform3D(0.99999934, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999965, 0, 0, 0)
@@ -108,3 +108,9 @@ shape = SubResource("BoxShape3D_stotw")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor10/CollisionShape3D5" unique_id=533493197]
 transform = Transform3D(-7.1345285e-10, 0, 1.2474781, 0, 1, 0, -0.016321898, 0, -5.4528993e-08, 0, 0, 0)
 mesh = SubResource("BoxMesh_7ks1i")
+
+[node name="Start_Pos" type="Marker3D" parent="." unique_id=1137767981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.180403, -7.684104)
+
+[node name="End_Pos" type="Marker3D" parent="." unique_id=988623327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.562733, 7.7277317)

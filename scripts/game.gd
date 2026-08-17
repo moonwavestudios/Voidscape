@@ -10,6 +10,8 @@ var destroyMaterial = preload("res://materials/destroyed_floor.tres")
 # -------------- For the rewrite --------------
 var floor_scenes = {
 	"straight_floor" = preload("res://scenes/floors/floorA.tscn"),
+	"end_floor_with_platform" = preload("res://scenes/floors/floorB.tscn"),
+	"stairs" = preload("res://scenes/floors/floorD.tscn")
 }
 
 const SPAWN_DIRECTIONS := {
