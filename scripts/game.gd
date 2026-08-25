@@ -63,8 +63,6 @@ var floors = {
 	5: [
 		preload("res://scenes/world_8.tscn"),
 		preload("res://scenes/world_9.tscn"),
-		preload("res://scenes/world_10.tscn"),
-		preload("res://scenes/world_11.tscn"),
 		preload("res://scenes/world_12.tscn"),
 	],
 }
@@ -75,6 +73,7 @@ var threat_scenes = {
 	"Teleporter" = preload("res://scenes/threats/teleporter.tscn"),
 	"Someone" = preload("res://scenes/threats/someone.tscn"),
 	"Rusher" = preload("res://scenes/threats/goober.tscn"),
+	"Nuke" = preload("res://scenes/threats/nuke.tscn"),
 }
 
 func seeded_pick_random(array: Array):
@@ -164,8 +163,18 @@ func _generate_corridor(spawn_marker: Marker3D, length: int) -> void:
 	var world_dir = ($Maps/middle.global_transform.basis * local_dir).normalized()
 	var corridor_basis = Basis.looking_at(world_dir, Vector3.UP)
 	var current_position = spawn_marker.global_position
+
 	for i in range(length):
-		var piece = _place_floor_piece(floor_scenes["straight_floor"], current_position, corridor_basis, $Maps)
+		# Last piece of the corridor gets the platform end-cap;
+		# everything before that is a normal straight piece,
+		# with a chance of a stairs piece for variety.
+		var scene_key := "straight_floor"
+		if i == length - 1:
+			scene_key = "end_floor_with_platform"
+		elif seeded_randf() < 0.2:
+			scene_key = "stairs"
+
+		var piece = _place_floor_piece(floor_scenes[scene_key], current_position, corridor_basis, $Maps)
 		generated_floors.append(piece)
 		var end_marker: Marker3D = piece.get_node("End_Pos")
 		current_position = end_marker.global_position
