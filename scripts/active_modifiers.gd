@@ -24,10 +24,15 @@ var all_modifiers = {
 		"Lower gravity": "You think that'd be helpful",
 		"Offset gifts": "Gifts are offset by a random amount",
 		"More altars": "More altars spawn",
+		"KABOOM": "Nukes explosions are bigger",
 	},
 	"Buffs" = {
 		"Adrenaline": {
 			"description": "Increases your speed by 0.5x",
+			"min_level": 1
+		},
+		"Money bag": {
+			"description": "Gift yield +0.75x",
 			"min_level": 1
 		},
 		"Rings of speed": 
@@ -73,6 +78,10 @@ var all_modifiers = {
 		"Nuke": {
 			"description": "Follows the player before exploding",
 			"min_level": 1
+		},
+		"Dante": {
+			"description": "Spawns instruments, collect them to calm him down.",
+			"min_level": 20
 		}
 	}
 }
@@ -100,6 +109,7 @@ var threat_icons = {
 
 var buff_costs = {
 	"Adrenaline": 50,
+	"Money bag": 25,
 	"Rings of speed": 55,
 	"Gift magnet": 150,
 	"Shield": 1000,

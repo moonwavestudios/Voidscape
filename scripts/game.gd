@@ -74,6 +74,7 @@ var threat_scenes = {
 	"Someone" = preload("res://scenes/threats/someone.tscn"),
 	"Rusher" = preload("res://scenes/threats/goober.tscn"),
 	"Nuke" = preload("res://scenes/threats/nuke.tscn"),
+	"Dante" = preload("res://scenes/threats/dante.tscn"),
 }
 
 func seeded_pick_random(array: Array):
@@ -165,9 +166,6 @@ func _generate_corridor(spawn_marker: Marker3D, length: int) -> void:
 	var current_position = spawn_marker.global_position
 
 	for i in range(length):
-		# Last piece of the corridor gets the platform end-cap;
-		# everything before that is a normal straight piece,
-		# with a chance of a stairs piece for variety.
 		var scene_key := "straight_floor"
 		if i == length - 1:
 			scene_key = "end_floor_with_platform"

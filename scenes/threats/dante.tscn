@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ctohiu5cakfyk"]
+
+[ext_resource type="Texture2D" uid="uid://bfl8q0pkpnvdc" path="res://assets/images/star.png" id="1_bl1xc"]
+
+[node name="Dante" type="Node3D" unique_id=560905119]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1080111361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.047321, -6.017231, -9.278436)
+billboard = 1
+texture = ExtResource("1_bl1xc")
