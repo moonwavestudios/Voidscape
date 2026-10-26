@@ -160,17 +160,26 @@ func _place_floor_piece(scene: PackedScene, target_position: Vector3, target_bas
 	return piece
 
 func _generate_corridor(spawn_marker: Marker3D, length: int) -> void:
-	var local_dir = SPAWN_DIRECTIONS.get(spawn_marker.name, Vector3.FORWARD)
+	if not SPAWN_DIRECTIONS.has(spawn_marker.name):
+		push_warning("Unknown spawn marker: " + str(spawn_marker.name))
+		return
+	var local_dir = SPAWN_DIRECTIONS[spawn_marker.name]
 	var world_dir = ($Maps/middle.global_transform.basis * local_dir).normalized()
 	var corridor_basis = Basis.looking_at(world_dir, Vector3.UP)
 	var current_position = spawn_marker.global_position
+	var stairs_used = 0
+	var last_was_stairs = false
 
 	for i in range(length):
 		var scene_key := "straight_floor"
 		if i == length - 1:
 			scene_key = "end_floor_with_platform"
-		elif seeded_randf() < 0.2:
+		elif i > 0 and stairs_used < 1 and not last_was_stairs and seeded_randf() < 0.2:
 			scene_key = "stairs"
+
+		last_was_stairs = scene_key == "stairs"
+		if last_was_stairs:
+			stairs_used += 1
 
 		var piece = _place_floor_piece(floor_scenes[scene_key], current_position, corridor_basis, $Maps)
 		generated_floors.append(piece)
@@ -193,7 +202,7 @@ func spawn_random_room() -> Node3D:
 	
 	var room_instance = picked_scene.instantiate()
 	$Maps.add_child(room_instance)
-	room_instance.global_position.y += 5
+	room_instance.global_position.y += 2000
 	generated_floors.append(room_instance)
 	
 	return room_instance
